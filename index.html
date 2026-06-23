@@ -18,14 +18,7 @@
         <div id="deckhead"></div>
 
         <div id="port">
-          <div id="bed" class="box" w="6.5" l="3" h="5.5">
-            <div class="face front"></div>
-            <div class="face back"></div>
-            <div class="face right"></div>
-            <div class="face left"></div>
-            <div class="face top"></div>
-            <div class="face bottom"></div>
-          </div>
+          <%- include('partials/box', { id: 'bed', w: 6.5, l: 3, h: 5.5 }) %>
         </div>
 
         <div id="stern">
@@ -33,14 +26,7 @@
         </div>
 
         <div id="starboard">
-          <div id="lockers" class="box" w="12" l="3" h="7">
-            <div class="face front"></div>
-            <div class="face back"></div>
-            <div class="face right"></div>
-            <div class="face left"></div>
-            <div class="face top"></div>
-            <div class="face bottom"></div>
-          </div>
+          <%- include('partials/box', { id: 'lockers', w: 12, l: 3, h: 7 }) %>
         </div>
 
         <div id="bow">
