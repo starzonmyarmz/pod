@@ -35,8 +35,7 @@
 
   /* Box face coordinates */
 
-  .head,
-  .deck {
+  .head {
     width: var(--w);
     height: var(--l);
     top: calc((var(--h) - var(--l)) / 2);
@@ -100,9 +99,5 @@
 
   .head {
     transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
-  }
-
-  .deck {
-    transform: rotateX(-90deg) translateZ(calc(var(--h) / 2));
   }
 }

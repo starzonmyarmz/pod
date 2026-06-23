@@ -4,6 +4,7 @@
   perspective: 900px;
   place-content: center;
   width: 100vw;
+  margin-top: calc(-1 * calc(var(--ft) / 2));
 }
 
 #bunk {
@@ -94,4 +95,12 @@
   input:checked + label {
     background-color: blue;
   }
+}
+
+#bunk-floor,
+#cockpit-floor,
+#reactor-floor {
+  right: 0;
+  bottom: calc(-1 * var(--h));
+  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
 }
