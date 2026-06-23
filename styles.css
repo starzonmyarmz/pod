@@ -97,6 +97,16 @@
   transform: rotateX(90deg) translateZ(calc(var(--ship-h) / 2));
 }
 
+#bed {
+  bottom: 0;
+  right: 0;
+}
+
+#lockers {
+  left: 0;
+  top: 0;
+}
+
 .door {
   background: black;
   bottom: 0;
