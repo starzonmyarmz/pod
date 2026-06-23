@@ -10,30 +10,28 @@
     <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="box.css" />
+    <link rel="stylesheet" href="room.css" />
   </head>
 
   <body>
     <div id="game">
-      <div id="ship">
-        <div id="deckhead"></div>
+      <div id="ship" class="room" w="12" l="12" h="7">
+        <div class="surface port"></div>
+        <%- include('partials/box', { id: 'bed', w: 3, l: 6.5, h: 5.5 }) %>
 
-        <div id="port">
-          <%- include('partials/box', { id: 'bed', w: 6.5, l: 3, h: 5.5 }) %>
-        </div>
-
-        <div id="stern">
+        <div class="surface stern">
           <div class="door">door</div>
         </div>
 
-        <div id="starboard">
-          <%- include('partials/box', { id: 'lockers', w: 12, l: 3, h: 7 }) %>
-        </div>
+        <div class="surface starboard"></div>
+        <%- include('partials/box', { id: 'lockers', w: 3, l: 12, h: 7 }) %>
 
-        <div id="bow">
+        <div class="surface bow">
           <div class="door">door</div>
         </div>
 
-        <div id="deck"></div>
+        <div class="surface head"></div>
+        <div class="surface deck"></div>
       </div>
     </div>
 

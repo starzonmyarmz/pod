@@ -1,8 +1,4 @@
 :root {
   /* Pixels per foot */
   --ft: 48px;
-
-  --ship-h: calc(7 * var(--ft));
-  --ship-w: calc(12 * var(--ft));
-  --ship-l: calc(12 * var(--ft));
 }

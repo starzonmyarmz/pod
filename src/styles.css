@@ -7,104 +7,39 @@
 }
 
 #ship {
-  height: var(--ship-h);
-  transform-style: preserve-3d;
-  width: var(--ship-l);
-  position: relative;
-  transition: transform 1s 0.1s;
-
-  > div {
-    background: peachpuff;
-    border: 1px solid #fff;
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: opacity 1s 0.1s;
-  }
-
-  :has(#view-stern:checked) & {
-    transform: rotateY(0deg);
-  }
-
-  :has(#view-bow:checked) & {
-    transform: rotateY(180deg);
-  }
-
-  :has(#view-port:checked) & {
-    transform: rotateY(90deg);
-  }
-
-  :has(#view-starboard:checked) & {
-    transform: rotateY(-90deg);
-  }
-}
-
-#stern {
-  width: var(--ship-l);
-  height: var(--ship-h);
-  transform: rotateY(180deg) translateZ(calc(var(--ship-w) / -2));
-
-  :has(#view-stern:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-#bow {
-  width: var(--ship-l);
-  height: var(--ship-h);
-  transform: rotateY(0deg) translateZ(calc(var(--ship-w) / -2));
-
-  :has(#view-bow:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-#starboard {
-  left: calc((var(--ship-l) - var(--ship-w)) / 2);
-  width: var(--ship-w);
-  height: var(--ship-h);
-  transform: rotateY(-90deg) translateZ(calc(var(--ship-l) / -2));
-
-  :has(#view-starboard:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-#port {
-  left: calc((var(--ship-l) - var(--ship-w)) / 2);
-  width: var(--ship-w);
-  height: var(--ship-h);
-  transform: rotateY(90deg) translateZ(calc(var(--ship-l) / -2));
-
-  :has(#view-port:checked) & {
-    opacity: 0;
-  }
-}
-
-#deck {
-  top: calc((var(--ship-h) - var(--ship-w)) / 2);
-  width: var(--ship-l);
-  height: var(--ship-w);
-  transform: rotateX(-90deg) translateZ(calc(var(--ship-h) / 2));
-}
-
-#deckhead {
-  top: calc((var(--ship-h) - var(--ship-w)) / 2);
-  width: var(--ship-l);
-  height: var(--ship-w);
-  transform: rotateX(90deg) translateZ(calc(var(--ship-h) / 2));
+  --ship-w: calc(var(--ft) * attr(w type(<number>)));
+  --ship-h: calc(var(--ft) * attr(h type(<number>)));
+  --ship-l: calc(var(--ft) * attr(l type(<number>)));
 }
 
 #bed {
   bottom: 0;
-  right: 0;
+  left: 0;
+  transform: translateZ(calc(var(--l) / 2 - var(--ship-l) / 2));
+
+  .face {
+    transition: all 1s 0.1s;
+
+    :has(#view-port:checked) & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 }
 
 #lockers {
-  left: 0;
+  right: 0;
   top: 0;
+  transform: translateZ(calc(var(--l) / 2 - var(--ship-l) / 2));
+
+  .face {
+    transition: all 1s 0.1s;
+
+    :has(#view-starboard:checked) & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 }
 
 .door {
