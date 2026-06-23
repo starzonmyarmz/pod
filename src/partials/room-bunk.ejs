@@ -1,0 +1,24 @@
+<div id="bunk" class="room" w="12" l="12" h="7">
+  <div class="surface port"></div>
+  <%- include("partials/box", { id: "bed", w: 3, l: 6.5, h: 5.5 }) %>
+
+  <div class="surface stern">
+    <div class="door">
+      <input type="radio" name="room" id="room-reactor" />
+      <label for="room-reactor">Reactor</label>
+    </div>
+  </div>
+
+  <div class="surface starboard"></div>
+  <%- include("partials/box", { id: "lockers", w: 3, l: 12, h: 7 }) %>
+
+  <div class="surface bow">
+    <div class="door">
+      <input type="radio" name="room" id="room-cockpit" />
+      <label for="room-cockpit">Cockpit</label>
+    </div>
+  </div>
+
+  <div class="surface head"></div>
+  <div class="surface deck"></div>
+</div>

@@ -15,24 +15,9 @@
 
   <body>
     <div id="game">
-      <div id="ship" class="room" w="12" l="12" h="7">
-        <div class="surface port"></div>
-        <%- include("partials/box", { id: "bed", w: 3, l: 6.5, h: 5.5 }) %>
-
-        <div class="surface stern">
-          <div class="door">door</div>
-        </div>
-
-        <div class="surface starboard"></div>
-        <%- include("partials/box", { id: "lockers", w: 3, l: 12, h: 7 }) %>
-
-        <div class="surface bow">
-          <div class="door">door</div>
-        </div>
-
-        <div class="surface head"></div>
-        <div class="surface deck"></div>
-      </div>
+      <%- include("partials/room-bunk") %>
+      <%- include("partials/room-cockpit") %>
+      <%- include("partials/room-reactor") %>
     </div>
 
     <fieldset>

@@ -6,16 +6,44 @@
   width: 100vw;
 }
 
-#ship {
-  --ship-w: calc(var(--ft) * attr(w type(<number>)));
-  --ship-h: calc(var(--ft) * attr(h type(<number>)));
-  --ship-l: calc(var(--ft) * attr(l type(<number>)));
+#bunk {
+  --bunk-w: calc(var(--ft) * attr(w type(<number>)));
+  --bunk-h: calc(var(--ft) * attr(h type(<number>)));
+  --bunk-l: calc(var(--ft) * attr(l type(<number>)));
+
+  display: none;
+
+  :has(#room-bunk:checked) & {
+    display: block;
+  }
+}
+
+#cockpit {
+  --cockpit-w: calc(var(--ft) * attr(w type(<number>)));
+  --cockpit-h: calc(var(--ft) * attr(h type(<number>)));
+  --cockpit-l: calc(var(--ft) * attr(l type(<number>)));
+  display: none;
+
+  :has(#room-cockpit:checked) & {
+    display: block;
+  }
+}
+
+#reactor {
+  --reactor-w: calc(var(--ft) * attr(w type(<number>)));
+  --reactor-h: calc(var(--ft) * attr(h type(<number>)));
+  --reactor-l: calc(var(--ft) * attr(l type(<number>)));
+  display: none;
+
+  :has(#room-reactor:checked) & {
+    display: block;
+  }
 }
 
 #bed {
   bottom: 0;
   left: 0;
-  transform: translateZ(calc(var(--l) / 2 - var(--ship-l) / 2));
+  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
 
   .face {
     transition: all 1s 0.1s;
@@ -30,7 +58,7 @@
 #lockers {
   right: 0;
   top: 0;
-  transform: translateZ(calc(var(--l) / 2 - var(--ship-l) / 2));
+  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
 
   .face {
     transition: all 1s 0.1s;
@@ -46,7 +74,24 @@
   background: black;
   bottom: 0;
   height: calc(6 * var(--ft));
-  left: calc((var(--ship-l) - 3 * var(--ft)) / 2);
+  left: calc((var(--bunk-l) - 3 * var(--ft)) / 2);
   position: absolute;
   width: calc(3 * var(--ft));
+
+  input {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+
+    + label {
+      inset: 0;
+      position: absolute;
+      background-color: red;
+    }
+  }
+
+  input:checked + label {
+    background-color: blue;
+  }
 }
