@@ -97,3 +97,11 @@
   transform: rotateX(90deg) translateZ(calc(var(--ship-h) / 2));
 }
 
+.door {
+  background: black;
+  bottom: 0;
+  height: calc(6 * var(--ft));
+  left: calc((var(--ship-l) - 3 * var(--ft)) / 2);
+  position: absolute;
+  width: calc(3 * var(--ft));
+}
