@@ -1,4 +1,18 @@
 :root {
   /* Pixels per foot */
   --ft: 48px;
+
+  /* Colors */
+  --machine-gray: #90999c;
+  --corridor-shadow: #4a4f51;
+  --white: #f0f4f7;
+  --slate: #3e4348;
+  --neon-green: #00ffae;
+  --cyber-teal: #00c2b2;
+  --term-green: #7a8f71ac;
+  --term-yellow: #e8d8a3;
+  --term-orange: #c28c5c;
+  --term-red: #b06c5a;
+  --yellow: #f0c000;
+  --utility-green: #28443b;
 }

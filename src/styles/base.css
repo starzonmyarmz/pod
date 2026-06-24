@@ -12,6 +12,15 @@ body {
   min-height: 100dvh;
 }
 
+body {
+  background: radial-gradient(
+    circle,
+    hsl(250, 28%, 11%),
+    color-mix(in srgb, black 25%, hsl(250, 28%, 11%))
+  );
+  color: white;
+}
+
 fieldset {
   border: 0;
   bottom: 0;

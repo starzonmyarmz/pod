@@ -3,15 +3,14 @@
   --h: calc(var(--ft) * attr(h type(<number>)));
   --l: calc(var(--ft) * attr(l type(<number>)));
 
-  width: var(--w);
   height: var(--h);
   pointer-events: none;
   position: relative;
   transition: all 1s 0.1s;
+  width: var(--w);
 
   .surface {
-    background: peachpuff;
-    border: 1px solid #fff;
+    background: var(--machine-gray);
     position: absolute;
     transition: all 1s 0.1s;
   }
@@ -35,6 +34,11 @@
   /* Box face coordinates */
 
   .head {
+    background: radial-gradient(
+      circle,
+      var(--machine-gray),
+      color-mix(in srgb, black 25%, var(--machine-gray))
+    );
     width: var(--w);
     height: var(--l);
     top: calc((var(--h) - var(--l)) / 2);
