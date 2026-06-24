@@ -3,10 +3,7 @@
     <div class="surface port"></div>
 
     <div class="surface stern">
-      <div class="door">
-        <input type="radio" name="room" id="from-cockpit-to-bunk" checked />
-        <label for="from-cockpit-to-bunk">Bunk</label>
-      </div>
+      <%- include("partials/door", { id: "from-cockpit-to-bunk", checked: true }) %>
     </div>
 
     <div class="surface starboard"></div>

@@ -67,8 +67,12 @@
 
 .door {
   background: black;
-  bottom: 0;
-  height: calc(6 * var(--ft));
+  bottom: calc(0.25 * var(--ft));
+  border: 1px solid var(--cyber-teal);
+  border-radius: calc(0.25 * var(--ft));
+  box-shadow: 0 0 6px -2px white;
+  corner-shape: bevel;
+  height: calc(5.5 * var(--ft));
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -76,21 +80,20 @@
   position: absolute;
   width: calc(3 * var(--ft));
 
+  &:hover {
+    background: white;
+  }
+
   input {
     left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
-
-    + label {
-      inset: 0;
-      position: absolute;
-      background-color: red;
-    }
   }
 
-  input:checked + label {
-    background-color: blue;
+  label {
+    inset: 0;
+    position: absolute;
   }
 }
 
