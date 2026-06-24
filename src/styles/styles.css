@@ -71,6 +71,20 @@
   }
 }
 
+#console {
+  bottom: 0;
+  transform: translateZ(calc(var(--l) / 2 - var(--cockpit-l) / 2));
+
+  .face {
+    transition: all 1s 0.1s;
+
+    :has(#view-bow:checked) & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
 .door {
   background: black;
   bottom: 0;
