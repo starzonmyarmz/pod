@@ -60,6 +60,11 @@
   }
 }
 
+#console-top {
+  bottom: calc(2.5 * var(--ft));
+  transform: translateZ(calc(var(--l) / 2 - var(--cockpit-l) / 2));
+}
+
 .door {
   background: black;
   bottom: 0;

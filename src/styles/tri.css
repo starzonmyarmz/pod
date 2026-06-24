@@ -1,0 +1,85 @@
+.tri {
+  --w: calc(var(--ft) * attr(w type(<number>)));
+  --h: calc(var(--ft) * attr(h type(<number>)));
+  --l: calc(var(--ft) * attr(l type(<number>)));
+
+  /* Slope of the ramp from horizontal, then the hypotenuse length via trig.
+     angle = atan2(rise, run); hyp = run / cos(angle). */
+  --angle: atan2(var(--h), var(--l));
+  --slant: calc(var(--l) / cos(var(--angle)));
+
+  width: var(--w);
+  height: var(--h);
+  position: absolute;
+  transform: translateZ(calc(var(--l) / 2));
+  transform-style: preserve-3d;
+
+  .face {
+    position: absolute;
+  }
+
+  /* Face coordinates */
+
+  .bottom {
+    width: var(--w);
+    height: var(--l);
+    top: calc((var(--h) - var(--l)) / 2);
+  }
+
+  .back {
+    width: var(--w);
+    height: var(--h);
+  }
+
+  .right,
+  .left {
+    width: var(--l);
+    height: var(--h);
+  }
+
+  .right {
+    left: calc(var(--w) - var(--l));
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .slant {
+    width: var(--w);
+    height: var(--slant);
+    top: calc((var(--h) - var(--slant)) / 2);
+  }
+
+  /* Face transforms */
+
+  .back {
+    background: red;
+    transform: rotateY(180deg) translateZ(calc(var(--l) / 2));
+  }
+
+  /* Side walls clipped to right triangles matching the slope. */
+  .right {
+    background: green;
+    transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  }
+
+  .left {
+    background: blue;
+    transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+  }
+
+  .bottom {
+    background: pink;
+    transform: rotateX(-90deg) translateZ(calc(var(--h) / 2));
+  }
+
+  /* Hinged at the element centre (the hypotenuse midpoint), tilted from
+     vertical by 90deg - angle so it lies along the slope. */
+  .slant {
+    background: purple;
+    transform: rotateX(calc(90deg - var(--angle)));
+  }
+}
