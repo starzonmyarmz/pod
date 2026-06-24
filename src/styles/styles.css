@@ -29,6 +29,12 @@
       visibility: hidden;
     }
   }
+#partition {
+  bottom: 0;
+  left: 0;
+  transform: translateZ(
+    calc(var(--l) / 2 - var(--bunk-l) / 2 + 6.5 * var(--ft))
+  );
 }
 
 #lockers {
