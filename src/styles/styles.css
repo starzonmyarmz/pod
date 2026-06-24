@@ -89,7 +89,9 @@
   background: black;
   bottom: 0;
   height: calc(6 * var(--ft));
-  left: calc((var(--bunk-l) - 3 * var(--ft)) / 2);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   pointer-events: auto;
   position: absolute;
   width: calc(3 * var(--ft));
@@ -131,5 +133,5 @@
 #reactor-floor {
   right: 0;
   bottom: calc(-1 * var(--h));
-  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
+  transform: translateZ(0);
 }
