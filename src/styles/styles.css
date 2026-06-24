@@ -1,12 +1,3 @@
-#bed .face {
-  transition: all 1s 0.1s;
-
-  :has(#view-port:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 #partition .face {
   transition: all 1s 0.1s;
 
