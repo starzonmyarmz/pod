@@ -1,17 +1,19 @@
-<div id="reactor" class="room" w="7" l="5" h="6">
-  <div class="surface port"></div>
+<div id="reactor-container" class="room-container">
+  <div id="reactor" class="room" w="7" l="5" h="6">
+    <div class="surface port"></div>
 
-  <div class="surface stern"></div>
+    <div class="surface stern"></div>
 
-  <div class="surface starboard"></div>
-  <div class="surface bow">
-    <div class="door">
-      <input type="radio" name="room" id="room-bunk" checked />
-      <label for="room-bunk">Bunk</label>
+    <div class="surface starboard"></div>
+    <div class="surface bow">
+      <div class="door">
+        <input type="radio" name="room" id="from-reactor-to-bunk" />
+        <label for="from-reactor-to-bunk">Bunk</label>
+      </div>
     </div>
-  </div>
-  <div class="surface head"></div>
+    <div class="surface head"></div>
 
-  <%- include("partials/box", { id: "engine", w: 7, l: 1.5, h: 4 }) %>
-  <%- include("partials/box", { id: "reactor-floor", w: 7, l: 5, h: 1 }) %>
+    <%- include("partials/box", { id: "engine", w: 7, l: 1.5, h: 4 }) %>
+    <%- include("partials/box", { id: "reactor-floor", w: 7, l: 5, h: 1 }) %>
+  </div>
 </div>

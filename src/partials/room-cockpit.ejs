@@ -1,17 +1,19 @@
-<div id="cockpit" class="room" w="7" l="7" h="6">
-  <div class="surface port"></div>
+<div id="cockpit-container" class="room-container">
+  <div id="cockpit" class="room" w="7" l="7" h="6">
+    <div class="surface port"></div>
 
-  <div class="surface stern">
-    <div class="door">
-      <input type="radio" name="room" id="room-bunk" checked />
-      <label for="room-bunk">Bunk</label>
+    <div class="surface stern">
+      <div class="door">
+        <input type="radio" name="room" id="from-cockpit-to-bunk" checked />
+        <label for="from-cockpit-to-bunk">Bunk</label>
+      </div>
     </div>
+
+    <div class="surface starboard"></div>
+    <div class="surface bow"></div>
+    <div class="surface head"></div>
+
+    <%- include("partials/box", { id: "console", w: 7, l: 2.5, h: 2.5 }) %>
+    <%- include("partials/box", { id: "cockpit-floor", w: 7, l: 7, h: 1 }) %>
   </div>
-
-  <div class="surface starboard"></div>
-  <div class="surface bow"></div>
-  <div class="surface head"></div>
-
-  <%- include("partials/box", { id: "console", w: 7, l: 2.5, h: 2.5 }) %>
-  <%- include("partials/box", { id: "cockpit-floor", w: 7, l: 7, h: 1 }) %>
 </div>

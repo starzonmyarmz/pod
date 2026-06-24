@@ -1,44 +1,19 @@
-#game {
-  display: grid;
-  height: 100vh;
-  perspective: 900px;
-  place-content: center;
-  width: 100vw;
-  margin-top: calc(-1 * calc(var(--ft) / 2));
-}
-
 #bunk {
   --bunk-w: calc(var(--ft) * attr(w type(<number>)));
   --bunk-h: calc(var(--ft) * attr(h type(<number>)));
   --bunk-l: calc(var(--ft) * attr(l type(<number>)));
-
-  display: none;
-
-  :has(#room-bunk:checked) & {
-    display: block;
-  }
 }
 
 #cockpit {
   --cockpit-w: calc(var(--ft) * attr(w type(<number>)));
   --cockpit-h: calc(var(--ft) * attr(h type(<number>)));
   --cockpit-l: calc(var(--ft) * attr(l type(<number>)));
-  display: none;
-
-  :has(#room-cockpit:checked) & {
-    display: block;
-  }
 }
 
 #reactor {
   --reactor-w: calc(var(--ft) * attr(w type(<number>)));
   --reactor-h: calc(var(--ft) * attr(h type(<number>)));
   --reactor-l: calc(var(--ft) * attr(l type(<number>)));
-  display: none;
-
-  :has(#room-reactor:checked) & {
-    display: block;
-  }
 }
 
 #bed {
@@ -134,4 +109,186 @@
   right: 0;
   bottom: calc(-1 * var(--h));
   transform: translateZ(0);
+}
+
+#bunk-container,
+#cockpit-container,
+#reactor-container {
+  display: none;
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 1s;
+  transition-behavior: allow-discrete;
+  height: 100vh;
+  perspective: 900px;
+  place-content: center;
+  width: 100vw;
+  margin-top: calc(-1 * calc(var(--ft) / 2));
+  position: fixed;
+  inset: 0;
+}
+
+:has(#from-cockpit-to-bunk:checked) #bunk-container,
+:has(#from-bunk-to-cockpit:checked) #cockpit-container,
+:has(#from-bunk-to-reactor:checked) #reactor-container,
+:has(#from-reactor-to-bunk:checked) #bunk-container {
+  display: grid;
+  opacity: 1;
+  transition-delay: 1s;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/* From cockpit to bunk transitions */
+
+:has(#view-starboard:checked):has(#from-cockpit-to-bunk:checked) {
+  #cockpit-container {
+    transform: translateX(50px);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: translateX(-50px);
+    }
+  }
+}
+
+:has(#view-port:checked):has(#from-cockpit-to-bunk:checked) {
+  #cockpit-container {
+    transform: translateX(-50px);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: translateX(50px);
+    }
+  }
+}
+
+:has(#view-bow:checked):has(#from-cockpit-to-bunk:checked) {
+  #cockpit-container {
+    transform: scale(1.1);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* From bunk to cockpit transitions */
+
+:has(#view-starboard:checked):has(#from-bunk-to-cockpit:checked) {
+  #bunk-container {
+    transform: translateX(-50px);
+  }
+
+  #cockpit-container {
+    @starting-style {
+      transform: translateX(50px);
+    }
+  }
+}
+
+:has(#view-port:checked):has(#from-bunk-to-cockpit:checked) {
+  #bunk-container {
+    transform: translateX(50px);
+  }
+
+  #cockpit-container {
+    @starting-style {
+      transform: translateX(-50px);
+    }
+  }
+}
+
+:has(#view-stern:checked):has(#from-bunk-to-cockpit:checked) {
+  #bunk-container {
+    transform: scale(1.1);
+  }
+
+  #cockpit-container {
+    @starting-style {
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* From bunk to reactor transitions */
+
+:has(#view-starboard:checked):has(#from-bunk-to-reactor:checked) {
+  #bunk-container {
+    transform: translateX(50px);
+  }
+
+  #reactor-container {
+    @starting-style {
+      transform: translateX(-50px);
+    }
+  }
+}
+
+:has(#view-port:checked):has(#from-bunk-to-reactor:checked) {
+  #bunk-container {
+    transform: translateX(-50px);
+  }
+
+  #reactor-container {
+    @starting-style {
+      transform: translateX(50px);
+    }
+  }
+}
+
+:has(#view-bow:checked):has(#from-bunk-to-reactor:checked) {
+  #bunk-container {
+    transform: scale(1.1);
+  }
+
+  #reactor-container {
+    @starting-style {
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* From reactor to bunk transitions */
+
+:has(#view-starboard:checked):has(#from-reactor-to-bunk:checked) {
+  #reactor-container {
+    transform: translateX(-50px);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: translateX(50px);
+    }
+  }
+}
+
+:has(#view-port:checked):has(#from-reactor-to-bunk:checked) {
+  #reactor-container {
+    transform: translateX(50px);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: translateX(-50px);
+    }
+  }
+}
+
+:has(#view-stern:checked):has(#from-reactor-to-bunk:checked) {
+  #reactor-container {
+    transform: scale(1.1);
+  }
+
+  #bunk-container {
+    @starting-style {
+      transform: scale(0.9);
+    }
+  }
 }
