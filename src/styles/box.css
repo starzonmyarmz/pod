@@ -7,7 +7,6 @@
   height: var(--h);
   position: absolute;
   transform: translateZ(calc(var(--l) / 2));
-  transform-style: preserve-3d;
 
   .face {
     position: absolute;

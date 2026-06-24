@@ -7,14 +7,12 @@
   height: var(--h);
   pointer-events: none;
   position: relative;
-  transform-style: preserve-3d;
   transition: all 1s 0.1s;
 
   .surface {
     background: peachpuff;
     border: 1px solid #fff;
     position: absolute;
-    transform-style: preserve-3d;
     transition: all 1s 0.1s;
   }
 
