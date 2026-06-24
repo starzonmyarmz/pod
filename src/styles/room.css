@@ -3,6 +3,10 @@
   --h: calc(var(--ft) * attr(h type(<number>)));
   --l: calc(var(--ft) * attr(l type(<number>)));
 
+  /* Room depth, inherited by placed components for Z coords (--w/--h/--l get
+     shadowed inside .box/.tri, so coords need an un-shadowed name). */
+  --room-l: var(--l);
+
   height: var(--h);
   pointer-events: none;
   position: relative;

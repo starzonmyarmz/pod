@@ -8,10 +8,18 @@
   --angle: atan2(var(--h), var(--l));
   --slant: calc(var(--l) / cos(var(--angle)));
 
+  /* Position in feet from the room's port-bottom-bow corner to this tri's
+     left-bottom-back corner. x = across, y = up, z = depth (bow→stern). */
+  --x: calc(var(--ft) * attr(x type(<number>)));
+  --y: calc(var(--ft) * attr(y type(<number>)));
+  --z: calc(var(--ft) * attr(z type(<number>)));
+
   width: var(--w);
   height: var(--h);
   position: absolute;
-  transform: translateZ(calc(var(--l) / 2));
+  left: var(--x);
+  bottom: var(--y);
+  transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
 
   .face {
     position: absolute;

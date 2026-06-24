@@ -1,74 +1,28 @@
-#bunk {
-  --bunk-w: calc(var(--ft) * attr(w type(<number>)));
-  --bunk-h: calc(var(--ft) * attr(h type(<number>)));
-  --bunk-l: calc(var(--ft) * attr(l type(<number>)));
-}
+#bed .face {
+  transition: all 1s 0.1s;
 
-#cockpit {
-  --cockpit-w: calc(var(--ft) * attr(w type(<number>)));
-  --cockpit-h: calc(var(--ft) * attr(h type(<number>)));
-  --cockpit-l: calc(var(--ft) * attr(l type(<number>)));
-}
-
-#reactor {
-  --reactor-w: calc(var(--ft) * attr(w type(<number>)));
-  --reactor-h: calc(var(--ft) * attr(h type(<number>)));
-  --reactor-l: calc(var(--ft) * attr(l type(<number>)));
-}
-
-#bed {
-  bottom: 0;
-  left: 0;
-  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
-
-  .face {
-    transition: all 1s 0.1s;
-
-    :has(#view-port:checked) & {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-#partition {
-  bottom: 0;
-  left: 0;
-  transform: translateZ(
-    calc(var(--l) / 2 - var(--bunk-l) / 2 + 6.5 * var(--ft))
-  );
-}
-
-#lockers {
-  right: 0;
-  top: 0;
-  transform: translateZ(calc(var(--l) / 2 - var(--bunk-l) / 2));
-
-  .face {
-    transition: all 1s 0.1s;
-
-    :has(#view-starboard:checked) & {
-      opacity: 0;
-      visibility: hidden;
-    }
+  :has(#view-port:checked) & {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
-#console {
-  bottom: 0;
-  transform: translateZ(calc(var(--l) / 2 - var(--cockpit-l) / 2));
+#lockers .face {
+  transition: all 1s 0.1s;
 
-  .face {
-    transition: all 1s 0.1s;
-
-    :has(#view-bow:checked) & {
-      opacity: 0;
-      visibility: hidden;
-    }
+  :has(#view-starboard:checked) & {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
-#console-top {
-  bottom: calc(2.5 * var(--ft));
-  transform: translateZ(calc(var(--l) / 2 - var(--cockpit-l) / 2));
+#console .face {
+  transition: all 1s 0.1s;
+
+  :has(#view-bow:checked) & {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .door {
@@ -103,26 +57,13 @@
   }
 }
 
-#engine {
-  bottom: 0;
-  transform: translateZ(calc(var(--reactor-l) / 2 - var(--l) / 2));
+#engine .face {
+  transition: all 1s 0.1s;
 
-  .face {
-    transition: all 1s 0.1s;
-
-    :has(#view-stern:checked) & {
-      opacity: 0;
-      visibility: hidden;
-    }
+  :has(#view-stern:checked) & {
+    opacity: 0;
+    visibility: hidden;
   }
-}
-
-#bunk-floor,
-#cockpit-floor,
-#reactor-floor {
-  right: 0;
-  bottom: calc(-1 * var(--h));
-  transform: translateZ(0);
 }
 
 #bunk-container,
