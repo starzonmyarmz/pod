@@ -98,6 +98,20 @@
   }
 }
 
+#engine {
+  bottom: 0;
+  transform: translateZ(calc(var(--reactor-l) / 2 - var(--l) / 2));
+
+  .face {
+    transition: all 1s 0.1s;
+
+    :has(#view-stern:checked) & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
 #bunk-floor,
 #cockpit-floor,
 #reactor-floor {
