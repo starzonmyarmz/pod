@@ -5,6 +5,7 @@
 
   width: var(--w);
   height: var(--h);
+  pointer-events: none;
   position: relative;
   transform-style: preserve-3d;
   transition: all 1s 0.1s;
