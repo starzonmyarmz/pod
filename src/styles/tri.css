@@ -27,6 +27,7 @@
   position: absolute;
   transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)))
     rotateX(var(--flip-x)) rotateY(var(--flip-y));
+  transform-style: preserve-3d;
   width: var(--w);
 
   .face {

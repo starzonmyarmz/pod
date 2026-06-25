@@ -16,6 +16,7 @@
   left: var(--x);
   bottom: var(--y);
   transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
+  transform-style: preserve-3d;
 
   .face {
     position: absolute;
