@@ -55,7 +55,12 @@
     transition: all 1s 0.1s;
   }
 
-  /* Face sizing */
+  .port,
+  .starboard,
+  .bow,
+  .stern {
+    background: var(--slate);
+  }
 
   .bow,
   .stern {
@@ -80,8 +85,6 @@
     top: calc((var(--floor-h) - var(--floor-l)) / 2);
     width: 100%;
   }
-
-  /* Face transforms */
 
   .bow {
     transform: rotateY(0deg) translateZ(calc(var(--floor-l) / 2));
