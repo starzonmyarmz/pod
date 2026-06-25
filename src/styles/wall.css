@@ -1,0 +1,102 @@
+.wall {
+  bottom: 0;
+  height: var(--room-h);
+  pointer-events: none;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s 0.1s;
+
+  .face {
+    background: var(--machine-gray);
+    position: absolute;
+    transition: all 1s 0.1s;
+  }
+
+  /* Per-side positioning */
+
+  &.port {
+    --wd: var(--room-l);
+    left: calc(-1 * var(--wall-thickness));
+    transform: translateZ(0);
+    width: var(--wall-thickness);
+  }
+
+  &.starboard {
+    --wd: var(--room-l);
+    left: var(--room-w);
+    transform: translateZ(0);
+    width: var(--wall-thickness);
+  }
+
+  &.bow {
+    --wd: var(--wall-thickness);
+    left: 0;
+    transform: translateZ(calc(var(--wall-thickness) / -2 - var(--room-l) / 2));
+    width: var(--room-w);
+  }
+
+  &.stern {
+    --wd: var(--wall-thickness);
+    left: 0;
+    transform: translateZ(calc(var(--wall-thickness) / 2 + var(--room-l) / 2));
+    width: var(--room-w);
+  }
+
+  /* Face sizing */
+
+  .bow,
+  .stern {
+    height: var(--room-h);
+    width: 100%;
+  }
+
+  .starboard {
+    height: var(--room-h);
+    left: calc(100% - var(--wd));
+    width: var(--wd);
+  }
+
+  .port {
+    height: var(--room-h);
+    left: 0;
+    width: var(--wd);
+  }
+
+  .head {
+    height: var(--wd);
+    top: calc((var(--room-h) - var(--wd)) / 2);
+    width: 100%;
+  }
+
+  /* Face transforms */
+
+  .bow {
+    transform: rotateY(0deg) translateZ(calc(var(--wd) / 2));
+  }
+
+  .stern {
+    transform: rotateY(180deg) translateZ(calc(var(--wd) / 2));
+  }
+
+  .starboard {
+    transform: rotateY(90deg) translateZ(calc(var(--wd) / 2));
+  }
+
+  .port {
+    transform: rotateY(-90deg) translateZ(calc(var(--wd) / 2));
+  }
+
+  .head {
+    transform: rotateX(90deg) translateZ(calc(var(--room-h) / 2));
+  }
+}
+
+/* Hide wall when viewing from that direction */
+
+:has(#view-port:checked) .wall.port .face,
+:has(#view-starboard:checked) .wall.starboard .face,
+:has(#view-bow:checked) .wall.bow .face,
+:has(#view-stern:checked) .wall.stern .face {
+  opacity: 0;
+  visibility: hidden;
+}
