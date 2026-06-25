@@ -1,35 +1,63 @@
-#partition .face {
+#partition .face,
+#lockers .face,
+#console .face,
+#engine .face,
+#door-from-reactor-to-bunk,
+#door-from-bunk-to-reactor,
+#door-from-bunk-to-cockpit,
+#door-from-cockpit-to-bunk,
+#cockpit-ceiling-corner .face,
+#console-top .face {
   transition: all 1s 0.1s;
-
-  :has(#view-port:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
 }
 
-#lockers .face {
-  transition: all 1s 0.1s;
-
-  :has(#view-starboard:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
+:has(#view-port:checked) #partition .face,
+:has(#view-starboard:checked) #lockers .face,
+:has(#view-bow:checked) #console .face,
+:has(#view-stern:checked) #engine .face,
+:has(#view-bow:checked) #door-from-reactor-to-bunk,
+:has(#view-bow:checked) #door-from-bunk-to-cockpit,
+:has(#view-stern:checked) #door-from-bunk-to-reactor,
+:has(#view-stern:checked) #door-from-cockpit-to-bunk,
+:has(#view-bow:checked) #cockpit-ceiling-corner .face,
+:has(#view-bow:checked) #console-top .face {
+  opacity: 0;
+  visibility: hidden;
 }
 
-#console .face {
-  transition: all 1s 0.1s;
-
-  :has(#view-bow:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
+.flourish-left,
+.flourish-right {
+  box-shadow: inset 0 3px 12px black;
+  width: calc(4 * var(--ft));
+  height: calc(0.3 * var(--ft));
+  position: absolute;
 }
 
-#engine .face {
-  transition: all 1s 0.1s;
+.flourish-left {
+  background: linear-gradient(
+    -45deg,
+    var(--yellow),
+    var(--term-red),
+    var(--yellow),
+    var(--term-red),
+    var(--yellow),
+    var(--term-red)
+  );
+  transform: rotateY(0deg) translateX(calc(1 * var(--ft)))
+    translateY(calc(0.1 * var(--ft))) translateZ(calc(var(--floor-l) / 2));
+}
 
-  :has(#view-stern:checked) & {
-    opacity: 0;
-    visibility: hidden;
-  }
+.flourish-right {
+  background: linear-gradient(
+    45deg,
+    var(--yellow),
+    var(--term-red),
+    var(--yellow),
+    var(--term-red),
+    var(--yellow),
+    var(--term-red)
+  );
+
+  transform: rotateY(0deg) translateX(calc(var(--floor-w) - 5 * var(--ft)))
+    translateY(calc(0.1 * var(--ft))) translateZ(calc(var(--floor-l) / 2));
 }
