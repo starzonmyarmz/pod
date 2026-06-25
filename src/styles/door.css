@@ -1,5 +1,6 @@
 .door {
   background: black;
+  backface-visibility: visible;
   bottom: calc(0.25 * var(--ft));
   border: 1px solid var(--cyber-teal);
   border-radius: calc(0.25 * var(--ft));
@@ -7,9 +8,8 @@
   corner-shape: bevel;
   height: calc(5.5 * var(--ft));
   left: 0;
-  right: 0;
-  margin: 0 auto;
   pointer-events: auto;
+  right: 0;
   position: absolute;
   width: calc(3 * var(--ft));
 
@@ -28,4 +28,24 @@
     inset: 0;
     position: absolute;
   }
+}
+
+#door-from-cockpit-to-bunk {
+  margin: 0 auto;
+  transform: translateZ(calc(var(--room-l) / 2));
+}
+
+#door-from-bunk-to-cockpit {
+  margin: 0 auto;
+  transform: translateZ(calc(-1 * calc(var(--room-l) / 2)));
+}
+
+#door-from-bunk-to-reactor {
+  margin: 0 auto;
+  transform: translateZ(calc(var(--room-l) / 2));
+}
+
+#door-from-reactor-to-bunk {
+  margin: 0 auto;
+  transform: translateZ(calc(-1 * calc(var(--room-l) / 2)));
 }
