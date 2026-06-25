@@ -1,0 +1,58 @@
+#gizmo {
+  --handle-size: 16px;
+  --gap: 8px;
+
+  align-items: center;
+  /*background: linear-gradient(transparent 50%, white 50%, transparent 100%);*/
+  bottom: 100px;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(3, var(--handle-size));
+  grid-template-rows: repeat(3, var(--handle-size));
+  grid-template-areas: ". bow ." "port . starboard" ". stern .";
+  left: 100px;
+  position: fixed;
+  transform: rotateX(55deg);
+
+  div {
+    display: contents;
+  }
+
+  input {
+    opacity: 0;
+
+    &:focus-visible + label {
+      outline: 2px solid white;
+    }
+  }
+
+  label {
+    background: white;
+    border-radius: 50%;
+    color: transparent;
+    display: block;
+    height: var(--handle-size);
+    overflow: hidden;
+    width: var(--handle-size);
+  }
+
+  input:checked + label {
+    background: red;
+  }
+
+  .bow {
+    grid-area: bow;
+  }
+
+  .port {
+    grid-area: port;
+  }
+
+  .starboard {
+    grid-area: starboard;
+  }
+
+  .stern {
+    grid-area: stern;
+  }
+}

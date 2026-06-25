@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/box.css" />
     <link rel="stylesheet" href="styles/door.css" />
+    <link rel="stylesheet" href="styles/gizmo.css" />
     <link rel="stylesheet" href="styles/tri.css" />
     <link rel="stylesheet" href="styles/room.css" />
     <link rel="stylesheet" href="styles/rooms.css" />
@@ -23,18 +24,26 @@
       <%- include("partials/room-reactor") %>
     </div>
 
-    <fieldset>
-      <input type="radio" name="view" id="view-bow" />
-      <label for="view-bow">Bow</label>
+    <div id="gizmo">
+      <div class="bow">
+        <input type="radio" name="view" id="view-bow" />
+        <label for="view-bow">Bow</label>
+      </div>
 
-      <input type="radio" name="view" id="view-port" />
-      <label for="view-port">Port</label>
+      <div class="port">
+        <input type="radio" name="view" id="view-port" />
+        <label for="view-port">Port</label>
+      </div>
 
-      <input type="radio" name="view" id="view-stern" checked />
-      <label for="view-stern">Stern</label>
+      <div class="stern">
+        <input type="radio" name="view" id="view-stern" checked />
+        <label for="view-stern">Stern</label>
+      </div>
 
-      <input type="radio" name="view" id="view-starboard" />
-      <label for="view-starboard">Starboard</label>
-    </fieldset>
+      <div class="starboard">
+        <input type="radio" name="view" id="view-starboard" />
+        <label for="view-starboard">Starboard</label>
+      </div>
+    </div>
   </body>
 </html>
