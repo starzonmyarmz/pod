@@ -1,20 +1,18 @@
 .door {
-  background: black;
-  backface-visibility: visible;
+  background: var(--corridor-shadow);
   bottom: calc(0.25 * var(--ft));
-  border: 1px solid var(--cyber-teal);
-  border-radius: calc(0.25 * var(--ft));
-  box-shadow: 0 0 6px -2px white;
+  border: 2px solid var(--slate);
+  border-radius: calc(0.4 * var(--ft));
   corner-shape: bevel;
   height: calc(5.5 * var(--ft));
   left: 0;
   pointer-events: auto;
-  right: 0;
   position: absolute;
+  right: 0;
   width: calc(3 * var(--ft));
 
   &:hover {
-    background: white;
+    background: color-mix(in srgb, black 40%, var(--corridor-shadow));
   }
 
   input {
@@ -32,7 +30,7 @@
 
 #door-from-cockpit-to-bunk {
   margin: 0 auto;
-  transform: translateZ(calc(var(--room-l) / 2));
+  transform: translateZ(calc(var(--room-l) / 2)) rotateY(180deg);
 }
 
 #door-from-bunk-to-cockpit {
@@ -42,7 +40,7 @@
 
 #door-from-bunk-to-reactor {
   margin: 0 auto;
-  transform: translateZ(calc(var(--room-l) / 2));
+  transform: translateZ(calc(var(--room-l) / 2)) rotateY(180deg);
 }
 
 #door-from-reactor-to-bunk {
