@@ -1,0 +1,30 @@
+<div id="bunk-container" class="room-container">
+  <div id="bunk" class="room" w="12" l="12" h="7">
+    <div class="surface port"></div>
+
+    <%- include("box", { id: "top-pillow", w: 2.8, l: 1.5, h: 0.15, x: 0.1, y: 4.65, z: 0.1 }) %>
+    <%- include("box", { id: "top-mattress", w: 2.8, l: 6.3, h: 0.25, x: 0.1, y: 4.5, z: 0.1 }) %>
+    <%- include("box", { id: "top-bed", w: 3, l: 6.5, h: 0.5, x: 0, y: 4, z: 0 }) %>
+
+    <%- include("box", { id: "bottom-pillow", w: 2.8, l: 1.5, h: 0.15, x: 0.1, y: 1.65, z: 0.1 }) %>
+    <%- include("box", { id: "bottom-mattress", w: 2.8, l: 6.3, h: 0.25, x: 0.1, y: 1.5, z: 0.1 }) %>
+    <%- include("box", { id: "bottom-bed", w: 3, l: 6.5, h: 1.5, x: 0, y: 0, z: 0 }) %>
+
+    <%- include("box", { id: "partition", w: 3, l: 0.5, h: 7, x: 0, y: 0, z: 6.5 }) %>
+
+    <div class="surface stern">
+      <%- include("door", { id: "from-bunk-to-reactor" }) %>
+    </div>
+
+    <div class="surface starboard"></div>
+    <%- include("box", { id: "lockers", w: 3, l: 12, h: 7, x: 9, y: 0, z: 0 }) %>
+
+    <div class="surface bow">
+      <%- include("door", { id: "from-bunk-to-cockpit" }) %>
+    </div>
+
+    <div class="surface head"></div>
+
+    <%- include("box", { id: "bunk-floor", w: 12, l: 12, h: 0.5, x: 0, y: -0.5, z: 0 }) %>
+  </div>
+</div>
