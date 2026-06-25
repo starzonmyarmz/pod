@@ -9,17 +9,25 @@
   --slant: calc(var(--l) / cos(var(--angle)));
 
   /* Position in feet from the room's port-bottom-bow corner to this tri's
-     left-bottom-back corner. x = across, y = up, z = depth (bow→stern). */
+     left-bottom-back corner. x = across, y = up, z = depth (bow → stern). */
   --x: calc(var(--ft) * attr(x type(<number>)));
   --y: calc(var(--ft) * attr(y type(<number>)));
   --z: calc(var(--ft) * attr(z type(<number>)));
 
-  width: var(--w);
-  height: var(--h);
-  position: absolute;
-  left: var(--x);
+  /* For boolean attributes, attr(flipx, notset) returns "" when present and
+     notset when absent — style() can distinguish them. */
+  --_flipx: attr(flipx, notset);
+  --_flipy: attr(flipy, notset);
+  --flip-x: if(style(--_flipx: notset): 0deg; else: 180deg);
+  --flip-y: if(style(--_flipy: notset): 0deg; else: 180deg);
+
   bottom: var(--y);
-  transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
+  height: var(--h);
+  left: var(--x);
+  position: absolute;
+  transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)))
+    rotateX(var(--flip-x)) rotateY(var(--flip-y));
+  width: var(--w);
 
   .face {
     position: absolute;
