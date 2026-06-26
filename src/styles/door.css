@@ -12,7 +12,7 @@
   width: calc(3 * var(--ft));
 
   &:hover {
-    background: color-mix(in srgb, black 40%, var(--corridor-shadow));
+    background: color-mix(in display-p3, black 40%, var(--corridor-shadow));
   }
 
   input {

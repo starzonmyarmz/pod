@@ -3,16 +3,16 @@
   --ft: 48px;
 
   /* Colors */
-  --machine-gray: #90999c;
-  --corridor-shadow: #4a4f51;
-  --white: #f0f4f7;
-  --slate: #3e4348;
-  --neon-green: #00ffae;
-  --cyber-teal: #00c2b2;
-  --term-green: #7a8f71ac;
-  --term-yellow: #e8d8a3;
-  --term-orange: #c28c5c;
-  --term-red: #b06c5a;
-  --yellow: #f0c000;
-  --utility-green: #28443b;
+  --machine-gray: color(display-p3 0.5712 0.5989 0.6102);
+  --corridor-shadow: color(display-p3 0.2938 0.3092 0.3166);
+  --white: color(display-p3 0.9440 0.9563 0.9673);
+  --slate: color(display-p3 0.2467 0.2621 0.2804);
+  --neon-green: color(display-p3 0.4584 0.9853 0.7068);
+  --cyber-teal: color(display-p3 0.3420 0.7494 0.6975);
+  --term-green: color(display-p3 0.4943 0.5583 0.4536 / 0.6745);
+  --term-yellow: color(display-p3 0.8991 0.8492 0.6629);
+  --term-orange: color(display-p3 0.7289 0.5578 0.3895);
+  --term-red: color(display-p3 0.6528 0.4358 0.3677);
+  --yellow: color(display-p3 0.9114 0.7602 0.2554);
+  --utility-green: color(display-p3 0.1818 0.2638 0.2331);
 }
