@@ -14,8 +14,8 @@ body {
 body {
   background: radial-gradient(
     circle,
-    color(display-p3 0.0877 0.0796 0.1365),
-    color-mix(in display-p3, black 25%, color(display-p3 0.0877 0.0796 0.1365))
+    color(display-p3 0.1000 0.0906 0.0728),
+    color-mix(in display-p3, black 25%, color(display-p3 0.1000 0.0906 0.0728))
   );
   color: white;
 }

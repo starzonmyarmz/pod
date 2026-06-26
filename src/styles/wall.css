@@ -1,11 +1,11 @@
 @function --wall-gradient(--color <color>) returns <image> {
-  --top: lch(from var(--color) calc(l + 8) calc(c + 0.5) h);
-  --bottom: lch(from var(--color) calc(l - 18) calc(c - 0.5) h);
+  --top: lch(from var(--color) calc(l + 5) calc(c + 0.2) h);
+  --bottom: lch(from var(--color) calc(l - 10) calc(c - 0.2) h);
 
   result: linear-gradient(
     to bottom in oklab,
     var(--top) 0%,
-    var(--color) 35%,
+    var(--color) 40%,
     var(--bottom) 100%
   );
 }
