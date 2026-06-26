@@ -1,5 +1,10 @@
 .door {
-  background: var(--corridor-shadow);
+  background-image: url(../images/texture_1.png);
+  background-color: var(--corridor-shadow);
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   bottom: calc(0.25 * var(--ft));
   border: 2px solid var(--slate);
   border-radius: calc(0.4 * var(--ft));
@@ -12,7 +17,22 @@
   width: calc(3 * var(--ft));
 
   &:hover {
-    background: color-mix(in display-p3, black 40%, var(--corridor-shadow));
+    background-color: color-mix(in display-p3, black 40%, var(--corridor-shadow));
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 50%;
+    height: calc(0.2 * var(--ft));
+    background: var(--yellow);
+    transform: translateY(-50%);
+    pointer-events: none;
+    box-shadow:
+      0 calc(-0.05 * var(--ft)) 0 rgba(0, 0, 0, 0.6),
+      0 calc(0.05 * var(--ft)) 0 rgba(0, 0, 0, 0.6);
   }
 
   input {

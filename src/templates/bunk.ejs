@@ -3,21 +3,20 @@
     <%- include("floor") %>
 
     <%- include("wall", { side: "port" }) %>
-    <%- include("wall", { side: "starboard" }) %>
     <%- include("wall", { side: "stern" }) %>
     <%- include("wall", { side: "bow" }) %>
 
-    <%- include("box", { id: "top-pillow", w: 2.8, l: 1.5, h: 0.15, x: 0.1, y: 4.65, z: 0.1 }) %>
+    <%- include("box", { id: "top-pillow", w: 2.8, l: 1.5, h: 0.25, x: 0.1, y: 4.75, z: 0.1 }) %>
     <%- include("box", { id: "top-mattress", w: 2.8, l: 6.3, h: 0.25, x: 0.1, y: 4.5, z: 0.1 }) %>
     <%- include("box", { id: "top-bed", w: 3, l: 6.5, h: 0.5, x: 0, y: 4, z: 0 }) %>
 
-    <%- include("box", { id: "bottom-pillow", w: 2.8, l: 1.5, h: 0.15, x: 0.1, y: 1.65, z: 0.1 }) %>
+    <%- include("box", { id: "bottom-pillow", w: 2.8, l: 1.5, h: 0.25, x: 0.1, y: 1.75, z: 0.1 }) %>
     <%- include("box", { id: "bottom-mattress", w: 2.8, l: 6.3, h: 0.25, x: 0.1, y: 1.5, z: 0.1 }) %>
     <%- include("box", { id: "bottom-bed", w: 3, l: 6.5, h: 1.5, x: 0, y: 0, z: 0 }) %>
 
     <%- include("box", { id: "partition", w: 3, l: 0.5, h: 7, x: 0, y: 0, z: 6.5 }) %>
 
-    <%- include("box", { id: "lockers", w: 3, l: 12, h: 7, x: 9, y: 0, z: 0 }) %>
+    <%- include("box", { id: "lockers", w: 3.4, l: 12, h: 7, x: 9, y: 0, z: 0 }) %>
 
     <%- include("door", { id: "from-bunk-to-reactor" }) %>
     <%- include("door", { id: "from-bunk-to-cockpit" }) %>

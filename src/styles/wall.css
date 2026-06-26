@@ -1,17 +1,18 @@
 @function --wall-gradient(--color <color>) returns <image> {
-  --top: lch(from var(--color) calc(l + 5) calc(c + 0.2) h);
-  --bottom: lch(from var(--color) calc(l - 10) calc(c - 0.2) h);
+  --light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
+  --dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
 
-  result: linear-gradient(
-    to bottom in oklab,
-    var(--top) 0%,
+  result: radial-gradient(
+    ellipse at center in oklab,
+    var(--light) 0%,
     var(--color) 40%,
-    var(--bottom) 100%
+    var(--dark) 100%
   );
 }
 
 .wall {
   --_color: var(--wall-color, var(--machine-gray));
+  --panel: calc(var(--ft) * 2);
   bottom: 0;
   height: var(--room-h);
   pointer-events: none;
@@ -20,9 +21,63 @@
   transition: all 1s 0.1s;
 
   .face {
-    background: --wall-gradient(var(--_color));
+    background-blend-mode: soft-light;
+    background-size: cover, auto;
+    background-repeat: no-repeat, no-repeat;
     position: absolute;
     transition: all 1s 0.1s;
+  }
+
+  /* Panel seam grid overlay on all wall faces */
+  .face::before {
+    content: '';
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent calc(var(--panel) - 1px),
+        rgba(0,0,0,0.25) calc(var(--panel) - 1px),
+        rgba(0,0,0,0.25) var(--panel)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent calc(var(--panel) - 1px),
+        rgba(0,0,0,0.15) calc(var(--panel) - 1px),
+        rgba(0,0,0,0.15) var(--panel)
+      );
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  /* Dirt/grime at the base of vertical wall faces */
+  .bow::after,
+  .stern::after,
+  .starboard::after,
+  .port::after {
+    content: '';
+    background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 50%);
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 85%;
+  }
+
+  /* Ceiling strip lights on the head face */
+  .head::before {
+    background-image: none;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.25) 0,
+        rgba(255,255,255,0.25) calc(var(--ft) * 0.4),
+        transparent calc(var(--ft) * 0.4),
+        transparent calc(var(--ft) * 2)
+      );
+    opacity: 1;
   }
 
   /* Per-side positioning */
@@ -57,25 +112,39 @@
 
   /* Face sizing */
 
-  .bow,
+  .bow {
+    background-image: url(../images/texture_1.png), --wall-gradient(var(--_color));
+    background-position: 0% 0%, 50% 50%;
+    height: var(--room-h);
+    width: 100%;
+  }
+
   .stern {
+    background-image: url(../images/texture_2.png), --wall-gradient(var(--_color));
+    background-position: 100% 100%, 50% 50%;
     height: var(--room-h);
     width: 100%;
   }
 
   .starboard {
+    background-image: url(../images/texture_3.png), --wall-gradient(var(--_color));
+    background-position: 50% 50%, 50% 50%;
     height: var(--room-h);
     left: calc(100% - var(--wd));
     width: var(--wd);
   }
 
   .port {
+    background-image: url(../images/texture_1.png), --wall-gradient(var(--_color));
+    background-position: 30% 70%, 50% 50%;
     height: var(--room-h);
     left: 0;
     width: var(--wd);
   }
 
   .head {
+    background-image: url(../images/texture_2.png), --wall-gradient(var(--_color));
+    background-position: 70% 30%, 50% 50%;
     height: var(--wd);
     top: calc((var(--room-h) - var(--wd)) / 2);
     width: 100%;

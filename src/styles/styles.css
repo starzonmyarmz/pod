@@ -1,4 +1,12 @@
+/* Room-specific wall colors */
+
+#cockpit { --wall-color: var(--cockpit-gray); }
+#bunk { --wall-color: var(--bunk-gray); }
+#reactor { --wall-color: var(--reactor-gray); }
+
 #partition .face,
+#top-bed .face,
+#bottom-bed .face,
 #lockers .face,
 #console .face,
 #engine .face,
@@ -28,19 +36,91 @@
 /* Nostromo object colors — override box/tri debug colors with palette derivatives */
 
 #partition .face {
-  background: var(--machine-gray);
+  background-image: url(../images/texture_1.png);
+  background-color: var(--wall-color, var(--machine-gray));
+  background-blend-mode: soft-light;
+  background-position: 20% 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #lockers .face {
-  background: color-mix(in display-p3, var(--term-yellow) 30%, var(--machine-gray));
+  background-image: url(../images/texture_2.png);
+  background-color: var(--wall-color, var(--machine-gray));
+  background-blend-mode: soft-light;
+  background-position: 80% 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#top-bed .face,
+#bottom-bed .face {
+  background-image: url(../images/texture_1.png);
+  background-color: color-mix(in display-p3, var(--machine-gray) 92%, var(--term-yellow));
+  background-blend-mode: soft-light;
+  background-position: 60% 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Mattress — dark canvas utility fabric */
+
+#top-mattress .face,
+#bottom-mattress .face {
+  background-image: url(../images/texture_1.png);
+  background-color: color-mix(in display-p3, var(--utility-green) 88%, black);
+  background-blend-mode: soft-light;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Pillow — worn off-white pillowcase fabric */
+
+#top-pillow .face,
+#bottom-pillow .face {
+  background-image: url(../images/texture_1.png);
+  background-color: color-mix(in display-p3, var(--white) 85%, var(--term-yellow));
+  background-blend-mode: soft-light;
+  background-position: 30% 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Bed undersides — structural, should read as wall/ceiling surfaces */
+
+#top-bed .bottom,
+#bottom-bed .bottom {
+  background-image: url(../images/texture_1.png);
+  background-color: var(--wall-color, var(--machine-gray));
+  background-blend-mode: soft-light;
+  background-position: 60% 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #console .face {
-  background: color-mix(in display-p3, black 15%, var(--slate));
+  background-image: url(../images/texture_3.png);
+  background-color: color-mix(in display-p3, black 15%, var(--slate));
+  background-blend-mode: soft-light;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #console-top .face {
-  background: color-mix(in display-p3, var(--slate) 60%, var(--term-orange));
+  background-image:
+    radial-gradient(
+      ellipse 60% 40% at 50% 100%,
+      var(--term-green) 0%,
+      transparent 70%
+    ),
+    url(../images/texture_1.png);
+  background-color: color-mix(in display-p3, var(--slate) 60%, var(--term-orange));
+  background-blend-mode: soft-light, soft-light;
+  background-position: 0% 0%, 40% 60%;
+  background-size: auto, cover;
+  background-repeat: no-repeat, no-repeat;
 }
 
 #cockpit-ceiling-corner .face {
@@ -48,7 +128,16 @@
 }
 
 #engine .face {
-  background: color-mix(in display-p3, black 15%, var(--utility-green));
+  background-image:
+    radial-gradient(
+      ellipse 50% 30% at 50% 65%,
+      color-mix(in display-p3, var(--term-orange) 60%, transparent) 0%,
+      transparent 70%
+    );
+  background-color: color-mix(in display-p3, black 15%, var(--utility-green));
+  background-blend-mode: normal;
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
 .flourish-left,
