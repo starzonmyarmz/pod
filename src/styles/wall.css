@@ -1,4 +1,17 @@
+@function --wall-gradient(--color <color>) returns <image> {
+  --top: lch(from var(--color) calc(l + 8) calc(c + 0.5) h);
+  --bottom: lch(from var(--color) calc(l - 18) calc(c - 0.5) h);
+
+  result: linear-gradient(
+    to bottom in oklab,
+    var(--top) 0%,
+    var(--color) 35%,
+    var(--bottom) 100%
+  );
+}
+
 .wall {
+  --_color: var(--wall-color, var(--machine-gray));
   bottom: 0;
   height: var(--room-h);
   pointer-events: none;
@@ -7,7 +20,7 @@
   transition: all 1s 0.1s;
 
   .face {
-    background: var(--machine-gray);
+    background: --wall-gradient(var(--_color));
     position: absolute;
     transition: all 1s 0.1s;
   }
