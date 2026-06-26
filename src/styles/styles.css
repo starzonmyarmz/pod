@@ -25,6 +25,32 @@
   visibility: hidden;
 }
 
+/* Nostromo object colors — override box/tri debug colors with palette derivatives */
+
+#partition .face {
+  background: var(--machine-gray);
+}
+
+#lockers .face {
+  background: color-mix(in display-p3, var(--term-yellow) 30%, var(--machine-gray));
+}
+
+#console .face {
+  background: color-mix(in display-p3, black 15%, var(--slate));
+}
+
+#console-top .face {
+  background: color-mix(in display-p3, var(--slate) 60%, var(--term-orange));
+}
+
+#cockpit-ceiling-corner .face {
+  background: var(--machine-gray);
+}
+
+#engine .face {
+  background: color-mix(in display-p3, black 15%, var(--utility-green));
+}
+
 .flourish-left,
 .flourish-right {
   box-shadow: inset 0 3px 12px black;
