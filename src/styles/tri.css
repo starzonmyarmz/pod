@@ -37,20 +37,20 @@
   /* Face coordinates */
 
   .bottom {
-    width: var(--w);
     height: var(--l);
     top: calc((var(--h) - var(--l)) / 2);
+    width: var(--w);
   }
 
   .back {
-    width: var(--w);
     height: var(--h);
+    width: var(--w);
   }
 
   .right,
   .left {
-    width: var(--l);
     height: var(--h);
+    width: var(--l);
   }
 
   .right {
@@ -62,9 +62,9 @@
   }
 
   .slant {
-    width: var(--w);
     height: var(--slant);
     top: calc((var(--h) - var(--slant)) / 2);
+    width: var(--w);
   }
 
   /* Face transforms */

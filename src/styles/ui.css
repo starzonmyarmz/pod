@@ -3,7 +3,6 @@
   --gap: 8px;
 
   align-items: center;
-  /*background: linear-gradient(transparent 50%, white 50%, transparent 100%);*/
   bottom: 100px;
   display: grid;
   gap: var(--gap);
@@ -13,10 +12,6 @@
   left: 100px;
   position: fixed;
   transform: rotateX(55deg);
-
-  div {
-    display: contents;
-  }
 
   input {
     opacity: 0;

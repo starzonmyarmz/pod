@@ -4,56 +4,55 @@
   --l: calc(var(--ft) * attr(l type(<number>)));
 
   /* Position in feet from the room's port-bottom-bow corner to this box's
-     left-bottom-back corner. x = across (port→starboard), y = up (floor→head),
-     z = depth (bow→stern). */
+     left-bottom-back corner. x = across (port → starboard), y = up (floor → head),
+     z = depth (bow → stern). */
   --x: calc(var(--ft) * attr(x type(<number>)));
   --y: calc(var(--ft) * attr(y type(<number>)));
   --z: calc(var(--ft) * attr(z type(<number>)));
 
-  width: var(--w);
-  height: var(--h);
-  position: absolute;
-  left: var(--x);
   bottom: var(--y);
+  height: var(--h);
+  left: var(--x);
+  position: absolute;
   transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
   transform-style: preserve-3d;
-
-  .face {
-    position: absolute;
-  }
+  width: var(--w);
 
   /* Box face coordinates */
 
-  .top,
-  .bottom {
-    width: var(--w);
+  .top {
     height: var(--l);
+    position: absolute;
     top: calc((var(--h) - var(--l)) / 2);
+    width: var(--w);
   }
 
   .front,
   .back {
-    width: var(--w);
     height: var(--h);
+    position: absolute;
+    width: var(--w);
   }
 
   .right {
-    width: var(--l);
     height: var(--h);
     left: calc(var(--w) - var(--l));
+    position: absolute;
+    width: var(--l);
   }
 
   .left {
-    width: var(--l);
     height: var(--h);
     left: 0;
+    position: absolute;
+    width: var(--l);
   }
 
   /* Box face transform */
 
   .front {
     background: yellow;
-    transform: rotateY(0deg) translateZ(calc(var(--l) / 2));
+    transform: translateZ(calc(var(--l) / 2));
   }
 
   .back {
@@ -74,10 +73,5 @@
   .top {
     background: purple;
     transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
-  }
-
-  .bottom {
-    background: pink;
-    transform: rotateX(-90deg) translateZ(calc(var(--h) / 2));
   }
 }

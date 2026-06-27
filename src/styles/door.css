@@ -17,11 +17,15 @@
   width: calc(3 * var(--ft));
 
   &:hover {
-    background-color: color-mix(in display-p3, black 40%, var(--corridor-shadow));
+    background-color: color-mix(
+      in display-p3,
+      black 40%,
+      var(--corridor-shadow)
+    );
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 12%;
     right: 12%;
