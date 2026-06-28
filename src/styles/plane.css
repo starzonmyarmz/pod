@@ -1,0 +1,18 @@
+.plane {
+  --w: calc(var(--ft) * attr(w type(<number>)));
+  --h: calc(var(--ft) * attr(h type(<number>)));
+  --l: calc(var(--ft) * attr(l type(<number>)));
+
+  --x: calc(var(--ft) * attr(x type(<number>)));
+  --y: calc(var(--ft) * attr(y type(<number>)));
+  --z: calc(var(--ft) * attr(z type(<number>)));
+
+  background: blue;
+  bottom: var(--y);
+  height: var(--h);
+  left: var(--x);
+  position: absolute;
+  transform: translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
+  transform-style: preserve-3d;
+  width: var(--w);
+}

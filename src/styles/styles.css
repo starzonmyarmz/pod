@@ -159,6 +159,11 @@
   background-repeat: no-repeat;
 }
 
+#window {
+  background: color(display-p3 0.1 0.0906 0.0728);
+  border: 4px solid var(--slate);
+}
+
 .flourish-left,
 .flourish-right {
   box-shadow: inset 0 3px 12px black;
