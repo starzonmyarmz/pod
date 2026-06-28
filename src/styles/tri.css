@@ -18,15 +18,27 @@
      notset when absent — style() can distinguish them. */
   --_flipx: attr(flipx, notset);
   --_flipy: attr(flipy, notset);
+  --_mirror: attr(mirror, notset);
   --flip-x: if(style(--_flipx: notset): 0deg; else: 180deg);
   --flip-y: if(style(--_flipy: notset): 0deg; else: 180deg);
+  /* A wedge is chiral: rotations can't turn a port fillet into a starboard
+     one. scaleX(-1) reflects it for the opposite-hand corner. */
+  --mirror: if(style(--_mirror: notset): 1; else: -1);
+
+  /* Boolean along attr: yaws wedge 90deg so its run lies bow↔stern instead of
+     port↔starboard. Also shifts the depth anchor and lateral offset. */
+  --_along: attr(along, notset);
+  --spin: if(style(--_along: notset): 0deg; else: 90deg);
+  --_along-depth: if(style(--_along: notset): var(--l); else: var(--w));
+  --_along-shift: if(style(--_along: notset): 0px; else: calc((var(--l) - var(--w)) / 2));
 
   bottom: var(--y);
   height: var(--h);
   left: var(--x);
   position: absolute;
-  transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)))
-    rotateX(var(--flip-x)) rotateY(var(--flip-y));
+  transform: translateZ(calc(var(--_along-depth) / 2 - var(--room-l) / 2 + var(--z)))
+    translateX(var(--_along-shift)) rotateX(var(--flip-x)) rotateY(var(--flip-y))
+    rotateY(var(--spin)) scaleX(var(--mirror));
   transform-style: preserve-3d;
   width: var(--w);
 
@@ -99,3 +111,4 @@
     transform: rotateX(calc(90deg - var(--angle)));
   }
 }
+

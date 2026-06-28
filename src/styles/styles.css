@@ -21,6 +21,8 @@
 #door-from-bunk-to-cockpit,
 #door-from-cockpit-to-bunk,
 #cockpit-ceiling-corner .face,
+#cockpit-ceiling-port .face,
+#cockpit-ceiling-starboard .face,
 #console-top .face {
   transition: all 1s 0.1s;
 }
@@ -34,12 +36,12 @@
 :has(#view-stern:checked) #door-from-bunk-to-reactor,
 :has(#view-stern:checked) #door-from-cockpit-to-bunk,
 :has(#view-bow:checked) #cockpit-ceiling-corner .face,
+:has(#view-port:checked) #cockpit-ceiling-port .face,
+:has(#view-starboard:checked) #cockpit-ceiling-starboard .face,
 :has(#view-bow:checked) #console-top .face {
   opacity: 0;
   visibility: hidden;
 }
-
-/* Nostromo object colors — override box/tri debug colors with palette derivatives */
 
 #partition .face {
   background-image: url(../images/texture_1.png);
@@ -73,8 +75,6 @@
   background-repeat: no-repeat;
 }
 
-/* Mattress — dark canvas utility fabric */
-
 #top-mattress .face,
 #bottom-mattress .face {
   background-image: url(../images/texture_1.png);
@@ -84,8 +84,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-/* Pillow — worn off-white pillowcase fabric */
 
 #top-pillow .face,
 #bottom-pillow .face {
@@ -100,8 +98,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-/* Bed undersides — structural, should read as wall/ceiling surfaces */
 
 #top-bed .bottom,
 #bottom-bed .bottom {
@@ -169,12 +165,14 @@
 
 #window-port {
   transform-origin: left center;
-  transform: rotateY(-90deg) translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
+  transform: rotateY(-90deg)
+    translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
 }
 
 #window-starboard {
   transform-origin: right center;
-  transform: rotateY(90deg) translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
+  transform: rotateY(90deg)
+    translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
 }
 
 .flourish-left,
