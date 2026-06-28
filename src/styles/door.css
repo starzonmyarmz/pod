@@ -1,13 +1,7 @@
 .door {
-  background-image: url(../images/texture_1.png);
-  background-color: var(--corridor-shadow);
-  background-blend-mode: soft-light;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  bottom: calc(0.25 * var(--ft));
-  border: 2px solid var(--slate);
+  background-color: #000;
   border-radius: calc(0.4 * var(--ft));
+  bottom: calc(0.25 * var(--ft));
   corner-shape: bevel;
   height: calc(5.5 * var(--ft));
   left: 0;
@@ -15,29 +9,6 @@
   position: absolute;
   right: 0;
   width: calc(3 * var(--ft));
-
-  &:hover {
-    background-color: color-mix(
-      in display-p3,
-      black 40%,
-      var(--corridor-shadow)
-    );
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 12%;
-    right: 12%;
-    top: 50%;
-    height: calc(0.2 * var(--ft));
-    background: var(--yellow);
-    transform: translateY(-50%);
-    pointer-events: none;
-    box-shadow:
-      0 calc(-0.05 * var(--ft)) 0 rgba(0, 0, 0, 0.6),
-      0 calc(0.05 * var(--ft)) 0 rgba(0, 0, 0, 0.6);
-  }
 
   input {
     left: 0;
@@ -47,26 +18,88 @@
   }
 
   label {
+    border-radius: calc(0.4 * var(--ft));
+    corner-shape: bevel;
+    cursor: pointer;
     inset: 0;
+    overflow: hidden;
     position: absolute;
+
+    &::before,
+    &::after {
+      background-color: var(--corridor-shadow);
+      background-image:
+        url(../images/texture_1.png),
+        repeating-linear-gradient(
+          33deg in oklab,
+          var(--yellow) 0% 10%,
+          #000 10% 20%
+        );
+      background-repeat: no-repeat, repeat-y;
+      background-size:
+        cover,
+        16px 100%;
+      content: "";
+      height: 100%;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      transition: all 0.3s;
+      width: 50%;
+    }
+
+    &::before {
+      background-position:
+        50% 50%,
+        calc(100% + 8px) 0;
+      border-right: 1px solid rgb(0 0 0 / 0.5);
+      left: 0;
+    }
+
+    &::after {
+      background-position:
+        50% 50%,
+        -8px 0;
+      border-left: 1px solid rgb(0 0 0 / 0.5);
+      right: 0;
+    }
+  }
+
+  .shadow {
+    border-radius: calc(0.4 * var(--ft));
+    box-shadow: inset 0 0 2px 2px rgb(0 0 0 / 0.5);
+    corner-shape: bevel;
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  &:hover label::before,
+  input:focus-visible + label::before {
+    transform: translateX(-10%);
+  }
+
+  &:hover label::after,
+  input:focus-visible + label::after {
+    transform: translateX(10%);
+  }
+
+  input:checked + label::before {
+    transform: translateX(-100%);
+  }
+
+  input:checked + label::after {
+    transform: translateX(100%);
   }
 }
 
-#door-from-cockpit-to-bunk {
-  margin: 0 auto;
-  transform: translateZ(calc(var(--room-l) / 2)) rotateY(180deg);
-}
-
-#door-from-bunk-to-cockpit {
-  margin: 0 auto;
-  transform: translateZ(calc(-1 * calc(var(--room-l) / 2)));
-}
-
+#door-from-cockpit-to-bunk,
 #door-from-bunk-to-reactor {
   margin: 0 auto;
   transform: translateZ(calc(var(--room-l) / 2)) rotateY(180deg);
 }
 
+#door-from-bunk-to-cockpit,
 #door-from-reactor-to-bunk {
   margin: 0 auto;
   transform: translateZ(calc(-1 * calc(var(--room-l) / 2)));
