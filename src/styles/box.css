@@ -18,60 +18,49 @@
   transform-style: preserve-3d;
   width: var(--w);
 
-  /* Box face coordinates */
+  /* Box faces */
+
+  .face {
+    background: linear-gradient(to bottom right, lightblue, blue);
+    position: absolute;
+
+    &:not(.top) {
+      height: var(--h);
+    }
+  }
 
   .top {
     height: var(--l);
-    position: absolute;
     top: calc((var(--h) - var(--l)) / 2);
+    transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
     width: var(--w);
+  }
+
+  .left,
+  .right {
+    width: var(--l);
   }
 
   .front,
   .back {
-    height: var(--h);
-    position: absolute;
     width: var(--w);
   }
 
-  .right {
-    height: var(--h);
-    left: calc(var(--w) - var(--l));
-    position: absolute;
-    width: var(--l);
-  }
-
   .left {
-    height: var(--h);
     left: 0;
-    position: absolute;
-    width: var(--l);
+    transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
   }
 
-  /* Box face transform */
+  .right {
+    left: calc(var(--w) - var(--l));
+    transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
+  }
 
   .front {
-    background: yellow;
     transform: translateZ(calc(var(--l) / 2));
   }
 
   .back {
-    background: red;
     transform: rotateY(180deg) translateZ(calc(var(--l) / 2));
-  }
-
-  .right {
-    background: green;
-    transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
-  }
-
-  .left {
-    background: blue;
-    transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
-  }
-
-  .top {
-    background: purple;
-    transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
   }
 }

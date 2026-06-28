@@ -1,3 +1,30 @@
+/*
+
+shapes
+
+- no underside for any object necessary
+- no ceiling
+- faces for objects: top, left, right, front, back
+- ship terms for sides of ship (not surfaces)
+- wall is a box with certain aspects, but some objects function as a wall
+- floor is a box but it's own unique entity
+
+
+.wall
+.wall-shadow
+.wall-texture-{num}
+.wall-panel
+.wall-grime
+
+*/
+
+@function --wall-gradient(--color <color>) returns <image> {
+  --light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
+  --dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
+
+  result: linear-gradient(to bottom right in oklab, var(--light), var(--dark));
+}
+
 .room {
   --w: calc(var(--ft) * attr(w type(<number>)));
   --h: calc(var(--ft) * attr(h type(<number>)));
@@ -6,7 +33,7 @@
   --wall-thickness: calc(var(--ft) * 0.4);
   --floor-h: calc(var(--ft) * 0.5);
 
-  /* Untarnished room dimensions for wall.css */
+  /* Untarnished room dimensions for walls */
   --room-w: var(--w);
   --room-h: var(--h);
   --room-l: var(--l);
@@ -84,32 +111,19 @@
       ),
       repeating-linear-gradient(
         45deg,
-        transparent,
+        transparent 0,
         transparent 3px,
-        rgba(255, 255, 255, 0.05) 3px,
-        rgba(255, 255, 255, 0.05) 4px
+        rgba(0, 0, 0, 0.35) 3px,
+        rgba(0, 0, 0, 0.35) 6px
       ),
       repeating-linear-gradient(
         -45deg,
-        transparent,
+        transparent 0,
         transparent 3px,
-        rgba(255, 255, 255, 0.05) 3px,
-        rgba(255, 255, 255, 0.05) 4px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent 0,
-        transparent calc(var(--ft) * 1 - 1px),
-        rgba(0, 0, 0, 0.18) calc(var(--ft) * 1 - 1px),
-        rgba(0, 0, 0, 0.18) calc(var(--ft) * 1)
-      ),
-      repeating-linear-gradient(
-        0deg,
-        transparent 0,
-        transparent calc(var(--ft) * 1 - 1px),
-        rgba(0, 0, 0, 0.08) calc(var(--ft) * 1 - 1px),
-        rgba(0, 0, 0, 0.08) calc(var(--ft) * 1)
+        rgba(0, 0, 0, 0.35) 3px,
+        rgba(0, 0, 0, 0.35) 6px
       );
+
     background-blend-mode: soft-light;
     background-size: cover, auto, auto, auto, auto, auto;
     background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
@@ -137,18 +151,6 @@
   .head {
     transform: rotateX(90deg) translateZ(calc(var(--floor-h) / 2));
   }
-}
-
-@function --wall-gradient(--color <color>) returns <image> {
-  --light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
-  --dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
-
-  result: radial-gradient(
-    ellipse at center in oklab,
-    var(--light) 0%,
-    var(--color) 40%,
-    var(--dark) 100%
-  );
 }
 
 .wall {
@@ -192,22 +194,23 @@
     position: absolute;
   }
 
-  /* Dirt/grime at the base of vertical wall faces */
-  .bow::after,
-  .stern::after,
-  .starboard::after,
-  .port::after {
+  /* Grime at the base of wall faces */
+
+  .left::after,
+  .right::after,
+  .front::after,
+  .back::after {
     content: "";
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+    background: linear-gradient(transparent, var(--white));
     bottom: 0;
-    left: 0;
+    height: calc(1.5 * var(--ft));
+    mix-blend-mode: multiply;
     pointer-events: none;
     position: absolute;
-    right: 0;
-    top: 85%;
+    width: 100%;
   }
 
-  /* Per-side positioning */
+  /* Wall positioning */
 
   &.port {
     --wd: var(--room-l);
@@ -237,79 +240,59 @@
 
   /* Face sizing */
 
-  .bow {
-    background-image:
-      url(../images/texture_1.png), --wall-gradient(var(--_color));
-    background-position:
-      0% 0%,
-      50% 50%;
-    height: var(--room-h);
-    width: 100%;
-  }
-
-  .stern {
-    background-image:
-      url(../images/texture_2.png), --wall-gradient(var(--_color));
-    background-position:
-      100% 100%,
-      50% 50%;
-    height: var(--room-h);
-    width: 100%;
-  }
-
-  .starboard {
-    background-image:
-      url(../images/texture_3.png), --wall-gradient(var(--_color));
-    background-position:
-      50% 50%,
-      50% 50%;
-    height: var(--room-h);
-    left: calc(100% - var(--wd));
-    width: var(--wd);
-  }
-
-  .port {
-    background-image:
-      url(../images/texture_1.png), --wall-gradient(var(--_color));
-    background-position:
-      30% 70%,
-      50% 50%;
-    height: var(--room-h);
-    left: 0;
-    width: var(--wd);
-  }
-
-  .head {
-    background-image:
-      url(../images/texture_2.png), --wall-gradient(var(--_color));
-    background-position:
-      70% 30%,
-      50% 50%;
+  .top {
+    background: url(../images/texture_2.png), --wall-gradient(var(--_color));
     height: var(--wd);
     top: calc((var(--room-h) - var(--wd)) / 2);
     width: 100%;
   }
 
+  .left {
+    background: url(../images/texture_1.png), --wall-gradient(var(--_color));
+    height: var(--room-h);
+    left: 0;
+    width: var(--wd);
+  }
+
+  .right {
+    background: url(../images/texture_3.png), --wall-gradient(var(--_color));
+    height: var(--room-h);
+    left: calc(100% - var(--wd));
+    width: var(--wd);
+  }
+
+  .front {
+    background: url(../images/texture_1.png), --wall-gradient(var(--_color));
+    height: var(--room-h);
+    width: 100%;
+  }
+
+  .back {
+    background: url(../images/texture_2.png), --wall-gradient(var(--_color));
+    height: var(--room-h);
+    width: 100%;
+  }
+
   /* Face transforms */
 
-  .bow {
-    transform: translateZ(calc(var(--wd) / 2));
+  .top {
+    transform: rotateX(90deg) translateZ(calc(var(--room-h) / 2));
   }
 
-  .stern {
-    transform: rotateY(180deg) translateZ(calc(var(--wd) / 2));
-  }
-
-  .starboard {
-    transform: rotateY(90deg) translateZ(calc(var(--wd) / 2));
-  }
-
-  .port {
+  .left {
     transform: rotateY(-90deg) translateZ(calc(var(--wd) / 2));
   }
 
-  .head {
-    transform: rotateX(90deg) translateZ(calc(var(--room-h) / 2));
+  .right {
+    transform: rotateY(90deg) translateZ(calc(var(--wd) / 2));
+  }
+
+  .front {
+    transform: translateZ(calc(var(--wd) / 2));
+  }
+
+  .back {
+    transform: rotateY(180deg) translateZ(calc(var(--wd) / 2));
   }
 }
 
