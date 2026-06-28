@@ -1,3 +1,9 @@
+/*
+
+box — a cuboid placed in the room by x/y/z (see cuboid.css for geometry)
+
+*/
+
 .box {
   --w: calc(var(--ft) * attr(w type(<number>)));
   --h: calc(var(--ft) * attr(h type(<number>)));
@@ -11,56 +17,10 @@
   --z: calc(var(--ft) * attr(z type(<number>)));
 
   bottom: var(--y);
-  height: var(--h);
   left: var(--x);
-  position: absolute;
   transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
-  transform-style: preserve-3d;
-  width: var(--w);
+}
 
-  /* Box faces */
-
-  .face {
-    background: linear-gradient(to bottom right, lightblue, blue);
-    position: absolute;
-
-    &:not(.top) {
-      height: var(--h);
-    }
-  }
-
-  .top {
-    height: var(--l);
-    top: calc((var(--h) - var(--l)) / 2);
-    transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
-    width: var(--w);
-  }
-
-  .left,
-  .right {
-    width: var(--l);
-  }
-
-  .front,
-  .back {
-    width: var(--w);
-  }
-
-  .left {
-    left: 0;
-    transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
-  }
-
-  .right {
-    left: calc(var(--w) - var(--l));
-    transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
-  }
-
-  .front {
-    transform: translateZ(calc(var(--l) / 2));
-  }
-
-  .back {
-    transform: rotateY(180deg) translateZ(calc(var(--l) / 2));
-  }
+.box > .face {
+  background: linear-gradient(to bottom right, lightblue, blue);
 }

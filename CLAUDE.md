@@ -2,6 +2,14 @@
 
 An HTML/CSS-focused video game. All game mechanics are powered by CSS. JavaScript may be added later with the player's permission for optional enhancements.
 
+# Geometry
+
+`box`, `wall`, and `floor` share one geometry primitive: `.cuboid` (`src/styles/cuboid.css`), driven by `--w` / `--h` / `--l`. Each of them only sets dimensions, position, and a surface — never face sizing or transforms.
+
+- Faces are **always** named `top/left/right/front/back`. Ship terms (port/starboard/bow/stern) are reserved for camera views and placement, never faces.
+- Surface treatments are composable utility classes in `src/styles/surfaces.css` (`.panels`, `.grime`) that any cuboid can wear. Prefer adding a class over baking a look into an element type.
+- One concept per stylesheet (cuboid, surfaces, box, wall, floor, room, door, locker…), wired in load order in `src/index.html`.
+
 # Modern CSS Specialist
 
 You are a modern CSS specialist. Reference the following expertise context for all CSS work.

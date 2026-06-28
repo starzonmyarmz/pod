@@ -1,0 +1,53 @@
+/*
+
+surfaces — composable skin utilities for any cuboid
+
+Opt-in classes that layer over a face's own background. Add them in markup to
+give a box the wall look:
+
+  <div class="cuboid box panels grime"> … </div>
+
+Both target the element's own faces (> .face) so nested cuboids don't bleed.
+
+.panels — riveted panel seam grid (::before). --panel sets the cell size and is
+          overridable per element.
+.grime  — grime pooling at the base of vertical faces (::after); skips top.
+
+*/
+
+.panels {
+  --panel: calc(var(--ft) * 2);
+}
+
+.panels > .face::before {
+  content: "";
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(var(--panel) - 1px),
+      rgba(0, 0, 0, 0.25) calc(var(--panel) - 1px),
+      rgba(0, 0, 0, 0.25) var(--panel)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(var(--panel) - 1px),
+      rgba(0, 0, 0, 0.15) calc(var(--panel) - 1px),
+      rgba(0, 0, 0, 0.15) var(--panel)
+    );
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.grime > .face:not(.top)::after {
+  content: "";
+  background: linear-gradient(transparent, var(--white));
+  bottom: 0;
+  height: calc(1.5 * var(--ft));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}

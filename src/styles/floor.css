@@ -1,0 +1,61 @@
+/*
+
+floor — the room's deck. A cuboid (see cuboid.css for geometry), sized slightly
+larger than the room so it reads as a lip under the walls.
+
+*/
+
+.floor {
+  --floor-w: calc(var(--room-w) + 2 * var(--wall-thickness));
+  --floor-l: calc(var(--room-l) + 2 * var(--wall-thickness));
+
+  --w: var(--floor-w);
+  --h: var(--floor-h);
+  --l: var(--floor-l);
+
+  bottom: calc(-1 * var(--floor-h));
+  left: calc(-1 * var(--wall-thickness));
+  pointer-events: none;
+}
+
+/* Skin — edges */
+
+.floor > .front,
+.floor > .back,
+.floor > .left,
+.floor > .right {
+  background: var(--slate) url(../images/texture_1.png) no-repeat;
+  background-blend-mode: soft-light;
+  background-size: cover;
+}
+
+/* Skin — deck plating (top surface) */
+
+.floor > .top {
+  background-color: var(--corridor-shadow);
+  background-image:
+    url(../images/texture_2.png),
+    radial-gradient(
+      ellipse 70% 50% at 50% 30%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 3px,
+      rgba(0, 0, 0, 0.35) 3px,
+      rgba(0, 0, 0, 0.35) 6px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 3px,
+      rgba(0, 0, 0, 0.35) 3px,
+      rgba(0, 0, 0, 0.35) 6px
+    );
+
+  background-blend-mode: soft-light;
+  background-size: cover, auto, auto, auto, auto, auto;
+  background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+}

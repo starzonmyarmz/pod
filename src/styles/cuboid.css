@@ -1,0 +1,57 @@
+/*
+
+cuboid — shared 5-face geometry primitive (no underside)
+
+Driven by --w / --h / --l (width, height, length/depth). box, wall, and floor
+are all cuboids; they each set the three dimension vars, a position, and a skin.
+Faces are always named: top, left, right, front, back. Ship terms
+(port/starboard/bow/stern) are reserved for camera views and placement.
+
+Uses the child combinator (> .face) so a cuboid nested inside another cuboid
+does not inherit its parent's faces.
+
+*/
+
+.cuboid {
+  height: var(--h);
+  position: absolute;
+  transform-style: preserve-3d;
+  width: var(--w);
+}
+
+.cuboid > .face {
+  position: absolute;
+}
+
+.cuboid > .face:not(.top) {
+  height: var(--h);
+}
+
+.cuboid > .top {
+  height: var(--l);
+  top: calc((var(--h) - var(--l)) / 2);
+  transform: rotateX(90deg) translateZ(calc(var(--h) / 2));
+  width: var(--w);
+}
+
+.cuboid > .left {
+  left: 0;
+  transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
+  width: var(--l);
+}
+
+.cuboid > .right {
+  left: calc(var(--w) - var(--l));
+  transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
+  width: var(--l);
+}
+
+.cuboid > .front {
+  transform: translateZ(calc(var(--l) / 2));
+  width: var(--w);
+}
+
+.cuboid > .back {
+  transform: rotateY(180deg) translateZ(calc(var(--l) / 2));
+  width: var(--w);
+}
