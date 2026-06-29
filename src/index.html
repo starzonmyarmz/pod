@@ -37,9 +37,43 @@
       <%- include("templates/reactor") %>
     </div>
 
-    <button id="menu" command="show-modal" commandfor="menu-dialog">Menu</button>
+    <button id="menu" class="menu-btn" command="show-modal" commandfor="menu-dialog">
+      Menu
+    </button>
+
     <dialog id="menu-dialog">
-      <button command="close" commandfor="menu-dialog">Close</button>
+      <h1>Game options</h1>
+
+      <fieldset>
+        <legend>Graphics</legend>
+        <label><input type="checkbox" checked switch /><div>Animations</div></label>
+        <label><input type="checkbox" checked /><div>Motion Blur</div></label>
+        <label><input type="checkbox" /><div>High Contrast</div></label>
+        <label><input type="checkbox" checked /><div>Detail</div></label>
+        <label><input type="checkbox" checked /><div>Particles</div></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>JavaScript</legend>
+        <label><input type="checkbox" /><div>Enable JavaScript</div></label>
+        <p>By enabling JavaScript, you'll have advance sound and progress saving available.</p>
+      </fieldset>
+
+      <fieldset disabled>
+        <legend>Audio <small>— needs JavaScript</small></legend>
+        <label>Music <input type="range" min="0" max="100" value="80" /></label>
+        <label
+          >Sound Effects <input type="range" min="0" max="100" value="80"
+        /></label>
+      </fieldset>
+
+      <fieldset disabled>
+        <legend>Progress <small>— needs JavaScript</small></legend>
+        <label><input type="checkbox" checked />Auto-save</label>
+        <button type="button">Reset progress</button>
+      </fieldset>
+
+      <button class="menu-btn" command="close" commandfor="menu-dialog">Close</button>
     </dialog>
 
     <div id="gizmo">

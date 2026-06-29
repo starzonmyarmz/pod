@@ -1,4 +1,4 @@
-#menu {
+.menu-btn {
   appearance: none;
   background: none;
   border: 0;
@@ -19,6 +19,54 @@
   &:focus-visible {
     opacity: 1;
     outline: 0;
+  }
+}
+
+#menu-dialog {
+  position: relative;
+}
+
+#menu-dialog {
+  background: none;
+  border: 0;
+  color: #fff;
+  flex-direction: column;
+  gap: 16px;
+  margin: revert;
+  padding: 16px;
+  transition: all 1s;
+
+  fieldset {
+    border: 0;
+  }
+
+  legend {
+    padding: 0;
+  }
+
+  label {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+  }
+
+  input[type="checkbox"] {
+    accent-color: var(--yellow);
+    height: 1em;
+    margin: 0;
+    width: 1em;
+  }
+
+  &:open {
+    display: flex;
+  }
+
+  &::backdrop {
+    background: black;
+  }
+
+  @starting-style {
+    opacity: 0;
   }
 }
 
