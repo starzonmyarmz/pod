@@ -37,6 +37,11 @@
       <%- include("templates/reactor") %>
     </div>
 
+    <button id="menu" command="show-modal" commandfor="menu-dialog">Menu</button>
+    <dialog id="menu-dialog">
+      <button command="close" commandfor="menu-dialog">Close</button>
+    </dialog>
+
     <div id="gizmo">
       <div class="bow">
         <input type="radio" name="view" id="view-bow" />

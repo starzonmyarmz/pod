@@ -63,4 +63,5 @@ body {
     color-mix(in display-p3, black 25%, color(display-p3 0.1 0.0906 0.0728))
   );
   color: white;
+  font-family: "Hind", sans-serif;
 }
