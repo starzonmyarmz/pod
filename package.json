@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "css:sort": "stylelint \"src/**/*.css\" --fix",
+    "css:check": "stylelint \"src/**/*.css\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
   },
   "homepage": "https://github.com/starzonmyarmz/pod#readme",
   "devDependencies": {
+    "stylelint": "^17.13.0",
+    "stylelint-order": "^8.1.1",
     "vite": "^8.0.16",
     "vite-plugin-ejs": "^1.7.0"
   }
