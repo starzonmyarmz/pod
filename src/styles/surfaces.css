@@ -12,8 +12,54 @@ Both target the element's own faces (> .face) so nested cuboids don't bleed.
 .panels — riveted panel seam grid (::before). --panel sets the cell size and is
           overridable per element.
 .grime  — grime pooling at the base of vertical faces (::after); skips top.
+.metal  — the hull skin: a per-face texture photo blended over a lit metal
+          gradient. Any cuboid (wall, tri, box) can wear it. --wall-color (or
+          the default --machine-gray) tints the gradient.
 
 */
+
+@function --metal-gradient(--color <color>) returns <image> {
+  --light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
+  --dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
+
+  result: linear-gradient(to bottom right in oklab, var(--light), var(--dark));
+}
+
+.metal {
+  --_color: var(--wall-color, var(--machine-gray));
+}
+
+.metal > .face {
+  background-blend-mode: soft-light;
+  background-size: cover, auto;
+  background-repeat: no-repeat, no-repeat;
+  transition: all 1s 0.1s;
+}
+
+.metal > .top {
+  background: url(../images/texture_2.png), --metal-gradient(var(--_color));
+}
+
+.metal > .left {
+  background: url(../images/texture_1.png), --metal-gradient(var(--_color));
+}
+
+.metal > .right {
+  background: url(../images/texture_3.png), --metal-gradient(var(--_color));
+}
+
+.metal > .front {
+  background: url(../images/texture_1.png), --metal-gradient(var(--_color));
+}
+
+.metal > .back {
+  background: url(../images/texture_2.png), --metal-gradient(var(--_color));
+}
+
+/* The wedge underside, which a full cuboid omits. */
+.metal > .bottom {
+  background: url(../images/texture_2.png), --metal-gradient(var(--_color));
+}
 
 .panels {
   --panel: calc(var(--ft) * 2);

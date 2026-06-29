@@ -1,6 +1,6 @@
 <div
   id="<%= id %>"
-  class="tri"
+  class="cuboid tri <%= locals.metal ? 'metal' : '' %>"
   w="<%= w %>"
   l="<%= l %>"
   h="<%= h %>"
@@ -12,9 +12,9 @@
   <%- locals.flipy ? 'flipy' : '' %>
   <%- locals.mirror ? 'mirror' : '' %>
 >
+  <div class="face top"></div>
   <div class="face back"></div>
   <div class="face right"></div>
   <div class="face left"></div>
   <div class="face bottom"></div>
-  <div class="face slant"></div>
 </div>

@@ -84,16 +84,17 @@ Three tileable texture images are overlaid using `background-blend-mode: soft-li
 
 Textures blend with the CSS custom property colors via `color-mix()` and direct `background-color` under `soft-light`. This creates a weathered, built-up surface without visible seams — the _Nostromo_'s "years of service" look.
 
-### Wall Gradient
+### Metal Gradient
 
-Custom `@function --wall-gradient` in `wall.css` applies a subtle directional gradient using LCH color manipulation:
+Custom `@function --metal-gradient` in `surfaces.css` (part of the `.metal` skin) applies a subtle directional gradient using LCH color manipulation:
 
 ```css
---top: lch(from var(--color) calc(l + 5) calc(c + 0.2) h);
---bottom: lch(from var(--color) calc(l - 10) calc(c - 0.2) h);
+--light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
+--dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
+result: linear-gradient(to bottom right in oklab, var(--light), var(--dark));
 ```
 
-This adds a **top-to-bottom light falloff** — the walls are slightly brighter at the top (from overhead strip lighting) and darker at the bottom (shadow pooling), mimicking the _Nostromo_'s practical lighting rig.
+This adds a **top-to-bottom light falloff** — surfaces are slightly brighter at the top (from overhead strip lighting) and darker at the bottom (shadow pooling), mimicking the _Nostromo_'s practical lighting rig.
 
 ### Material References
 
@@ -155,7 +156,7 @@ The _Nostromo_ is **underlit** and **shadow-heavy**. Light comes from:
 
 ### Implementation
 
-- The wall gradient system (`--wall-gradient`) mimics overhead lighting with brighter tops and darker bottoms
+- The metal gradient system (`--metal-gradient`, in the `.metal` skin) mimics overhead lighting with brighter tops and darker bottoms
 - `background-blend-mode: soft-light` over dark base colors creates depth without explicit shadow mapping
 - Room transitions use translate/scale animations with `@starting-style` for entry/exit states, creating a "moving through the ship" sensation
 
@@ -177,22 +178,23 @@ The `.flourish-left` and `.flourish-right` elements are diagonal striped bars re
 
 ### Cuboids, Tris & Planes — 3D Primitives
 
-- `.cuboid` — The shared five-faced geometry primitive (top/left/right/front/back, no underside). Driven by `--w` / `--h` / `--l`, it owns all face sizing and 3D transforms (`src/styles/cuboid.css`). `.box`, `.wall`, and `.floor` are all cuboids — they only set dimensions, position, and surface.
+- `.cuboid` — The shared five-faced geometry primitive (top/left/right/front/back, no underside). Driven by `--w` / `--h` / `--l`, it owns all face sizing and 3D transforms (`src/styles/cuboid.css`). `.box`, `.wall`, `.floor`, and `.tri` are all cuboids — they only set dimensions, position, and surface.
 - `.box` — A cuboid placed in the room by `x/y/z`, for furniture and structural elements
-- `.tri` — A five-faced triangular prism for ramps, angled ceiling corners, and sloped surfaces
+- `.tri` — A triangular-prism wedge for ramps, angled ceiling corners, and sloped surfaces. Built on `.cuboid`: it inherits `left`/`right`/`back`, re-tilts the `top` into the sloped hypotenuse, adds a `bottom` underside, clips the sides, and has no `front`
 - `.plane` — A flat single-face panel placed by `x/y/z`, for windows, screens, and decals mounted against a cuboid face (`src/styles/plane.css`)
-- Faces are **always** named `top/left/right/front/back`. Ship terms (port/starboard/bow/stern) are reserved for camera views and placement (e.g. which side a wall sits on), never for faces.
+- Faces are **always** named `top/left/right/front/back` (plus `bottom`, only on `.tri`). Ship terms (port/starboard/bow/stern) are reserved for camera views and placement (e.g. which side a wall sits on), never for faces.
 - Primitives use `attr()` to read dimensions from HTML attributes (e.g. `w="12" l="12" h="7"`) and compute CSS 3D transforms at render time
 - **Orientation is declared, never hand-authored.** `.tri` and `.plane` share an axis-based vocabulary of boolean attributes — `along` (yaw 90° onto the depth axis), `flipx` / `flipy` (180° flips), `mirror` (reflect for the opposite-hand corner). An instance states how it's mounted (`along`, `flipy`, …); the primitive computes the transform. Never bake a `transform` onto a specific instance.
 
 ### Composable Surfaces
 
-Surface looks are opt-in utility classes (`src/styles/surfaces.css`) any cuboid can wear — a box gets the wall look by adding them, rather than baking the look into an element type:
+Surface looks are opt-in utility classes (`src/styles/surfaces.css`) any cuboid can wear — a box or tri gets the wall look by adding them, rather than baking the look into an element type:
 
+- `.metal` — the textured hull skin: a per-face texture photo blended over a lit metal gradient (`--metal-gradient`). Tinted by `--wall-color` (default `--machine-gray`). Worn by `.wall`, and opt-in for any other cuboid
 - `.panels` — riveted panel seam grid (cell size via `--panel`)
 - `.grime` — grime pooling at the base of vertical faces
 
-Example: `<div class="cuboid box panels grime">`.
+Example: `<div class="cuboid box metal panels grime">`.
 
 ---
 

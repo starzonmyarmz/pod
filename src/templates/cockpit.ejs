@@ -7,9 +7,9 @@
     <%- include("wall", { side: "stern" }) %>
     <%- include("wall", { side: "bow" }) %>
 
-    <%- include("tri", { id: "cockpit-ceiling-corner", w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true, flipy: true }) %>
-    <%- include("tri", { id: "cockpit-ceiling-port", along: true, w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true }) %>
-    <%- include("tri", { id: "cockpit-ceiling-starboard", along: true, w: 7, l: 1, h: 1, x: 6, y: 5, z: 0, flipx: true, flipy: true, mirror: true }) %>
+    <%- include("tri", { id: "cockpit-ceiling-corner", metal: true, w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true, flipy: true }) %>
+    <%- include("tri", { id: "cockpit-ceiling-port", metal: true, along: true, w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true }) %>
+    <%- include("tri", { id: "cockpit-ceiling-starboard", metal: true, along: true, w: 7, l: 1, h: 1, x: 6, y: 5, z: 0, flipx: true, flipy: true, mirror: true }) %>
 
     <%- include("tri", { id: "console-top", w: 7, l: 2.5, h: 0.5, x: 0, y: 1.8, z: 0 }) %>
     <%- include("box", { id: "console", w: 7, l: 2.5, h: 1.8, x: 0, y: 0, z: 0 }) %>

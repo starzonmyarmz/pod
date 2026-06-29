@@ -6,20 +6,12 @@ Placement uses ship terms (port/starboard/bow/stern) — which side of the ship
 the wall sits on. The thin axis is --wall-thickness; it lands on --w for the
 side walls (port/starboard) and on --l for the end walls (bow/stern).
 
-Paneling and base grime come from the composable .panels / .grime classes
-(surfaces.css), applied in markup.
+The skin (textured metal hull) and base treatments come from the composable
+.metal / .panels / .grime classes (surfaces.css), applied in markup.
 
 */
 
-@function --wall-gradient(--color <color>) returns <image> {
-  --light: lch(from var(--color) calc(l + 8) calc(c * 1.4) h);
-  --dark: lch(from var(--color) calc(l - 12) calc(c * 0.6) h);
-
-  result: linear-gradient(to bottom right in oklab, var(--light), var(--dark));
-}
-
 .wall {
-  --_color: var(--wall-color, var(--machine-gray));
   --h: var(--room-h);
 
   bottom: 0;
@@ -50,35 +42,6 @@ Paneling and base grime come from the composable .panels / .grime classes
   --w: var(--room-w);
   --l: var(--wall-thickness);
   transform: translateZ(calc(var(--wall-thickness) / 2 + var(--room-l) / 2));
-}
-
-/* Skin */
-
-.wall > .face {
-  background-blend-mode: soft-light;
-  background-size: cover, auto;
-  background-repeat: no-repeat, no-repeat;
-  transition: all 1s 0.1s;
-}
-
-.wall > .top {
-  background: url(../images/texture_2.png), --wall-gradient(var(--_color));
-}
-
-.wall > .left {
-  background: url(../images/texture_1.png), --wall-gradient(var(--_color));
-}
-
-.wall > .right {
-  background: url(../images/texture_3.png), --wall-gradient(var(--_color));
-}
-
-.wall > .front {
-  background: url(../images/texture_1.png), --wall-gradient(var(--_color));
-}
-
-.wall > .back {
-  background: url(../images/texture_2.png), --wall-gradient(var(--_color));
 }
 
 /* Hide wall when viewing from that direction */

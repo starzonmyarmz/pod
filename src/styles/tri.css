@@ -1,3 +1,20 @@
+/*
+
+tri — a triangular-prism wedge built on the cuboid primitive (see cuboid.css).
+
+Shares cuboid's faces: back, left, right are inherited unchanged; the cuboid
+top is re-tilted into the sloped hypotenuse, and a bottom underside is added
+(the one face a cuboid omits). There is no front — the wedge tapers to a
+zero-height edge.
+
+Dimensions --w/--h/--l plus an x/y/z room placement, and the axis-based
+orientation booleans shared with .plane: along (yaw onto the depth axis),
+flipx/flipy (180deg flips), mirror (reflect the chiral wedge).
+
+Wall textures are opt-in via the composable .metal class (surfaces.css).
+
+*/
+
 .tri {
   --w: calc(var(--ft) * attr(w type(<number>)));
   --h: calc(var(--ft) * attr(h type(<number>)));
@@ -33,82 +50,42 @@
   --_along-shift: if(style(--_along: notset): 0px; else: calc((var(--l) - var(--w)) / 2));
 
   bottom: var(--y);
-  height: var(--h);
   left: var(--x);
-  position: absolute;
   transform: translateZ(calc(var(--_along-depth) / 2 - var(--room-l) / 2 + var(--z)))
     translateX(var(--_along-shift)) rotateX(var(--flip-x)) rotateY(var(--flip-y))
     rotateY(var(--spin)) scaleX(var(--mirror));
-  transform-style: preserve-3d;
-  width: var(--w);
-
-  .face {
-    position: absolute;
-  }
-
-  /* Face coordinates */
-
-  .bottom {
-    height: var(--l);
-    top: calc((var(--h) - var(--l)) / 2);
-    width: var(--w);
-  }
-
-  .back {
-    height: var(--h);
-    width: var(--w);
-  }
-
-  .right,
-  .left {
-    height: var(--h);
-    width: var(--l);
-  }
-
-  .right {
-    left: calc(var(--w) - var(--l));
-  }
-
-  .left {
-    left: 0;
-  }
-
-  .slant {
-    height: var(--slant);
-    top: calc((var(--h) - var(--slant)) / 2);
-    width: var(--w);
-  }
-
-  /* Face transforms */
-
-  .back {
-    background: red;
-    transform: rotateY(180deg) translateZ(calc(var(--l) / 2));
-  }
-
-  /* Side walls clipped to right triangles matching the slope. */
-  .right {
-    background: green;
-    transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
-    clip-path: polygon(100% 0, 0 100%, 100% 100%);
-  }
-
-  .left {
-    background: blue;
-    transform: rotateY(-90deg) translateZ(calc(var(--l) / 2));
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
-  }
-
-  .bottom {
-    background: pink;
-    transform: rotateX(-90deg) translateZ(calc(var(--h) / 2));
-  }
-
-  /* Hinged at the element centre (the hypotenuse midpoint), tilted from
-     vertical by 90deg - angle so it lies along the slope. */
-  .slant {
-    background: purple;
-    transform: rotateX(calc(90deg - var(--angle)));
-  }
 }
 
+/* Neutral default skin; wear .metal to apply the hull look. */
+.tri:not(.metal) > .face {
+  background: linear-gradient(to bottom right, #9a9da1, #6d7074);
+}
+
+/* Geometry overrides on top of the cuboid faces. left, right, and back keep
+   the cuboid's transforms (width --l, rotateY(±90)/rotateY(180) translateZ);
+   only the wedge-specific bits live here. */
+
+/* The cuboid top, hinged at the element centre (the hypotenuse midpoint) and
+   tilted from vertical by 90deg - angle, becomes the sloped face. */
+.cuboid.tri > .top {
+  height: var(--slant);
+  top: calc((var(--h) - var(--slant)) / 2);
+  transform: rotateX(calc(90deg - var(--angle)));
+}
+
+/* Side faces clipped to right triangles matching the slope. */
+.cuboid.tri > .right {
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.cuboid.tri > .left {
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+/* Horizontal underside — the face cuboid omits. */
+.cuboid.tri > .bottom {
+  height: var(--l);
+  top: calc((var(--h) - var(--l)) / 2);
+  transform: rotateX(-90deg) translateZ(calc(var(--h) / 2));
+  width: var(--w);
+}

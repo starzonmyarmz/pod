@@ -4,12 +4,12 @@ An HTML/CSS-focused video game. All game mechanics are powered by CSS. JavaScrip
 
 # Geometry
 
-`box`, `wall`, and `floor` share one geometry primitive: `.cuboid` (`src/styles/cuboid.css`), driven by `--w` / `--h` / `--l`. Each of them only sets dimensions, position, and a surface — never face sizing or transforms.
+`box`, `wall`, `floor`, and `tri` share one geometry primitive: `.cuboid` (`src/styles/cuboid.css`), driven by `--w` / `--h` / `--l`. Each of them only sets dimensions, position, and a surface — never face sizing or transforms. `.tri` (`src/styles/tri.css`, a triangular-prism wedge) builds on `.cuboid`: it inherits `left`/`right`/`back` unchanged, re-tilts the cuboid `top` into the sloped hypotenuse, adds a `bottom` underside (the one face a cuboid omits), and clips the sides — there is no `front` (the wedge tapers to a zero-height edge).
 
-The non-cuboid primitives are `.tri` (`src/styles/tri.css`, a triangular-prism wedge) and `.plane` (`src/styles/plane.css`, a flat single-face panel). Both share an axis-based orientation vocabulary of boolean attributes — `along` (yaw 90° onto the depth axis), `flipx` / `flipy` (180° flips), `mirror` (reflect). Orientation is declared per-instance via these attributes; never hand-author a `transform` on a specific instance.
+The only non-cuboid primitive is `.plane` (`src/styles/plane.css`, a flat single-face panel). `.tri` and `.plane` share an axis-based orientation vocabulary of boolean attributes — `along` (yaw 90° onto the depth axis), `flipx` / `flipy` (180° flips), `mirror` (reflect). Orientation is declared per-instance via these attributes; never hand-author a `transform` on a specific instance.
 
-- Faces are **always** named `top/left/right/front/back`. Ship terms (port/starboard/bow/stern) are reserved for camera views and placement, never faces.
-- Surface treatments are composable utility classes in `src/styles/surfaces.css` (`.panels`, `.grime`) that any cuboid can wear. Prefer adding a class over baking a look into an element type.
+- Faces are **always** named `top/left/right/front/back` (plus `bottom`, only on `.tri`). Ship terms (port/starboard/bow/stern) are reserved for camera views and placement, never faces.
+- Surface treatments are composable utility classes in `src/styles/surfaces.css` (`.metal` for the textured hull skin, `.panels`, `.grime`) that any cuboid can wear. Prefer adding a class over baking a look into an element type.
 - One concept per stylesheet (cuboid, surfaces, box, wall, floor, room, door, locker…), wired in load order in `src/index.html`.
 
 # Modern CSS Specialist
