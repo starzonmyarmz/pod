@@ -23,55 +23,140 @@
 }
 
 #gizmo {
-  --handle-size: 16px;
-  --gap: 8px;
-
-  align-items: center;
   bottom: 100px;
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: repeat(3, var(--handle-size));
-  grid-template-rows: repeat(3, var(--handle-size));
-  grid-template-areas: ". bow ." "port . starboard" ". stern .";
   left: 100px;
+  perspective: 240px;
   position: fixed;
-  transform: rotateX(55deg);
+  user-select: none;
+
+  /* Heading labels stack in one cell so the old one fades out as the new
+     one fades in (crossfade), driven by display + allow-discrete. */
+  .heading {
+    display: grid;
+  }
+
+  .heading span {
+    display: none;
+    font-size: 13px;
+    font-weight: 300;
+    grid-area: 1 / 1;
+    line-height: 1;
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.5s 1s;
+    transition-behavior: allow-discrete;
+  }
+}
+
+/* Show the label for the wall in view; fade it in from @starting-style. */
+:has(#view-stern:checked) [data-for="view-stern"],
+:has(#view-bow:checked) [data-for="view-bow"],
+:has(#view-port:checked) [data-for="view-port"],
+:has(#view-starboard:checked) [data-for="view-starboard"] {
+  display: block;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/* Diamond of 4 view wedges. Tilted flat (rotateX) and spun so the active
+   wedge always points to the far wall — same turn direction as the room. */
+#gizmo .control {
+  --h: calc(var(--w) / 2);
+  --spin: 0deg;
+  --w: 48px;
+
+  height: var(--w);
+  margin: -4px auto;
+  transform: rotateX(65deg) rotate(var(--spin));
+  transform-origin: center;
+  transition: all 1s 0.1s;
+  width: var(--w);
 
   input {
     opacity: 0;
+    position: absolute;
+  }
 
-    &:focus-visible + label {
-      outline: 2px solid white;
+  /* Each wedge: a triangle pointing to center (--clip). */
+  label {
+    border: 0 solid white;
+    clip-path: var(--clip);
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    opacity: 0.4;
+    overflow: hidden;
+    position: absolute;
+
+    &:hover {
+      opacity: 1;
+      z-index: 2;
     }
   }
 
-  label {
-    background: white;
-    border-radius: 50%;
-    color: transparent;
-    display: block;
-    height: var(--handle-size);
-    overflow: hidden;
-    width: var(--handle-size);
-  }
-
+  /* Active wedge: yellow, tip chopped to a trapezoid (--clip-checked). */
   input:checked + label {
-    background: red;
+    background: var(--yellow);
+    border-color: var(--yellow);
+    clip-path: var(--clip-checked);
+    cursor: default;
+    opacity: 1;
+    z-index: 3;
   }
 
-  .bow {
-    grid-area: bow;
+  [for="view-bow"],
+  [for="view-stern"] {
+    height: var(--h);
+    width: 100%;
   }
 
-  .port {
-    grid-area: port;
+  [for="view-port"],
+  [for="view-starboard"] {
+    height: 100%;
+    width: var(--h);
   }
 
-  .starboard {
-    grid-area: starboard;
+  [for="view-bow"] {
+    --clip: polygon(0 0, 100% 0, 50% 100%);
+    --clip-checked: polygon(0 0, 100% 0, 65% 70%, 35% 70%);
+    border-top-width: 2px;
+    top: 0;
   }
 
-  .stern {
-    grid-area: stern;
+  [for="view-stern"] {
+    --clip: polygon(0 100%, 100% 100%, 50% 0);
+    --clip-checked: polygon(0 100%, 100% 100%, 65% 30%, 35% 30%);
+    border-bottom-width: 2px;
+    bottom: 0;
+  }
+
+  [for="view-port"] {
+    --clip: polygon(0 0, 0 100%, 100% 50%);
+    --clip-checked: polygon(0 0, 0 100%, 70% 65%, 70% 35%);
+    border-left-width: 2px;
+    top: 0;
+  }
+
+  [for="view-starboard"] {
+    --clip: polygon(100% 0, 100% 100%, 0 50%);
+    --clip-checked: polygon(100% 0, 100% 100%, 30% 65%, 30% 35%);
+    border-right-width: 2px;
+    right: 0;
+  }
+
+  /* Spin = negated room rotateY, so gizmo and room turn the same way. */
+  :has(#view-bow:checked) & {
+    --spin: -180deg;
+  }
+
+  :has(#view-port:checked) & {
+    --spin: -90deg;
+  }
+
+  :has(#view-starboard:checked) & {
+    --spin: 90deg;
   }
 }
