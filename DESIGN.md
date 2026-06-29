@@ -175,13 +175,15 @@ The `#gizmo` is a fixed-position D-pad controller referencing the **Nostromo's b
 
 The `.flourish-left` and `.flourish-right` elements are diagonal striped bars referencing the **yellow/red hazard striping** found on _Nostromo_ bulkheads. These are a direct callback to the industrial safety markings seen throughout the original film.
 
-### Cuboids & Tris — 3D Primitives
+### Cuboids, Tris & Planes — 3D Primitives
 
 - `.cuboid` — The shared five-faced geometry primitive (top/left/right/front/back, no underside). Driven by `--w` / `--h` / `--l`, it owns all face sizing and 3D transforms (`src/styles/cuboid.css`). `.box`, `.wall`, and `.floor` are all cuboids — they only set dimensions, position, and surface.
 - `.box` — A cuboid placed in the room by `x/y/z`, for furniture and structural elements
 - `.tri` — A five-faced triangular prism for ramps, angled ceiling corners, and sloped surfaces
+- `.plane` — A flat single-face panel placed by `x/y/z`, for windows, screens, and decals mounted against a cuboid face (`src/styles/plane.css`)
 - Faces are **always** named `top/left/right/front/back`. Ship terms (port/starboard/bow/stern) are reserved for camera views and placement (e.g. which side a wall sits on), never for faces.
-- Boxes use `attr()` to read dimensions from HTML attributes (e.g. `w="12" l="12" h="7"`) and compute CSS 3D transforms at render time
+- Primitives use `attr()` to read dimensions from HTML attributes (e.g. `w="12" l="12" h="7"`) and compute CSS 3D transforms at render time
+- **Orientation is declared, never hand-authored.** `.tri` and `.plane` share an axis-based vocabulary of boolean attributes — `along` (yaw 90° onto the depth axis), `flipx` / `flipy` (180° flips), `mirror` (reflect for the opposite-hand corner). An instance states how it's mounted (`along`, `flipy`, …); the primitive computes the transform. Never bake a `transform` onto a specific instance.
 
 ### Composable Surfaces
 

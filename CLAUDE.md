@@ -6,6 +6,8 @@ An HTML/CSS-focused video game. All game mechanics are powered by CSS. JavaScrip
 
 `box`, `wall`, and `floor` share one geometry primitive: `.cuboid` (`src/styles/cuboid.css`), driven by `--w` / `--h` / `--l`. Each of them only sets dimensions, position, and a surface — never face sizing or transforms.
 
+The non-cuboid primitives are `.tri` (`src/styles/tri.css`, a triangular-prism wedge) and `.plane` (`src/styles/plane.css`, a flat single-face panel). Both share an axis-based orientation vocabulary of boolean attributes — `along` (yaw 90° onto the depth axis), `flipx` / `flipy` (180° flips), `mirror` (reflect). Orientation is declared per-instance via these attributes; never hand-author a `transform` on a specific instance.
+
 - Faces are **always** named `top/left/right/front/back`. Ship terms (port/starboard/bow/stern) are reserved for camera views and placement, never faces.
 - Surface treatments are composable utility classes in `src/styles/surfaces.css` (`.panels`, `.grime`) that any cuboid can wear. Prefer adding a class over baking a look into an element type.
 - One concept per stylesheet (cuboid, surfaces, box, wall, floor, room, door, locker…), wired in load order in `src/index.html`.

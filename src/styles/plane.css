@@ -7,12 +7,37 @@
   --y: calc(var(--ft) * attr(y type(<number>)));
   --z: calc(var(--ft) * attr(z type(<number>)));
 
+  /* Orientation attributes, shared vocabulary with .tri. A plane defaults to
+     lying in the width×height plane facing the viewer; the booleans yaw/flip it
+     onto another face. attr(x, notset) returns "" when present, notset when
+     absent — style() distinguishes them. */
+  --_along: attr(along, notset);
+  --_flipy: attr(flipy, notset);
+  --_flipx: attr(flipx, notset);
+
+  /* along yaws 90deg onto the depth axis (a side wall); flipy adds a 180deg
+     Y-flip (faces the opposite side); flipx tips it 180deg about X. */
+  --along: if(style(--_along: notset): 0deg; else: 90deg);
+  --flip-y: if(style(--_flipy: notset): 0deg; else: 180deg);
+  --flip-x: if(style(--_flipx: notset): 0deg; else: 180deg);
+  --spin: calc(var(--along) + var(--flip-y));
+
+  /* Positioning mirrors .tri so x/y/z stay room-space and orthogonal:
+       x = across width (port→starboard)   left
+       y = up                              bottom
+       z = depth from the bow wall         translateZ
+     When along, the panel's width runs bow↔stern, so it occupies w of depth and
+     needs a -w/2 shift to recentre after the 90deg yaw; otherwise it is flat. */
+  --depth: if(style(--_along: notset): 0px; else: var(--w));
+  --shift: if(style(--_along: notset): 0px; else: calc(var(--w) / -2));
+
   background: blue;
   bottom: var(--y);
   height: var(--h);
   left: var(--x);
   position: absolute;
-  transform: translateZ(calc(var(--z) / 2 - var(--room-l) / 2 + var(--z)));
+  transform: translateZ(calc(var(--depth) / 2 - var(--room-l) / 2 + var(--z)))
+    translateX(var(--shift)) rotateX(var(--flip-x)) rotateY(var(--spin));
   transform-style: preserve-3d;
   width: var(--w);
 }
