@@ -14,12 +14,15 @@
   --_along: attr(along, notset);
   --_flipy: attr(flipy, notset);
   --_flipx: attr(flipx, notset);
+  --_flat: attr(flat, notset);
 
   /* along yaws 90deg onto the depth axis (a side wall); flipy adds a 180deg
-     Y-flip (faces the opposite side); flipx tips it 180deg about X. */
+     Y-flip (faces the opposite side); flipx tips it 180deg about X; flat tips
+     it -90deg about X so it lies horizontal, face up (a floor/ceiling decal). */
   --along: if(style(--_along: notset): 0deg; else: 90deg);
   --flip-y: if(style(--_flipy: notset): 0deg; else: 180deg);
   --flip-x: if(style(--_flipx: notset): 0deg; else: 180deg);
+  --tip: if(style(--_flat: notset): 0deg; else: -90deg);
   --spin: calc(var(--along) + var(--flip-y));
 
   /* Positioning mirrors .tri so x/y/z stay room-space and orthogonal:
@@ -27,17 +30,27 @@
        y = up                              bottom
        z = depth from the bow wall         translateZ
      When along, the panel's width runs bow↔stern, so it occupies w of depth and
-     needs a -w/2 shift to recentre after the 90deg yaw; otherwise it is flat. */
-  --depth: if(style(--_along: notset): 0px; else: var(--w));
+     needs a -w/2 shift to recentre after the 90deg yaw; otherwise it is flat.
+     When flat, the panel's height runs bow↔stern, so it occupies h of depth.
+     rotateX pivots about the panel centre, so the face lands h/2 above y; lift
+     it back down by h/2 (screen +Y is toward the floor) to keep y the floor
+     height it rests on. */
+  --depth: if(
+    style(--_flat: notset): if(style(--_along: notset): 0px; else: var(--w));
+    else: var(--h)
+  );
   --shift: if(style(--_along: notset): 0px; else: calc(var(--w) / -2));
+  --lift: if(style(--_flat: notset): 0px; else: calc(var(--h) / 2));
 
   background: blue;
   bottom: var(--y);
   height: var(--h);
   left: var(--x);
   position: absolute;
-  transform: translateZ(calc(var(--depth) / 2 - var(--room-l) / 2 + var(--z)))
-    translateX(var(--shift)) rotateX(var(--flip-x)) rotateY(var(--spin));
+  transform: translateY(var(--lift))
+    translateZ(calc(var(--depth) / 2 - var(--room-l) / 2 + var(--z)))
+    translateX(var(--shift)) rotateX(calc(var(--flip-x) + var(--tip)))
+    rotateY(var(--spin));
   transform-style: preserve-3d;
   width: var(--w);
 }
