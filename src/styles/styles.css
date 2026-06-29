@@ -43,8 +43,8 @@
 :has(#view-starboard:checked) #cockpit-ceiling-starboard .face,
 :has(#view-bow:checked) #console-top .face,
 :has(#view-bow:checked) #window,
-:has(#view-starboard:checked) #window-port,
-:has(#view-port:checked) #window-starboard {
+:has(#view-port:checked) #window-port,
+:has(#view-starboard:checked) #window-starboard {
   opacity: 0;
   visibility: hidden;
 }
