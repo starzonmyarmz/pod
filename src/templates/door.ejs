@@ -2,4 +2,8 @@
   <input type="radio" name="room" id="<%= id %>" <%= typeof checked !== 'undefined' && checked ? "checked" : "" %> />
   <label for="<%= id %>"></label>
   <div class="shadow"></div>
+
+  <% if (typeof tag !== 'undefined') { %>
+    <div class="door-tag"><%= tag %></div>
+  <% } %>
 </div>

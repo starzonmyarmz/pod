@@ -12,6 +12,7 @@
   --term-yellow: #c6a973;
   --term-orange: #9a7253;
   --term-red: #87674d;
+  --stencil-red: #b23a2a;
   --yellow: #d0a748;
   --utility-green: #3d484e;
   --mid-gray: #616368;
@@ -32,6 +33,7 @@
     --term-yellow: color(display-p3 0.774 0.664 0.4522);
     --term-orange: color(display-p3 0.6029 0.4473 0.3267);
     --term-red: color(display-p3 0.5292 0.344 0.3008);
+    --stencil-red: color(display-p3 0.66 0.24 0.18);
     --yellow: color(display-p3 0.8162 0.655 0.2847);
     --utility-green: color(display-p3 0.24 0.284 0.315);
     --mid-gray: color(display-p3 0.38 0.385 0.4);
