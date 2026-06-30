@@ -10,41 +10,21 @@
   --wall-color: var(--reactor-gray);
 }
 
-#partition .face,
-#top-bed .face,
-#bottom-bed .face,
-#lockers .face,
-#console .face,
-#engine .face,
-#door-from-reactor-to-bunk,
-#door-from-bunk-to-reactor,
-#door-from-bunk-to-cockpit,
-#door-from-cockpit-to-bunk,
-#cockpit-ceiling-corner .face,
-#cockpit-ceiling-port .face,
-#cockpit-ceiling-starboard .face,
-#console-top .face,
-#window,
-#window-port,
-#window-starboard {
+[hide] > .face {
+  transition: all 1s 0.1s;
+}
+[hide]:not(.cuboid) {
   transition: all 1s 0.1s;
 }
 
-:has(#view-port:checked) #partition .face,
-:has(#view-starboard:checked) #lockers .face,
-:has(#view-bow:checked) #console .face,
-:has(#view-stern:checked) #engine .face,
-:has(#view-bow:checked) #door-from-reactor-to-bunk,
-:has(#view-bow:checked) #door-from-bunk-to-cockpit,
-:has(#view-stern:checked) #door-from-bunk-to-reactor,
-:has(#view-stern:checked) #door-from-cockpit-to-bunk,
-:has(#view-bow:checked) #cockpit-ceiling-corner .face,
-:has(#view-port:checked) #cockpit-ceiling-port .face,
-:has(#view-starboard:checked) #cockpit-ceiling-starboard .face,
-:has(#view-bow:checked) #console-top .face,
-:has(#view-bow:checked) #window,
-:has(#view-port:checked) #window-port,
-:has(#view-starboard:checked) #window-starboard {
+:has(#view-port:checked) [hide~="port"] > .face,
+:has(#view-starboard:checked) [hide~="starboard"] > .face,
+:has(#view-bow:checked) [hide~="bow"] > .face,
+:has(#view-stern:checked) [hide~="stern"] > .face,
+:has(#view-port:checked) [hide~="port"]:not(.cuboid),
+:has(#view-starboard:checked) [hide~="starboard"]:not(.cuboid),
+:has(#view-bow:checked) [hide~="bow"]:not(.cuboid),
+:has(#view-stern:checked) [hide~="stern"]:not(.cuboid) {
   opacity: 0;
   visibility: hidden;
 }
