@@ -1,6 +1,10 @@
 :root {
   --ft: 48px;
 
+  --camera-blur: 2px;
+  --camera-transition-side: 48px;
+  --camera-transition-face: 0.1;
+
   /* sRGB fallbacks for standard gamut displays */
   --machine-gray: #8e9092;
   --corridor-shadow: #38393e;

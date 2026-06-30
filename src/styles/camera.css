@@ -1,15 +1,15 @@
 .room-container {
   display: none;
-  opacity: 0;
-  transition: all 1s;
-  transition-behavior: allow-discrete;
   height: 100vh;
+  inset: 0;
+  margin-top: calc(-1 * calc(var(--ft) / 2));
+  opacity: 0;
   perspective: 900px;
   place-content: center;
-  width: 100vw;
-  margin-top: calc(-1 * calc(var(--ft) / 2));
   position: fixed;
-  inset: 0;
+  transition: all 1s;
+  transition-behavior: allow-discrete;
+  width: 100vw;
 }
 
 :has(#from-cockpit-to-bunk:checked) #bunk-container,
@@ -29,36 +29,42 @@
 
 :has(#view-starboard:checked):has(#from-cockpit-to-bunk:checked) {
   #cockpit-container {
-    transform: translateX(50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(var(--camera-transition-side));
   }
 
   #bunk-container {
     @starting-style {
-      transform: translateX(-50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
 :has(#view-port:checked):has(#from-cockpit-to-bunk:checked) {
   #cockpit-container {
-    transform: translateX(-50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
   #bunk-container {
     @starting-style {
-      transform: translateX(50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
 :has(#view-bow:checked):has(#from-cockpit-to-bunk:checked) {
   #cockpit-container {
-    transform: scale(1.1);
+    filter: blur(var(--camera-blur));
+    transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
   #bunk-container {
     @starting-style {
-      transform: scale(0.9);
+      filter: blur(var(--camera-blur));
+      transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }
 }
@@ -67,36 +73,42 @@
 
 :has(#view-starboard:checked):has(#from-bunk-to-cockpit:checked) {
   #bunk-container {
-    transform: translateX(-50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
   #cockpit-container {
     @starting-style {
-      transform: translateX(50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
 :has(#view-port:checked):has(#from-bunk-to-cockpit:checked) {
   #bunk-container {
-    transform: translateX(50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(var(--camera-transition-side));
   }
 
   #cockpit-container {
     @starting-style {
-      transform: translateX(-50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
 :has(#view-stern:checked):has(#from-bunk-to-cockpit:checked) {
   #bunk-container {
-    transform: scale(1.1);
+    filter: blur(var(--camera-blur));
+    transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
   #cockpit-container {
     @starting-style {
-      transform: scale(0.9);
+      filter: blur(var(--camera-blur));
+      transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }
 }
@@ -104,37 +116,37 @@
 /* From bunk to reactor transitions */
 
 :has(#view-starboard:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {
-    transform: translateX(50px);
+  #bunk-container {  filter: blur(var(--camera-blur));
+    transform: translateX(var(--camera-transition-side));
   }
 
   #reactor-container {
-    @starting-style {
-      transform: translateX(-50px);
+    @starting-style {  filter: blur(var(--camera-blur));
+      transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
 :has(#view-port:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {
-    transform: translateX(-50px);
+  #bunk-container {  filter: blur(var(--camera-blur));
+    transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
   #reactor-container {
-    @starting-style {
-      transform: translateX(50px);
+    @starting-style {  filter: blur(var(--camera-blur));
+      transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
 :has(#view-bow:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {
-    transform: scale(1.1);
+  #bunk-container {  filter: blur(var(--camera-blur));
+    transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
   #reactor-container {
-    @starting-style {
-      transform: scale(0.9);
+    @starting-style {  filter: blur(var(--camera-blur));
+      transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }
 }
@@ -143,36 +155,42 @@
 
 :has(#view-starboard:checked):has(#from-reactor-to-bunk:checked) {
   #reactor-container {
-    transform: translateX(-50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
   #bunk-container {
     @starting-style {
-      transform: translateX(50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
 :has(#view-port:checked):has(#from-reactor-to-bunk:checked) {
   #reactor-container {
-    transform: translateX(50px);
+    filter: blur(var(--camera-blur));
+    transform: translateX(var(--camera-transition-side));
   }
 
   #bunk-container {
     @starting-style {
-      transform: translateX(-50px);
+      filter: blur(var(--camera-blur));
+      transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
 :has(#view-stern:checked):has(#from-reactor-to-bunk:checked) {
   #reactor-container {
-    transform: scale(1.1);
+    filter: blur(var(--camera-blur));
+    transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
   #bunk-container {
     @starting-style {
-      transform: scale(0.9);
+      filter: blur(var(--camera-blur));
+      transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }
 }
