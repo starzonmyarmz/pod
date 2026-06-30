@@ -18,7 +18,11 @@ box — a cuboid placed in the room by x/y/z (see cuboid.css for geometry)
 
   bottom: var(--y);
   left: var(--x);
-  transform: translateZ(calc(var(--l) / 2 - var(--room-l) / 2 + var(--z)));
+  /* Place via the `translate` property (not `transform`) so a box can wear a
+     `rotate` for hinging: `rotate` is applied inside `translate`, so it pivots
+     about the box's own transform-origin and is then carried into place —
+     rather than rotating the placement offset itself and flinging the box off. */
+  translate: 0 0 calc(var(--l) / 2 - var(--room-l) / 2 + var(--z));
 }
 
 .box > .face {

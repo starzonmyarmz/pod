@@ -1,6 +1,6 @@
 <div
-  id="<%= id %>"
-  class="cuboid box"
+  id="<%= locals.id ? id : '' %>"
+  class="cuboid box <%= locals.c ? c : '' %>"
   w="<%= w %>"
   l="<%= l %>"
   h="<%= h %>"

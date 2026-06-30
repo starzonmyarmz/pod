@@ -1,12 +1,11 @@
-<div id="<%= id %>" class="cuboid box" w="<%= w %>" l="<%= l %>" h="<%= h %>" x="<%= x %>" y="<%= y %>" z="<%= z %>">
-  <div class="face top"></div>
-  <div class="face front"></div>
-  <div class="face back"></div>
-  <div class="face right"></div>
-  <div class="face left">
-    <div class="locker-door">
-      <div class="door-vent"></div>
-      <div class="door-latch"></div>
-    </div>
-  </div>
+<div id="<%= id %>" class="locker">
+  <%- include("box", { c: 'locker-left', w: 2, l: 0.2, h: 7, x: x, y: y, z: z }) %>
+  <%- include("box", { c: 'locker-right', w: 2, l: 0.2, h: 7, x: x, y: y, z: z + 2 }) %>
+  <%- include("box", { c: 'locker-top', w: 2, l: 2.2, h: 0.2, x: x, y: y + 6.8, z: z }) %>
+  <%- include("box", { c: 'locker-bottom', w: 2, l: 2.2, h: 0.2, x: x, y: 0, z: z }) %>
+
+  <input type="checkbox" id="<%= id %>-door">
+  <label for="<%= id %>-door">
+    <%- include("box", { c: 'locker-door', w: 0.1, l: 2, h: 6.8, x: x, y: 0, z: z + 0.1 }) %>
+  </label>
 </div>
