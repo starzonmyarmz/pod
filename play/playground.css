@@ -1,0 +1,49 @@
+/*
+
+playground — stage + scroll-driven turntable for viewing a model from any
+angle around its vertical axis. Not part of the game; loaded only by
+play/index.html.
+
+*/
+
+@property --orbit {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+html,
+body {
+  height: auto;
+}
+
+.stage {
+  display: grid;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 900px;
+  place-content: center;
+  position: fixed;
+  width: 100vw;
+}
+
+.turntable {
+  --pitch: 0deg; /* fixed elevation — never animated, so view never tilts over/under */
+
+  animation: orbit linear both;
+  animation-timeline: scroll(root block);
+  transform: rotateX(var(--pitch)) rotateY(var(--orbit));
+  transform-style: preserve-3d;
+}
+
+@keyframes orbit {
+  to {
+    --orbit: 360deg;
+  }
+}
+
+/* Scroll length: 4 viewport-heights of scroll = one full 360° turn. */
+.scroll-track {
+  height: 400vh;
+  pointer-events: none;
+}

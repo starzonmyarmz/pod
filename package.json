@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "play": "vite --config vite.play.config.js",
     "build": "vite build",
     "preview": "vite preview",
     "css:sort": "stylelint \"src/**/*.css\" --fix",

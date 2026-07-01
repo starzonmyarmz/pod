@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>pod — playground</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Set up -->
+    <link rel="stylesheet" href="/src/styles/root.css" />
+    <link rel="stylesheet" href="/src/styles/fonts.css" />
+
+    <!-- Primitives -->
+    <link rel="stylesheet" href="/src/styles/cuboid.css" />
+    <link rel="stylesheet" href="/src/styles/surfaces.css" />
+    <link rel="stylesheet" href="/src/styles/box.css" />
+    <link rel="stylesheet" href="/src/styles/tri.css" />
+    <link rel="stylesheet" href="/src/styles/plane.css" />
+    <link rel="stylesheet" href="/src/styles/wall.css" />
+    <link rel="stylesheet" href="/src/styles/floor.css" />
+    <link rel="stylesheet" href="/src/styles/room.css" />
+
+    <!-- Objects -->
+    <link rel="stylesheet" href="/src/styles/door.css" />
+    <link rel="stylesheet" href="/src/styles/locker.css" />
+
+    <!-- Playground -->
+    <link rel="stylesheet" href="playground.css" />
+  </head>
+
+  <body>
+    <div class="stage">
+      <div class="turntable">
+        <div class="room" w="8" l="8" h="6">
+          <%- include("src/templates/floor") %>
+
+          <!-- sample — delete/replace when authoring a real model -->
+          <%- include("src/templates/box", { w: 2, l: 2, h: 2, x: 3, y: 0, z: 3 }) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-track" aria-hidden="true"></div>
+  </body>
+</html>
