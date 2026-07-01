@@ -12,10 +12,10 @@
   width: 100vw;
 }
 
-:has(#from-cockpit-to-bunk:checked) #bunk-container,
-:has(#from-bunk-to-cockpit:checked) #cockpit-container,
-:has(#from-bunk-to-reactor:checked) #reactor-container,
-:has(#from-reactor-to-bunk:checked) #bunk-container {
+:has(#from-cockpit-to-quarters:checked) #quarters-container,
+:has(#from-quarters-to-cockpit:checked) #cockpit-container,
+:has(#from-quarters-to-engineering:checked) #engineering-container,
+:has(#from-engineering-to-quarters:checked) #quarters-container {
   display: grid;
   opacity: 1;
   transition-delay: 1s;
@@ -25,15 +25,15 @@
   }
 }
 
-/* From cockpit to bunk transitions */
+/* From cockpit to quarters transitions */
 
-:has(#view-starboard:checked):has(#from-cockpit-to-bunk:checked) {
+:has(#view-starboard:checked):has(#from-cockpit-to-quarters:checked) {
   #cockpit-container {
     filter: blur(var(--camera-blur));
     transform: translateX(var(--camera-transition-side));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: translateX(calc(-1 * var(--camera-transition-side)));
@@ -41,13 +41,13 @@
   }
 }
 
-:has(#view-port:checked):has(#from-cockpit-to-bunk:checked) {
+:has(#view-port:checked):has(#from-cockpit-to-quarters:checked) {
   #cockpit-container {
     filter: blur(var(--camera-blur));
     transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: translateX(var(--camera-transition-side));
@@ -55,13 +55,13 @@
   }
 }
 
-:has(#view-bow:checked):has(#from-cockpit-to-bunk:checked) {
+:has(#view-bow:checked):has(#from-cockpit-to-quarters:checked) {
   #cockpit-container {
     filter: blur(var(--camera-blur));
     transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: scale(calc(1 - var(--camera-transition-face)));
@@ -69,10 +69,10 @@
   }
 }
 
-/* From bunk to cockpit transitions */
+/* From quarters to cockpit transitions */
 
-:has(#view-starboard:checked):has(#from-bunk-to-cockpit:checked) {
-  #bunk-container {
+:has(#view-starboard:checked):has(#from-quarters-to-cockpit:checked) {
+  #quarters-container {
     filter: blur(var(--camera-blur));
     transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
@@ -85,8 +85,8 @@
   }
 }
 
-:has(#view-port:checked):has(#from-bunk-to-cockpit:checked) {
-  #bunk-container {
+:has(#view-port:checked):has(#from-quarters-to-cockpit:checked) {
+  #quarters-container {
     filter: blur(var(--camera-blur));
     transform: translateX(var(--camera-transition-side));
   }
@@ -99,8 +99,8 @@
   }
 }
 
-:has(#view-stern:checked):has(#from-bunk-to-cockpit:checked) {
-  #bunk-container {
+:has(#view-stern:checked):has(#from-quarters-to-cockpit:checked) {
+  #quarters-container {
     filter: blur(var(--camera-blur));
     transform: scale(calc(1 + var(--camera-transition-face)));
   }
@@ -113,53 +113,53 @@
   }
 }
 
-/* From bunk to reactor transitions */
+/* From quarters to engineering transitions */
 
-:has(#view-starboard:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {  filter: blur(var(--camera-blur));
+:has(#view-starboard:checked):has(#from-quarters-to-engineering:checked) {
+  #quarters-container {  filter: blur(var(--camera-blur));
     transform: translateX(var(--camera-transition-side));
   }
 
-  #reactor-container {
+  #engineering-container {
     @starting-style {  filter: blur(var(--camera-blur));
       transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
-:has(#view-port:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {  filter: blur(var(--camera-blur));
+:has(#view-port:checked):has(#from-quarters-to-engineering:checked) {
+  #quarters-container {  filter: blur(var(--camera-blur));
     transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
-  #reactor-container {
+  #engineering-container {
     @starting-style {  filter: blur(var(--camera-blur));
       transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
-:has(#view-bow:checked):has(#from-bunk-to-reactor:checked) {
-  #bunk-container {  filter: blur(var(--camera-blur));
+:has(#view-bow:checked):has(#from-quarters-to-engineering:checked) {
+  #quarters-container {  filter: blur(var(--camera-blur));
     transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
-  #reactor-container {
+  #engineering-container {
     @starting-style {  filter: blur(var(--camera-blur));
       transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }
 }
 
-/* From reactor to bunk transitions */
+/* From engineering to quarters transitions */
 
-:has(#view-starboard:checked):has(#from-reactor-to-bunk:checked) {
-  #reactor-container {
+:has(#view-starboard:checked):has(#from-engineering-to-quarters:checked) {
+  #engineering-container {
     filter: blur(var(--camera-blur));
     transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: translateX(var(--camera-transition-side));
@@ -167,13 +167,13 @@
   }
 }
 
-:has(#view-port:checked):has(#from-reactor-to-bunk:checked) {
-  #reactor-container {
+:has(#view-port:checked):has(#from-engineering-to-quarters:checked) {
+  #engineering-container {
     filter: blur(var(--camera-blur));
     transform: translateX(var(--camera-transition-side));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: translateX(calc(-1 * var(--camera-transition-side)));
@@ -181,13 +181,13 @@
   }
 }
 
-:has(#view-stern:checked):has(#from-reactor-to-bunk:checked) {
-  #reactor-container {
+:has(#view-stern:checked):has(#from-engineering-to-quarters:checked) {
+  #engineering-container {
     filter: blur(var(--camera-blur));
     transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
-  #bunk-container {
+  #quarters-container {
     @starting-style {
       filter: blur(var(--camera-blur));
       transform: scale(calc(1 - var(--camera-transition-face)));

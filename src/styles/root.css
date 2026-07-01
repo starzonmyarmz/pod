@@ -21,8 +21,8 @@
   --utility-green: #3d484e;
   --mid-gray: #616368;
   --cockpit-gray: #80838a;
-  --bunk-gray: #949293;
-  --reactor-gray: #85807a;
+  --quarters-gray: #949293;
+  --engineering-gray: #85807a;
 }
 
 @supports (color: color(display-p3 0 0 0)) {
@@ -42,8 +42,8 @@
     --utility-green: color(display-p3 0.24 0.284 0.315);
     --mid-gray: color(display-p3 0.38 0.385 0.4);
     --cockpit-gray: color(display-p3 0.5 0.51 0.53);
-    --bunk-gray: color(display-p3 0.58 0.57 0.56);
-    --reactor-gray: color(display-p3 0.52 0.5 0.47);
+    --quarters-gray: color(display-p3 0.58 0.57 0.56);
+    --engineering-gray: color(display-p3 0.52 0.5 0.47);
   }
 }
 

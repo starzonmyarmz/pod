@@ -3,11 +3,11 @@
 #cockpit {
   --wall-color: var(--cockpit-gray);
 }
-#bunk {
-  --wall-color: var(--bunk-gray);
+#quarters {
+  --wall-color: var(--quarters-gray);
 }
-#reactor {
-  --wall-color: var(--reactor-gray);
+#engineering {
+  --wall-color: var(--engineering-gray);
 }
 
 [hide] > .face {

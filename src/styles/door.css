@@ -20,7 +20,6 @@
   label {
     border-radius: calc(0.4 * var(--ft));
     corner-shape: bevel;
-    cursor: pointer;
     inset: 0;
     overflow: hidden;
     position: absolute;
@@ -112,14 +111,14 @@
   }
 }
 
-#door-from-cockpit-to-bunk,
-#door-from-bunk-to-reactor {
+#door-from-cockpit-to-quarters,
+#door-from-quarters-to-engineering {
   margin: 0 auto;
   transform: translateZ(calc(var(--room-l) / 2)) rotateY(180deg);
 }
 
-#door-from-bunk-to-cockpit,
-#door-from-reactor-to-bunk {
+#door-from-quarters-to-cockpit,
+#door-from-engineering-to-quarters {
   margin: 0 auto;
   transform: translateZ(calc(-1 * calc(var(--room-l) / 2)));
 }

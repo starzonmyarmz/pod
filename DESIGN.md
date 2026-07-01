@@ -116,18 +116,18 @@ Canonical material references for any new texture or shader work:
 The _Nostromo_ is a **Lockmart CM-88B Bison** space-tug, towing a massive refinery. Our model focuses on the tug's interior across three spaces:
 
 ```
-┌─────────────────────────────────────────────────┐
-│  REACTOR          BUNK          COCKPIT         │
-│  (engine room)    (crew berth)  (control bridge)│
-│  7w x 5l x 6h     12w x 12l x 7h  7w x 7l x 6h │
-└─────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────┐
+│  ENGINEERING      QUARTERS         COCKPIT             │
+│  (engine room)    (crew berth)     (control bridge)    │
+│  7w x 5l x 6h     12w x 12l x 7h   7w x 7l x 6h        │
+└───────────────────────────────────────────────────────┘
 ```
 
 | Room        | Purpose                             | Design Character                                                             |
 | ----------- | ----------------------------------- | ---------------------------------------------------------------------------- |
 | **Cockpit** | Control bridge with flight consoles | Low ceiling, angled ceiling corner, dense console banks, the captain's chair |
-| **Bunk**    | Crew living/sleeping area           | Bunks (top/bottom), lockers, partition wall, corridor-like feel              |
-| **Reactor** | Engine room                         | Massive engine block, utilitarian, hot, cramped                              |
+| **Quarters**    | Crew living/sleeping area           | Bunks (top/bottom), lockers, partition wall, corridor-like feel              |
+| **Engineering** | Engine room                     | Massive engine block, utilitarian, hot, cramped                              |
 
 ### Spatial Principles
 
