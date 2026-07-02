@@ -1,5 +1,5 @@
 <div id="cockpit-container" class="room-container">
-  <div id="cockpit" class="room" w="7" l="7" h="6">
+  <div id="cockpit" class="room" w="5.5" l="7" h="6">
     <%- include("floor") %>
 
     <%- include("box", { w: 6.4, l: 0.15, h: 0.15, x: -0.45, y: -0.28, z: 1, c: "pipe pipe-gray" }) %>
@@ -18,17 +18,17 @@
     <%- include("wall", { side: "stern" }) %>
     <%- include("wall", { side: "bow" }) %>
 
-    <%- include("tri", { id: "cockpit-ceiling-corner", metal: true, w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true, flipy: true, hide: "bow" }) %>
+    <%- include("tri", { id: "cockpit-ceiling-corner", metal: true, w: 5.5, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true, flipy: true, hide: "bow" }) %>
     <%- include("tri", { id: "cockpit-ceiling-port", metal: true, along: true, w: 7, l: 1, h: 1, x: 0, y: 5, z: 0, flipx: true, hide: "port" }) %>
-    <%- include("tri", { id: "cockpit-ceiling-starboard", metal: true, along: true, w: 7, l: 1, h: 1, x: 6, y: 5, z: 0, flipx: true, flipy: true, mirror: true, hide: "starboard" }) %>
+    <%- include("tri", { id: "cockpit-ceiling-starboard", metal: true, along: true, w: 7, l: 1, h: 1, x: 4.5, y: 5, z: 0, flipx: true, flipy: true, mirror: true, hide: "starboard" }) %>
 
     <%- include("console", { x: 0, y: 0, z: 0 }) %>
 
-    <%- include("box", { id: "chair", w: 2, l: 2, h: 4, x: 2.5, y: 0, z: 3 }) %>
+    <%- include("box", { id: "chair", w: 2, l: 2, h: 4, x: 1.75, y: 0, z: 3 }) %>
 
-    <%- include("plane", { id: "window", w: 7, h: 2.6, x: 0, y: 2.3, z: 0, hide: "bow" }) %>
+    <%- include("plane", { id: "window", w: 5.5, h: 2.6, x: 0, y: 2.3, z: 0, hide: "bow" }) %>
     <%- include("plane", { id: "window-port", w: 3, h: 2.6, x: 0, y: 2.3, z: 0, along: true, flipy: true, hide: "port" }) %>
-    <%- include("plane", { id: "window-starboard", w: 3, h: 2.6, x: 7, y: 2.3, z: 0, along: true, hide: "starboard" }) %>
+    <%- include("plane", { id: "window-starboard", w: 3, h: 2.6, x: 5.5, y: 2.3, z: 0, along: true, hide: "starboard" }) %>
 
     <%- include("door", { id: "from-cockpit-to-quarters", checked: true, tag: "A2", hide: "stern" }) %>
   </div>
