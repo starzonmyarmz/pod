@@ -22,5 +22,8 @@
   <%- include("box", { w: 0.5, l: 0.5, h: 1.2, x: 0.6, y: 0, z: 3.6 }) %>
   <%- include("box", { w: 1.2, l: 0.5, h: 0.5, x: 5.2, y: 1.2, z: 3.6 }) %>
   <%- include("box", { w: 0.5, l: 0.5, h: 1.2, x: 5.9, y: 0, z: 3.6 }) %>
-  <%- include("tri", { id: "reactor-console", w: 3.4, l: 0.6, h: 1, x: 1.8, y: 1, z: 2.2, flipy: true }) %>
+  <input type="checkbox" id="reactor-console-zoom" />
+  <label for="reactor-console-zoom">
+    <%- include("tri", { id: "reactor-console", w: 3.4, l: 0.6, h: 1, x: 1.8, y: 1, z: 2.2, flipy: true }) %>
+  </label>
 </div>

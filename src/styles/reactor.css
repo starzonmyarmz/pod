@@ -10,6 +10,24 @@
   left: 0;
   position: absolute;
   transform-style: preserve-3d;
+
+  > label {
+    display: block;
+    pointer-events: auto;
+    transform-style: preserve-3d;
+  }
+}
+
+:has(#reactor-console-zoom:checked) {
+  #engineering {
+    transform: rotateY(180deg) rotateX(-32deg) scale(9)
+      translateZ(calc(8 * var(--ft)));
+    transform-origin: calc(3.5 * var(--ft)) calc(4.5 * var(--ft)) 0;
+  }
+
+  #gizmo {
+    display: none;
+  }
 }
 
 :has(#power-off:checked) .room {
