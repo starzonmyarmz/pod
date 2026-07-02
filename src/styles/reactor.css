@@ -1,0 +1,132 @@
+#reactor {
+  --power: 1;
+  --power-state: running;
+  --atom-duration: 7s;
+  --electron-duration: 3s;
+  --spin-duration: 1.3s;
+  --glow-duration: 2.7s;
+
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+:has(#power-off:checked) .room {
+  --power: 0;
+  --power-state: paused;
+
+  .atom {
+    display: none;
+  }
+}
+
+:has(#power-low:checked) .electron:nth-child(even) {
+  display: none;
+}
+
+:has(#power-high:checked) .room {
+  --power: 2;
+  --atom-duration: 5s;
+  --electron-duration: 2s;
+  --spin-duration: .7s;
+  --glow-duration: 1.5s;
+
+  .electron {
+    offset-path: circle(32px at 50% 50%);
+  }
+}
+
+.atom {
+  animation: atom var(--atom-duration) linear infinite;
+  animation-play-state: var(--power-state);
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.ring {
+  transform: rotateY(calc(360deg / sibling-count() * (sibling-index() - 1))) rotateX(25deg);
+  transform-style: preserve-3d;
+}
+
+.electron {
+  animation: electron var(--electron-duration) linear infinite;
+  animation-delay: calc(-1 * var(--electron-duration) / sibling-count() * (sibling-index() - 1));
+  animation-play-state: var(--power-state);
+  offset-path: circle(20px at 50% 50%);
+  transform-style: preserve-3d;
+  transition: all 1s;
+
+  > .box {
+    animation: spin var(--spin-duration) linear infinite;
+    animation-play-state: var(--power-state);
+    translate: none;
+  }
+}
+
+@keyframes atom {
+  to {
+    transform: rotateX(-360deg) rotateY(360deg);
+  }
+}
+
+@keyframes electron {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.electron > .box > .face {
+  --face-shade: 1;
+  background: #7ed83f;
+  filter: brightness(calc((0.5 + 0.35 * var(--power)) * var(--face-shade)))
+    saturate(calc(0.6 + 0.3 * var(--power)));
+}
+
+.electron > .box > .top {
+  --face-shade: 1.35;
+}
+
+.electron > .box > .front {
+  --face-shade: 1.1;
+}
+
+.electron > .box > .right {
+  --face-shade: 0.85;
+}
+
+.electron > .box > .left {
+  --face-shade: 0.7;
+}
+
+.electron > .box > .back {
+  --face-shade: 0.55;
+}
+
+.case > .face {
+  animation: glow-pulse var(--glow-duration) infinite;
+  animation-play-state: var(--power-state);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(180, 220, 255, 0.04) 40%,
+    rgba(180, 220, 255, 0.14)
+  ), rgb(120 255 80 / calc(var(--power) * 0.05));
+  border: 1px solid rgba(200, 230, 255, 0.35);
+  transition: background 0.5s;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 calc(var(--power) * 8px) calc(var(--power) * 1px) rgba(150, 255, 80, calc(var(--power) * 0.1));
+  }
+  50% {
+    box-shadow: 0 0 calc(var(--power) * 12px) calc(var(--power) * 2px) rgba(150, 255, 80, calc(var(--power) * 0.2));
+  }
+}

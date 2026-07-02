@@ -1,0 +1,26 @@
+<div id="reactor" <%- locals.hide ? 'hide="' + hide + '"' : '' %>>
+  <%- include("box", { w: 2.2, l: 2.2, h: 2.2, x: 2.4, y: 2, z: 2.9, c: "case" }) %>
+
+  <div class="cuboid box" w="0.1" l="0.1" h="0.1" x="3.45" y="3" z="4">
+    <div class="atom">
+      <% for (let i = 0; i < 3; i++) { %>
+        <div class="ring">
+          <% for (let e = 0; e < 6; e++) { %>
+            <% size = Math.random() * (0.16 - 0.1) + 0.1; %>
+            <div class="electron">
+              <%- include("box", { w: size, l: size, h: size, x: 0, y: 0, z: 0 }) %>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <%- include("box", { w: 3.4, l: 2.8, h: 1, x: 1.8, y: 0, z: 2.2 }) %>
+  <%- include("box", { w: 3.4, l: 2.2, h: 1, x: 1.8, y: 1, z: 2.8 }) %>
+  <%- include("box", { w: 1.2, l: 0.5, h: 0.5, x: 0.6, y: 1.2, z: 3.6 }) %>
+  <%- include("box", { w: 0.5, l: 0.5, h: 1.2, x: 0.6, y: 0, z: 3.6 }) %>
+  <%- include("box", { w: 1.2, l: 0.5, h: 0.5, x: 5.2, y: 1.2, z: 3.6 }) %>
+  <%- include("box", { w: 0.5, l: 0.5, h: 1.2, x: 5.9, y: 0, z: 3.6 }) %>
+  <%- include("tri", { id: "reactor-console", w: 3.4, l: 0.6, h: 1, x: 1.8, y: 1, z: 2.2, flipy: true }) %>
+</div>
