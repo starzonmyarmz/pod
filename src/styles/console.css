@@ -1,0 +1,25 @@
+#console {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+
+  > label {
+    display: block;
+    pointer-events: auto;
+    transform-style: preserve-3d;
+  }
+}
+
+:has(#console-zoom:checked) {
+  #cockpit {
+    transform: rotateX(-32deg) scale(2.1) translateZ(calc(2 * var(--ft)));
+    transform-origin: calc(3.5 * var(--ft)) calc(5.1 * var(--ft))
+      calc(-2.25 * var(--ft));
+  }
+
+  #chair,
+  #gizmo {
+    display: none;
+  }
+}
