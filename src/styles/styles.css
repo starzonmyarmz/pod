@@ -38,15 +38,6 @@
   background-size: cover;
 }
 
-#lockers .face {
-  background-blend-mode: soft-light;
-  background-color: var(--wall-color, var(--machine-gray));
-  background-image: url(../images/texture_2.png);
-  background-position: 80% 20%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 #top-bed .face,
 #bottom-bed .face {
   background-blend-mode: soft-light;
@@ -93,36 +84,6 @@
   background-position: 60% 40%;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#console .face {
-  background-blend-mode: soft-light;
-  background-color: color-mix(in display-p3, black 15%, var(--slate));
-  background-image: url(../images/texture_3.png);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#console-top .face {
-  background-blend-mode: soft-light, soft-light;
-  background-color: color-mix(
-    in display-p3,
-    var(--slate) 60%,
-    var(--term-orange)
-  );
-  background-image:
-    radial-gradient(
-      ellipse 60% 40% at 50% 100%,
-      var(--term-green) 0%,
-      transparent 70%
-    ),
-    url(../images/texture_1.png);
-  background-position:
-    0% 0%,
-    40% 60%;
-  background-repeat: no-repeat, no-repeat;
-  background-size: auto, cover;
 }
 
 #cockpit-ceiling-corner .face {
