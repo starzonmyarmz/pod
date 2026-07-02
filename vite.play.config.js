@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import { ViteEjsPlugin } from "vite-plugin-ejs";
+import { defineConfig } from "vite"
+import { ViteEjsPlugin } from "vite-plugin-ejs"
 
 // Root stays at the repo root (not "play") so play/index.html can reference
 // ../src/styles/*.css and ../src/images/* via plain root-relative URLs
@@ -19,13 +19,13 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url === "/") {
-            res.writeHead(302, { Location: "/play/" });
-            res.end();
-            return;
+            res.writeHead(302, { Location: "/play/" })
+            res.end()
+            return
           }
-          next();
-        });
+          next()
+        })
       },
     },
   ],
-});
+})

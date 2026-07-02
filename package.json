@@ -9,7 +9,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "css:sort": "stylelint \"src/**/*.css\" --fix",
-    "css:check": "stylelint \"src/**/*.css\""
+    "css:check": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/starzonmyarmz/pod#readme",
   "devDependencies": {
+    "prettier": "^3.8.4",
     "stylelint": "^17.13.0",
     "stylelint-order": "^8.1.1",
     "vite": "^8.0.16",
