@@ -36,8 +36,8 @@
      it back down by h/2 (screen +Y is toward the floor) to keep y the floor
      height it rests on. */
   --depth: if(
-    style(--_flat: notset): if(style(--_along: notset): 0px; else: var(--w));
-    else: var(--h)
+    style(--_flat: notset): if(style(--_along: notset): 0px; else: var(--w)) ;
+      else: var(--h)
   );
   --shift: if(style(--_along: notset): 0px; else: calc(var(--w) / -2));
   --lift: if(style(--_flat: notset): 0px; else: calc(var(--h) / 2));

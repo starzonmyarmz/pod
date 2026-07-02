@@ -32,6 +32,8 @@ larger than the room so it reads as a lip under the walls.
 /* Skin — deck plating (top surface) */
 
 .floor > .top {
+
+  background-blend-mode: soft-light;
   background-color: var(--corridor-shadow);
   background-image:
     url(../images/texture_2.png),
@@ -54,8 +56,6 @@ larger than the room so it reads as a lip under the walls.
       rgba(0, 0, 0, 0.35) 3px,
       rgba(0, 0, 0, 0.35) 6px
     );
-
-  background-blend-mode: soft-light;
-  background-size: cover, auto, auto, auto, auto, auto;
   background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+  background-size: cover, auto, auto, auto, auto, auto;
 }

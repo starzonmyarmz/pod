@@ -12,7 +12,6 @@
 
   > input:checked + label > .locker-door {
     rotate: y -45deg;
-
   }
 
   .locker-door {

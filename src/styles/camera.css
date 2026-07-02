@@ -116,36 +116,42 @@
 /* From quarters to engineering transitions */
 
 :has(#view-starboard:checked):has(#from-quarters-to-engineering:checked) {
-  #quarters-container {  filter: blur(var(--camera-blur));
+  #quarters-container {
+    filter: blur(var(--camera-blur));
     transform: translateX(var(--camera-transition-side));
   }
 
   #engineering-container {
-    @starting-style {  filter: blur(var(--camera-blur));
+    @starting-style {
+      filter: blur(var(--camera-blur));
       transform: translateX(calc(-1 * var(--camera-transition-side)));
     }
   }
 }
 
 :has(#view-port:checked):has(#from-quarters-to-engineering:checked) {
-  #quarters-container {  filter: blur(var(--camera-blur));
+  #quarters-container {
+    filter: blur(var(--camera-blur));
     transform: translateX(calc(-1 * var(--camera-transition-side)));
   }
 
   #engineering-container {
-    @starting-style {  filter: blur(var(--camera-blur));
+    @starting-style {
+      filter: blur(var(--camera-blur));
       transform: translateX(var(--camera-transition-side));
     }
   }
 }
 
 :has(#view-bow:checked):has(#from-quarters-to-engineering:checked) {
-  #quarters-container {  filter: blur(var(--camera-blur));
+  #quarters-container {
+    filter: blur(var(--camera-blur));
     transform: scale(calc(1 + var(--camera-transition-face)));
   }
 
   #engineering-container {
-    @starting-style {  filter: blur(var(--camera-blur));
+    @starting-style {
+      filter: blur(var(--camera-blur));
       transform: scale(calc(1 - var(--camera-transition-face)));
     }
   }

@@ -29,7 +29,7 @@
   --power: 2;
   --atom-duration: 5s;
   --electron-duration: 2s;
-  --spin-duration: .7s;
+  --spin-duration: 0.7s;
   --glow-duration: 1.5s;
 
   .electron {
@@ -45,13 +45,16 @@
 }
 
 .ring {
-  transform: rotateY(calc(360deg / sibling-count() * (sibling-index() - 1))) rotateX(25deg);
+  transform: rotateY(calc(360deg / sibling-count() * (sibling-index() - 1)))
+    rotateX(25deg);
   transform-style: preserve-3d;
 }
 
 .electron {
   animation: electron var(--electron-duration) linear infinite;
-  animation-delay: calc(-1 * var(--electron-duration) / sibling-count() * (sibling-index() - 1));
+  animation-delay: calc(
+    -1 * var(--electron-duration) / sibling-count() * (sibling-index() - 1)
+  );
   animation-play-state: var(--power-state);
   offset-path: circle(20px at 50% 50%);
   transform-style: preserve-3d;
@@ -112,21 +115,26 @@
 .case > .face {
   animation: glow-pulse var(--glow-duration) infinite;
   animation-play-state: var(--power-state);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.18),
-    rgba(180, 220, 255, 0.04) 40%,
-    rgba(180, 220, 255, 0.14)
-  ), rgb(120 255 80 / calc(var(--power) * 0.05));
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(180, 220, 255, 0.04) 40%,
+      rgba(180, 220, 255, 0.14)
+    ),
+    rgb(120 255 80 / calc(var(--power) * 0.05));
   border: 1px solid rgba(200, 230, 255, 0.35);
   transition: background 0.5s;
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 calc(var(--power) * 8px) calc(var(--power) * 1px) rgba(150, 255, 80, calc(var(--power) * 0.1));
+  0%,
+  100% {
+    box-shadow: 0 0 calc(var(--power) * 8px) calc(var(--power) * 1px)
+      rgba(150, 255, 80, calc(var(--power) * 0.1));
   }
   50% {
-    box-shadow: 0 0 calc(var(--power) * 12px) calc(var(--power) * 2px) rgba(150, 255, 80, calc(var(--power) * 0.2));
+    box-shadow: 0 0 calc(var(--power) * 12px) calc(var(--power) * 2px)
+      rgba(150, 255, 80, calc(var(--power) * 0.2));
   }
 }

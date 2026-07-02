@@ -123,11 +123,11 @@ The _Nostromo_ is a **Lockmart CM-88B Bison** space-tug, towing a massive refine
 └───────────────────────────────────────────────────────┘
 ```
 
-| Room        | Purpose                             | Design Character                                                             |
-| ----------- | ----------------------------------- | ---------------------------------------------------------------------------- |
-| **Cockpit** | Control bridge with flight consoles | Low ceiling, angled ceiling corner, dense console banks, the captain's chair |
+| Room            | Purpose                             | Design Character                                                             |
+| --------------- | ----------------------------------- | ---------------------------------------------------------------------------- |
+| **Cockpit**     | Control bridge with flight consoles | Low ceiling, angled ceiling corner, dense console banks, the captain's chair |
 | **Quarters**    | Crew living/sleeping area           | Bunks (top/bottom), lockers, partition wall, corridor-like feel              |
-| **Engineering** | Engine room                     | Massive engine block, utilitarian, hot, cramped                              |
+| **Engineering** | Engine room                         | Massive engine block, utilitarian, hot, cramped                              |
 
 ### Spatial Principles
 

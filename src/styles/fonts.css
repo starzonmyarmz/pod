@@ -1,41 +1,41 @@
 @font-face {
+  font-display: swap;
   font-family: "Orbitron";
-  src: url("../fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
   font-weight: 400 900;
-  font-display: swap;
+  src: url("../fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
+  font-display: swap;
   font-family: "Hind";
-  src: url("../fonts/Hind-Light.ttf") format("truetype");
   font-weight: 300;
-  font-display: swap;
+  src: url("../fonts/Hind-Light.ttf") format("truetype");
 }
 
 @font-face {
+  font-display: swap;
   font-family: "Hind";
-  src: url("../fonts/Hind-Regular.ttf") format("truetype");
   font-weight: 400;
-  font-display: swap;
+  src: url("../fonts/Hind-Regular.ttf") format("truetype");
 }
 
 @font-face {
+  font-display: swap;
   font-family: "Hind";
-  src: url("../fonts/Hind-Medium.ttf") format("truetype");
   font-weight: 500;
-  font-display: swap;
+  src: url("../fonts/Hind-Medium.ttf") format("truetype");
 }
 
 @font-face {
+  font-display: swap;
   font-family: "Hind";
-  src: url("../fonts/Hind-SemiBold.ttf") format("truetype");
   font-weight: 600;
-  font-display: swap;
+  src: url("../fonts/Hind-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Hind";
-  src: url("../fonts/Hind-Bold.ttf") format("truetype");
-  font-weight: 700;
   font-display: swap;
+  font-family: "Hind";
+  font-weight: 700;
+  src: url("../fonts/Hind-Bold.ttf") format("truetype");
 }
