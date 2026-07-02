@@ -18,24 +18,58 @@ larger than the room so it reads as a lip under the walls.
   pointer-events: none;
 }
 
-/* Skin — edges */
+/* Skin — edges (cutaway): deck cap continues the top plate, void below shows pipes/wires */
 
-.floor > .front,
-.floor > .back,
-.floor > .left,
-.floor > .right {
-  background: var(--slate) url(../images/texture_1.png) no-repeat;
-  background-blend-mode: soft-light;
-  background-size: cover;
+/* Bow/stern (front/back) show no conduits — just the bare cutaway void.
+   Port/starboard look down the conduits' length: their real cut ends poke
+   through here (see box.ejs pipe instances in each room template). Neither
+   gets a background — same bug as .top had (see history): any opaque/grain
+   fill hides the pipe's length receding into the room, leaving only the
+   flush end-cap visible and making it read as a flat decal instead of a 3D
+   object. */
+
+.floor > .front::before,
+.floor > .back::before,
+.floor > .left::before,
+.floor > .right::before {
+  content: "";
+  height: 20%;
+  inset: 0 0 auto 0;
+  position: absolute;
 }
 
-/* Skin — deck plating (top surface) */
+/* Front/back look across the slats: many bars end-on. */
+
+.floor > .front::before,
+.floor > .back::before {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--corridor-shadow) 0 10px,
+    transparent 10px 12px
+  );
+  background-repeat: round;
+}
+
+.floor > .back::before {
+  scale: -1;
+}
+
+/* Port/starboard look down a slat's length: one continuous bar. */
+
+.floor > .left::before,
+.floor > .right::before {
+  background-color: var(--corridor-shadow);
+}
+
+/* Skin — deck plating (top surface): slotted grate over pipes/wires */
 
 .floor > .top {
-
-  background-blend-mode: soft-light;
-  background-color: var(--corridor-shadow);
+  background-blend-mode: normal, soft-light, normal, normal, normal, normal;
   background-image:
+    /* Trims the crosshatch's jagged diagonal tips into a clean edge right at
+       the seam with the cap below — a diagonal pattern meeting a straight
+       boundary always saws unless something caps it off. */
+    linear-gradient(to top, var(--corridor-shadow) 0 4px, transparent 4px 100%),
     url(../images/texture_2.png),
     radial-gradient(
       ellipse 70% 50% at 50% 30%,
@@ -55,7 +89,73 @@ larger than the room so it reads as a lip under the walls.
       transparent 3px,
       rgba(0, 0, 0, 0.35) 3px,
       rgba(0, 0, 0, 0.35) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--corridor-shadow) 0 10px,
+      transparent 10px 12px
     );
-  background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
-  background-size: cover, auto, auto, auto, auto, auto;
+  background-repeat: no-repeat, no-repeat, no-repeat, round, round, round;
+  background-size:
+    100% 100%,
+    cover,
+    auto,
+    auto,
+    auto,
+    auto;
+}
+
+/* Real pipe/wire geometry (box.ejs instances placed in each room template,
+   crisscrossing under the deck) — glimpsed through the grate slots above and
+   cut off at the cutaways. One flat color per pipe (a gradient across a mark
+   this thin just blurs to white — see floor.css history) with per-face
+   brightness shading for form, same convention as .electron in reactor.css. */
+
+.pipe > .face {
+  --face-shade: 1;
+  filter: brightness(var(--face-shade));
+}
+
+.pipe > .top {
+  --face-shade: 1.3;
+}
+
+.pipe > .front {
+  --face-shade: 1.1;
+}
+
+.pipe > .right {
+  --face-shade: 0.9;
+}
+
+.pipe > .left {
+  --face-shade: 0.8;
+}
+
+.pipe > .back {
+  --face-shade: 0.7;
+}
+
+.pipe-gray > .face {
+  background: var(--machine-gray);
+}
+
+.pipe-cyan > .face {
+  background: var(--cyber-teal);
+}
+
+.pipe-red > .face {
+  background: var(--stencil-red);
+}
+
+.pipe-yellow > .face {
+  background: var(--term-yellow);
+}
+
+.pipe-orange > .face {
+  background: var(--term-orange);
+}
+
+.pipe-green > .face {
+  background: var(--term-green);
 }
