@@ -29,15 +29,6 @@
   visibility: hidden;
 }
 
-#partition .face {
-  background-blend-mode: soft-light;
-  background-color: var(--wall-color, var(--machine-gray));
-  background-image: url(../images/texture_1.png);
-  background-position: 20% 80%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 #cockpit-ceiling-corner .face {
   background: var(--machine-gray);
 }

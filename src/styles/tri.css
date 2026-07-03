@@ -46,14 +46,18 @@ Wall textures are opt-in via the composable .metal class (surfaces.css).
      port↔starboard. Also shifts the depth anchor and lateral offset. */
   --_along: attr(along, notset);
   --spin: if(style(--_along: notset): 0deg; else: 90deg);
-  --_along-depth: if(style(--_along: notset): var(--l); else: var(--w));
-  --_along-shift: if(style(--_along: notset): 0px; else: calc((var(--l) - var(--w)) / 2));
+  --_along-depth: if(style(--_along: notset): var(--l) ; else: var(--w));
+  --_along-shift: if(
+    style(--_along: notset): 0px; else: calc((var(--l) - var(--w)) / 2)
+  );
 
   bottom: var(--y);
   left: var(--x);
-  transform: translateZ(calc(var(--_along-depth) / 2 - var(--room-l) / 2 + var(--z)))
-    translateX(var(--_along-shift)) rotateX(var(--flip-x)) rotateY(var(--flip-y))
-    rotateY(var(--spin)) scaleX(var(--mirror));
+  transform: translateZ(
+      calc(var(--_along-depth) / 2 - var(--room-l) / 2 + var(--z))
+    )
+    translateX(var(--_along-shift)) rotateX(var(--flip-x))
+    rotateY(var(--flip-y)) rotateY(var(--spin)) scaleX(var(--mirror));
 }
 
 /* Neutral default skin; wear .metal to apply the hull look. */
