@@ -1,11 +1,11 @@
-<div id="<%= id %>" class="locker" <%- locals.hide ? 'hide="' + hide + '"' : '' %>>
-  <%- include("box", { c: 'locker-left', w: 2, l: 0.2, h: 7, x: x, y: y, z: z, hide: locals.hide }) %>
-  <%- include("box", { c: 'locker-right', w: 2, l: 0.2, h: 7, x: x, y: y, z: z + 2, hide: locals.hide }) %>
-  <%- include("box", { c: 'locker-top', w: 2, l: 2.2, h: 0.2, x: x, y: y + 6.8, z: z, hide: locals.hide }) %>
-  <%- include("box", { c: 'locker-bottom', w: 2, l: 2.2, h: 0.2, x: x, y: 0, z: z, hide: locals.hide }) %>
+<div id="<%= id %>" class="locker">
+  <%- include("box", { id: undefined, c: 'locker-left', w: 2, l: 0.2, h: 7, x: x, y: y, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: 'locker-right', w: 2, l: 0.2, h: 7, x: x, y: y, z: z + 2, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: 'locker-top', w: 2, l: 2.2, h: 0.2, x: x, y: y + 6.8, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: 'locker-bottom', w: 2, l: 2.2, h: 0.2, x: x, y: 0, z: z, hide: locals.hide }) %>
 
   <input type="checkbox" id="<%= id %>-door">
   <label for="<%= id %>-door">
-    <%- include("box", { c: 'locker-door', w: 0.1, l: 2, h: 6.8, x: x, y: 0, z: z + 0.1, hide: locals.hide }) %>
+    <%- include("box", { id: undefined, c: 'locker-door', w: 0.1, l: 2, h: 6.8, x: x, y: 0, z: z + 0.1, hide: locals.hide }) %>
   </label>
 </div>
