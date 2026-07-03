@@ -22,25 +22,27 @@ The skin (textured metal hull) and base treatments come from the composable
 
 .wall.port {
   --w: var(--wall-thickness);
-  --l: var(--room-l);
+  --l: calc(var(--room-l) + 2 * var(--wall-thickness));
   left: calc(-1 * var(--wall-thickness));
 }
 
 .wall.starboard {
   --w: var(--wall-thickness);
-  --l: var(--room-l);
+  --l: calc(var(--room-l) + 2 * var(--wall-thickness));
   left: var(--room-w);
 }
 
 .wall.bow {
-  --w: var(--room-w);
+  --w: calc(var(--room-w) + 2 * var(--wall-thickness));
   --l: var(--wall-thickness);
+  left: calc(-1 * var(--wall-thickness));
   transform: translateZ(calc(var(--wall-thickness) / -2 - var(--room-l) / 2));
 }
 
 .wall.stern {
-  --w: var(--room-w);
+  --w: calc(var(--room-w) + 2 * var(--wall-thickness));
   --l: var(--wall-thickness);
+  left: calc(-1 * var(--wall-thickness));
   transform: translateZ(calc(var(--wall-thickness) / 2 + var(--room-l) / 2));
 }
 
