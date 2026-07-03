@@ -27,9 +27,11 @@
     <%- include("cubby", { x: 0, y: 1, z: 6.5, hide: "port" }) %>
     <%- include("cubby", { x: 0, y: 4, z: 6.5, hide: "port" }) %>
 
-    <%- include("box", { id: "partition", w: 3, l: 1.5, h: 7, x: 0, y: 0, z: 6.5, hide: "port" }) %>
+    <input type="checkbox" name="room" id="from-quarters-to-sub" />
+    <label for="from-quarters-to-sub">
+      <%- include("plane", { id: "hatch", w: 3, h: 3, x: 4.5, y: 0.1, z: 8, flat: true }) %>
+    </label>
 
-    <%- include("plane", { id: "floor-decal", w: 3, h: 3, x: 4.5, y: 0.1, z: 8, flat: true }) %>
 
     <%- include("locker", { id: "locker-1", x: 9, y: 0, z: 0, hide: "starboard" }) %>
     <%- include("locker", { id: "locker-2", x: 9, y: 0, z: 2.2, hide: "starboard" }) %>
