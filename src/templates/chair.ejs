@@ -1,0 +1,17 @@
+<div id="<%= id %>" class="chair">
+  <%- include("box", { id: undefined, c: "chair-base", w: 1.7, l: 1.7, h: 0.1, x: x + 0.15, y: y, z: z + 0.15, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "chair-column", w: 0.4, l: 0.4, h: 0.4, x: x + 0.8, y: y + 0.1, z: z + 0.8, hide: locals.hide }) %>
+
+  <%- include("box", { id: undefined, c: "chair-seat", w: 2, l: 2, h: 1, x: x, y: y + 0.5, z: z, hide: locals.hide }) %>
+
+  <%- include("box", { id: undefined, c: "chair-bolster", w: 0.22, l: 2, h: 0.35, x: x, y: y + 1.5, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "chair-bolster", w: 0.22, l: 2, h: 0.35, x: x + 1.78, y: y + 1.5, z: z, hide: locals.hide }) %>
+
+  <%- include("box", { id: undefined, c: "chair-back", w: 2, l: 0.2, h: 1.95, x: x, y: y + 1.5, z: z, hide: locals.hide }) %>
+
+  <%- include("box", { id: undefined, c: "chair-bolster", w: 0.22, l: 0.9, h: 1.95, x: x, y: y + 1.5, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "chair-bolster", w: 0.22, l: 0.9, h: 1.95, x: x + 1.78, y: y + 1.5, z: z, hide: locals.hide }) %>
+
+  <%- include("box", { id: undefined, c: "chair-arm", w: 0.22, l: 1.1, h: 0.18, x: x, y: y + 2, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "chair-arm", w: 0.22, l: 1.1, h: 0.18, x: x + 1.78, y: y + 2, z: z, hide: locals.hide }) %>
+</div>

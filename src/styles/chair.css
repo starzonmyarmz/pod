@@ -1,0 +1,83 @@
+/*
+
+chair — swivel pedestal (base + column) under a bucket seat (seat/back with
+side bolsters) and armrests, all cuboids (see cuboid.css for geometry). Back
+panel sits at the object's z origin (the bow-facing edge); the seat's open
+front faces +z, toward the stern — so the chair is placed facing whatever is
+at higher z.
+
+*/
+
+.chair {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.chair-base > .face,
+.chair-column > .face,
+.chair-seat > .face,
+.chair-back > .face,
+.chair-bolster > .face,
+.chair-arm > .face {
+  --face-shade: 1;
+  filter: brightness(var(--face-shade));
+}
+
+.chair-base > .face,
+.chair-column > .face,
+.chair-arm > .face {
+  background: var(--slate);
+}
+
+.chair-seat > .face,
+.chair-back > .face,
+.chair-bolster > .face {
+  background: var(--utility-green);
+}
+
+.chair-base > .top,
+.chair-column > .top,
+.chair-seat > .top,
+.chair-back > .top,
+.chair-bolster > .top,
+.chair-arm > .top {
+  --face-shade: 1.3;
+}
+
+.chair-base > .front,
+.chair-column > .front,
+.chair-seat > .front,
+.chair-back > .front,
+.chair-bolster > .front,
+.chair-arm > .front {
+  --face-shade: 1.1;
+}
+
+.chair-base > .right,
+.chair-column > .right,
+.chair-seat > .right,
+.chair-back > .right,
+.chair-bolster > .right,
+.chair-arm > .right {
+  --face-shade: 0.9;
+}
+
+.chair-base > .left,
+.chair-column > .left,
+.chair-seat > .left,
+.chair-back > .left,
+.chair-bolster > .left,
+.chair-arm > .left {
+  --face-shade: 0.8;
+}
+
+.chair-base > .back,
+.chair-column > .back,
+.chair-seat > .back,
+.chair-back > .back,
+.chair-bolster > .back,
+.chair-arm > .back {
+  --face-shade: 0.7;
+}
