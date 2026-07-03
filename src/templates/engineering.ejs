@@ -6,20 +6,12 @@
     <%- include("box", { w: 7.9, l: 0.12, h: 0.12, x: -0.45, y: -0.28, z: 0.9, c: "pipe pipe-cyan" }) %>
     <%- include("box", { w: 7.9, l: 0.1, h: 0.1, x: -0.45, y: -0.28, z: 1.5, c: "pipe pipe-green" }) %>
     <%- include("box", { w: 7.9, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 3.5, c: "pipe pipe-red" }) %>
-    <%- include("box", { w: 7.9, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 3.8, c: "pipe pipe-yellow" }) %>
+    <%- include("box", { w: 7.9, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 4.5, c: "pipe pipe-yellow" }) %>
 
     <%- include("box", { w: 0.15, l: 5.9, h: 0.15, x: 4, y: -0.45, z: -0.45, c: "pipe pipe-orange" }) %>
     <%- include("box", { w: 0.12, l: 5.9, h: 0.12, x: 4.35, y: -0.44, z: -0.45, c: "pipe pipe-green" }) %>
     <%- include("box", { w: 0.05, l: 5.9, h: 0.05, x: 4.65, y: -0.43, z: -0.45, c: "pipe pipe-gray" }) %>
     <%- include("box", { w: 0.05, l: 5.9, h: 0.05, x: 1.5, y: -0.45, z: -0.45, c: "pipe pipe-red" }) %>
-
-    <!-- Reactor feed lines: continue the reactor's own 0.5x0.5 leg boxes
-         (see reactor.ejs, x: 0.6/5.9, z: 3.6) down into the floor void, then
-         run toward the bow, joining the crisscross toward quarters. -->
-    <%- include("box", { w: 0.1, l: 0.1, h: 0.32, x: 0.85, y: -0.32, z: 3.65, c: "pipe pipe-cyan" }) %>
-    <%- include("box", { w: 0.1, l: 4.2, h: 0.1, x: 0.85, y: -0.45, z: -0.45, c: "pipe pipe-cyan" }) %>
-    <%- include("box", { w: 0.1, l: 0.1, h: 0.32, x: 6.15, y: -0.32, z: 3.65, c: "pipe pipe-orange" }) %>
-    <%- include("box", { w: 0.1, l: 4.2, h: 0.1, x: 6.15, y: -0.44, z: -0.45, c: "pipe pipe-orange" }) %>
 
     <%- include("wall", { side: "port" }) %>
     <%- include("wall", { side: "starboard" }) %>
