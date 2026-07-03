@@ -38,54 +38,6 @@
   background-size: cover;
 }
 
-#top-bed .face,
-#bottom-bed .face {
-  background-blend-mode: soft-light;
-  background-color: color-mix(
-    in display-p3,
-    var(--machine-gray) 92%,
-    var(--term-yellow)
-  );
-  background-image: url(../images/texture_1.png);
-  background-position: 60% 40%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#top-mattress .face,
-#bottom-mattress .face {
-  background-blend-mode: soft-light;
-  background-color: color-mix(in display-p3, var(--utility-green) 88%, black);
-  background-image: url(../images/texture_1.png);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#top-pillow .face,
-#bottom-pillow .face {
-  background-blend-mode: soft-light;
-  background-color: color-mix(
-    in display-p3,
-    var(--white) 85%,
-    var(--term-yellow)
-  );
-  background-image: url(../images/texture_1.png);
-  background-position: 30% 30%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#top-bed .bottom,
-#bottom-bed .bottom {
-  background-blend-mode: soft-light;
-  background-color: var(--wall-color, var(--machine-gray));
-  background-image: url(../images/texture_1.png);
-  background-position: 60% 40%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 #cockpit-ceiling-corner .face {
   background: var(--machine-gray);
 }
@@ -101,11 +53,27 @@
   outline: 1px solid rgb(0 0 0 /0.2);
 }
 
-#floor-decal {
+#from-quarters-to-sub + label {
+  bottom: 0;
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+#hatch {
   background: none;
   border: 2px solid rgb(0 0 0 / 0.25);
   border-radius: calc(0.4 * var(--ft));
   corner-shape: bevel;
+}
+
+#from-quarters-to-sub + label:hover #hatch {
+  background: rgb(0 0 0 / 0.4);
+}
+
+#from-quarters-to-sub:checked + label #hatch {
+  background: #000;
 }
 
 .object {
