@@ -5,12 +5,38 @@
     transform-style: preserve-3d;
   }
 
-  > input:checked + label > .locker-door {
-    rotate: y -45deg;
-  }
-
   .locker-door {
-    transform-origin: 0 50% calc(var(--l) / -2);
     transition: rotate 0.5s;
   }
+}
+
+/* Each facing hinges on the edge nearer its room-relative "left" and swings
+   outward, away from the cabinet interior. */
+
+.locker-door.axis-x.port {
+  transform-origin: 0 50% calc(var(--l) / -2);
+}
+input:checked + label > .locker-door.axis-x.port {
+  rotate: y -45deg;
+}
+
+.locker-door.axis-x.starboard {
+  transform-origin: 0 50% calc(var(--l) / -2);
+}
+input:checked + label > .locker-door.axis-x.starboard {
+  rotate: y 45deg;
+}
+
+.locker-door.axis-z.bow {
+  transform-origin: 0 50% 0;
+}
+input:checked + label > .locker-door.axis-z.bow {
+  rotate: y 45deg;
+}
+
+.locker-door.axis-z.stern {
+  transform-origin: 0 50% 0;
+}
+input:checked + label > .locker-door.axis-z.stern {
+  rotate: y -45deg;
 }

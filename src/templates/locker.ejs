@@ -1,11 +1,34 @@
+<%
+  var t = 0.1;
+  var facing = locals.facing || "port";
+  var axisX = facing === "port" || facing === "starboard";
+  var openX = facing === "starboard" ? x + w - t : x;
+  var backX = facing === "starboard" ? x : x + w - t;
+  var openZ = facing === "stern" ? z + l - t : z;
+  var backZ = facing === "stern" ? z : z + l - t;
+%>
 <div class="object locker">
-  <%- include("box", { id: undefined, w: 3, l: 0.2, h: 7, x: x, y: y, z: z, hide: locals.hide }) %>
-  <%- include("box", { id: undefined, w: 3, l: 0.2, h: 7, x: x, y: y, z: z + 2, hide: locals.hide }) %>
-  <%- include("box", { id: undefined, w: 3, l: 2.2, h: 0.2, x: x, y: y + 6.8, z: z, hide: locals.hide }) %>
-  <%- include("box", { id: undefined, w: 3, l: 2.2, h: 0.2, x: x, y: 0, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: w, l: l, h: t, x: x, y: y, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: w, l: l, h: t, x: x, y: y + h - t, z: z, hide: locals.hide }) %>
 
-  <input type="checkbox" id="<%= id %>-door">
+  <% if (axisX) { %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: w, l: t, h: h, x: x, y: y, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: w, l: t, h: h, x: x, y: y, z: z + l - t, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: t, l: l, h: h, x: backX, y: y, z: z, hide: locals.hide }) %>
+  <% } else { %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: t, l: l, h: h, x: x, y: y, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: t, l: l, h: h, x: x + w - t, y: y, z: z, hide: locals.hide }) %>
+  <%- include("box", { id: undefined, c: "locker-wall", w: w, l: t, h: h, x: x, y: y, z: backZ, hide: locals.hide }) %>
+  <% } %>
+
+  <% if (locals.door !== false) { %>
+  <input type="checkbox" id="<%= id %>-door" />
   <label for="<%= id %>-door">
-    <%- include("box", { id: undefined, c: 'locker-door', w: 0.1, l: 2, h: 6.8, x: x, y: 0, z: z + 0.1, hide: locals.hide }) %>
+    <% if (axisX) { %>
+    <%- include("box", { id: undefined, c: "locker-door axis-x " + facing, w: t, l: l, h: h, x: openX, y: y, z: z, hide: locals.hide }) %>
+    <% } else { %>
+    <%- include("box", { id: undefined, c: "locker-door axis-z " + facing, w: w, l: t, h: h, x: x, y: y, z: openZ, hide: locals.hide }) %>
+    <% } %>
   </label>
+  <% } %>
 </div>
