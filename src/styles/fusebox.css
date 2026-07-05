@@ -1,0 +1,40 @@
+.fuse > .face {
+  --face-shade: 1;
+  filter: brightness(var(--face-shade));
+}
+
+.fuse > .top {
+  --face-shade: 1.3;
+}
+
+.fuse > .front {
+  --face-shade: 1.1;
+}
+
+.fuse > .right {
+  --face-shade: 0.9;
+}
+
+.fuse > .left {
+  --face-shade: 0.8;
+}
+
+.fuse > .back {
+  --face-shade: 0.7;
+}
+
+.fuse-red > .face {
+  background: var(--stencil-red);
+}
+
+.fuse-yellow > .face {
+  background: var(--term-yellow);
+}
+
+.fuse-green > .face {
+  background: var(--term-green);
+}
+
+.fuse-gray > .face {
+  background: var(--machine-gray);
+}

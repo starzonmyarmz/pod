@@ -20,6 +20,20 @@
 
     <%- include("reactor", { hide: "stern" }) %>
 
+    <%- include("locker", { id: "engineering-fusebox", w: 0.4, h: 1.8, l: 1.2, x: 6.6, y: 3, z: 1, hide: "starboard" }) %>
+
+    <%- include("box", { id: undefined, c: "fuse fuse-red", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 4, z: 1.15, hide: "starboard" }) %>
+    <%- include("box", { id: undefined, c: "fuse fuse-yellow", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 4, z: 1.45, hide: "starboard" }) %>
+    <%- include("box", { id: undefined, c: "fuse fuse-green", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 4, z: 1.75, hide: "starboard" }) %>
+    <%- include("box", { id: undefined, c: "fuse fuse-green", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 3.3, z: 1.15, hide: "starboard" }) %>
+    <%- include("box", { id: undefined, c: "fuse fuse-gray", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 3.3, z: 1.45, hide: "starboard" }) %>
+    <%- include("box", { id: undefined, c: "fuse fuse-red", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 3.3, z: 1.75, hide: "starboard" }) %>
+
+    <%- include("box", { w: 0.05, l: 0.05, h: 0.7, x: 6.65, y: 2.3, z: 3.85, c: "pipe pipe-red" }) %>
+    <%- include("box", { w: 0.55, l: 0.05, h: 0.05, x: 6.1, y: 2.3, z: 3.85, c: "pipe pipe-red" }) %>
+    <%- include("box", { w: 0.05, l: 0.05, h: 0.7, x: 6.75, y: 2.3, z: 4.05, c: "pipe pipe-cyan" }) %>
+    <%- include("box", { w: 0.65, l: 0.05, h: 0.05, x: 6.1, y: 2.3, z: 4.05, c: "pipe pipe-cyan" }) %>
+
     <%- include("door", { id: "from-engineering-to-quarters", tag: "A2", hide: "bow" }) %>
   </div>
 </div>
