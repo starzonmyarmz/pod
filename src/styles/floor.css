@@ -63,6 +63,16 @@ larger than the room so it reads as a lip under the walls.
 
 /* Skin — deck plating (top surface): slotted grate over pipes/wires */
 
+.floor > .top::after {
+  background: darkcyan;
+  box-shadow: 0 0 var(--ft) var(--ft) darkcyan;
+  content: "";
+  inset: calc(1.25 * var(--ft));
+  opacity: 0.1;
+  position: absolute;
+  transform: translateZ(calc(-0.5 * var(--ft)));
+}
+
 .floor > .top {
   background-blend-mode: normal, soft-light, normal, normal, normal, normal;
   background-image:
@@ -103,6 +113,7 @@ larger than the room so it reads as a lip under the walls.
     auto,
     auto,
     auto;
+  transform-style: preserve-3d;
 }
 
 /* Real pipe/wire geometry (box.ejs instances placed in each room template,
