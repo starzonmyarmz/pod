@@ -2,16 +2,16 @@
   <div id="engineering" class="room" w="7" l="5" h="6">
     <%- include("floor") %>
 
-    <%- include("box", { w: 7.9, l: 0.15, h: 0.15, x: -0.45, y: -0.28, z: 0.6, c: "pipe pipe-gray" }) %>
-    <%- include("box", { w: 7.9, l: 0.12, h: 0.12, x: -0.45, y: -0.28, z: 0.9, c: "pipe pipe-cyan" }) %>
-    <%- include("box", { w: 7.9, l: 0.1, h: 0.1, x: -0.45, y: -0.28, z: 1.5, c: "pipe pipe-green" }) %>
-    <%- include("box", { w: 7.9, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 3.5, c: "pipe pipe-red" }) %>
-    <%- include("box", { w: 7.9, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 4.5, c: "pipe pipe-yellow" }) %>
+    <%- include("pipe", { d: 0.15, l: 7.9, along: true, color: "white", x: -0.45, y: -0.28, z: 0.6 }) %>
+    <%- include("pipe", { d: 0.12, l: 7.9, along: true, color: "slate", x: -0.45, y: -0.28, z: 0.9 }) %>
+    <%- include("pipe", { d: 0.1, l: 7.9, along: true, color: "white", x: -0.45, y: -0.28, z: 1.5 }) %>
+    <%- include("pipe", { d: 0.05, l: 7.9, along: true, kind: "wire", color: "red", x: -0.45, y: -0.28, z: 3.5 }) %>
+    <%- include("pipe", { d: 0.05, l: 7.9, along: true, kind: "wire", color: "cyan", x: -0.45, y: -0.28, z: 4.5 }) %>
 
-    <%- include("box", { w: 0.15, l: 5.9, h: 0.15, x: 4, y: -0.45, z: -0.45, c: "pipe pipe-orange" }) %>
-    <%- include("box", { w: 0.12, l: 5.9, h: 0.12, x: 4.35, y: -0.44, z: -0.45, c: "pipe pipe-green" }) %>
-    <%- include("box", { w: 0.05, l: 5.9, h: 0.05, x: 4.65, y: -0.43, z: -0.45, c: "pipe pipe-gray" }) %>
-    <%- include("box", { w: 0.05, l: 5.9, h: 0.05, x: 1.5, y: -0.45, z: -0.45, c: "pipe pipe-red" }) %>
+    <%- include("pipe", { d: 0.15, l: 5.9, color: "slate", x: 4, y: -0.45, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.12, l: 5.9, color: "white", x: 4.35, y: -0.44, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.05, l: 5.9, kind: "wire", color: "slate", x: 4.65, y: -0.43, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.05, l: 5.9, kind: "wire", color: "red", x: 1.5, y: -0.45, z: -0.45 }) %>
 
     <%- include("wall", { side: "port" }) %>
     <%- include("wall", { side: "starboard" }) %>
@@ -29,10 +29,13 @@
     <%- include("box", { id: undefined, c: "fuse fuse-gray", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 3.3, z: 1.45, hide: "starboard" }) %>
     <%- include("box", { id: undefined, c: "fuse fuse-red", w: 0.08, l: 0.3, h: 0.5, x: 6.52, y: 3.3, z: 1.75, hide: "starboard" }) %>
 
-    <%- include("box", { w: 0.05, l: 0.05, h: 0.7, x: 6.65, y: 2.3, z: 3.85, c: "pipe pipe-red" }) %>
-    <%- include("box", { w: 0.55, l: 0.05, h: 0.05, x: 6.1, y: 2.3, z: 3.85, c: "pipe pipe-red" }) %>
-    <%- include("box", { w: 0.05, l: 0.05, h: 0.7, x: 6.75, y: 2.3, z: 4.05, c: "pipe pipe-cyan" }) %>
-    <%- include("box", { w: 0.65, l: 0.05, h: 0.05, x: 6.1, y: 2.3, z: 4.05, c: "pipe pipe-cyan" }) %>
+    <%- include("pipe", { d: 0.05, l: 2.05, vertical: true, kind: "wire", color: "red", x: 6.95, y: 0.95, z: 1.85, hide: "starboard" }) %>
+    <%- include("pipe", { d: 0.05, l: 3.15, kind: "wire", color: "red", x: 6.95, y: 0.95, z: 1.85, hide: "starboard" }) %>
+    <%- include("pipe", { d: 0.05, l: 1.8, along: true, kind: "wire", color: "red", x: 5.2, y: 0.95, z: 4.95, hide: "stern" }) %>
+
+    <%- include("pipe", { d: 0.05, l: 1.9, vertical: true, kind: "wire", color: "cyan", x: 6.95, y: 1.1, z: 2, hide: "starboard" }) %>
+    <%- include("pipe", { d: 0.05, l: 2.95, kind: "wire", color: "cyan", x: 6.95, y: 1.1, z: 2, hide: "starboard" }) %>
+    <%- include("pipe", { d: 0.05, l: 1.8, along: true, kind: "wire", color: "cyan", x: 5.2, y: 1.1, z: 4.9, hide: "stern" }) %>
 
     <%- include("door", { id: "from-engineering-to-quarters", tag: "A2", hide: "bow" }) %>
   </div>

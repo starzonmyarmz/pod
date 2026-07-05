@@ -1,0 +1,12 @@
+<%
+  const kind = locals.kind || "pipe";
+  const w = locals.along ? l : d;
+  const h = locals.vertical ? l : d;
+  const ll = locals.along || locals.vertical ? d : l;
+%>
+<%- include("box", {
+  id: locals.id,
+  c: "pipe " + kind + "-" + color + (locals.c ? " " + c : ""),
+  w, h, l: ll, x, y, z,
+  hide: locals.hide,
+}) %>

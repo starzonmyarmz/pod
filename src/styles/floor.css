@@ -147,26 +147,26 @@ larger than the room so it reads as a lip under the walls.
   --face-shade: 0.7;
 }
 
-.pipe-gray > .face {
-  background: var(--machine-gray);
+.pipe-white > .face {
+  background: var(--white);
 }
 
-.pipe-cyan > .face {
-  background: var(--cyber-teal);
+.pipe-slate > .face {
+  background: var(--slate);
 }
 
-.pipe-red > .face {
+.wire-red > .face {
   background: var(--stencil-red);
 }
 
-.pipe-yellow > .face {
-  background: var(--term-yellow);
+.wire-slate > .face {
+  background: var(--slate);
 }
 
-.pipe-orange > .face {
-  background: var(--term-orange);
+.wire-white > .face {
+  background: var(--white);
 }
 
-.pipe-green > .face {
-  background: var(--term-green);
+.wire-cyan > .face {
+  background: var(--cyber-teal);
 }

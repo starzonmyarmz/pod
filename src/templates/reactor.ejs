@@ -19,12 +19,9 @@
   <%- include("box", { c: "metal panels", w: 3.4, l: 2.8, h: 1, x: 1.8, y: 0, z: 2.2, hide: locals.hide }) %>
   <%- include("box", { c: "metal panels", w: 3.4, l: 2.2, h: 1, x: 1.8, y: 1, z: 2.8, hide: locals.hide }) %>
 
-  <%- include("box", { c: "", w: 1.2, l: 0.5, h: 0.5, x: 0.6, y: 1.2, z: 3.6, hide: locals.hide }) %>
-  <%- include("box", { c: "", w: 0.5, l: 0.5, h: 2, x: 0.6, y: -0.8, z: 3.6, hide: locals.hide }) %>
-  <%- include("box", { c: "", w: 0.5, l: 4, h: 0.5, x: 0.6, y: -0.8, z: -0.4, hide: locals.hide }) %>
-
-  <%- include("box", { c: "", w: 1.2, l: 0.5, h: 0.5, x: 5.2, y: 1.2, z: 3.6, hide: locals.hide }) %>
-  <%- include("box", { c: "", w: 0.5, l: 0.8, h: 0.5, x: 5.9, y: 1.2, z: 4.1, hide: locals.hide }) %>
+  <%- include("pipe", { d: 0.5, l: 1.2, along: true, color: "slate", x: 0.6, y: 1.2, z: 3.6, hide: locals.hide }) %>
+  <%- include("pipe", { d: 0.5, l: 2, vertical: true, color: "slate", x: 0.6, y: -0.8, z: 3.6, hide: locals.hide }) %>
+  <%- include("pipe", { d: 0.5, l: 4, color: "slate", x: 0.6, y: -0.8, z: -0.4, hide: locals.hide }) %>
 
   <input type="checkbox" id="reactor-console-zoom" />
   <label for="reactor-console-zoom">

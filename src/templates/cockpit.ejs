@@ -2,16 +2,16 @@
   <div id="cockpit" class="room" w="5.5" l="7" h="6">
     <%- include("floor") %>
 
-    <%- include("box", { w: 6.4, l: 0.15, h: 0.15, x: -0.45, y: -0.28, z: 1, c: "pipe pipe-gray" }) %>
-    <%- include("box", { w: 6.4, l: 0.12, h: 0.12, x: -0.45, y: -0.28, z: 1.5, c: "pipe pipe-cyan" }) %>
-    <%- include("box", { w: 6.4, l: 0.1, h: 0.1, x: -0.45, y: -0.28, z: 3, c: "pipe pipe-green" }) %>
-    <%- include("box", { w: 6.4, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 5, c: "pipe pipe-red" }) %>
-    <%- include("box", { w: 6.4, l: 0.05, h: 0.05, x: -0.45, y: -0.28, z: 5.5, c: "pipe pipe-yellow" }) %>
+    <%- include("pipe", { d: 0.15, l: 6.4, along: true, color: "white", x: -0.45, y: -0.28, z: 1 }) %>
+    <%- include("pipe", { d: 0.12, l: 6.4, along: true, color: "slate", x: -0.45, y: -0.28, z: 1.5 }) %>
+    <%- include("pipe", { d: 0.1, l: 6.4, along: true, color: "white", x: -0.45, y: -0.28, z: 3 }) %>
+    <%- include("pipe", { d: 0.05, l: 6.4, along: true, kind: "wire", color: "red", x: -0.45, y: -0.28, z: 5 }) %>
+    <%- include("pipe", { d: 0.05, l: 6.4, along: true, kind: "wire", color: "cyan", x: -0.45, y: -0.28, z: 5.5 }) %>
 
-    <%- include("box", { w: 0.15, l: 7.9, h: 0.15, x: 2.5, y: -0.45, z: -0.45, c: "pipe pipe-orange" }) %>
-    <%- include("box", { w: 0.12, l: 7.9, h: 0.12, x: 2.9, y: -0.44, z: -0.45, c: "pipe pipe-green" }) %>
-    <%- include("box", { w: 0.05, l: 7.9, h: 0.05, x: 3.2, y: -0.43, z: -0.45, c: "pipe pipe-gray" }) %>
-    <%- include("box", { w: 0.05, l: 7.9, h: 0.05, x: 4.5, y: -0.45, z: -0.45, c: "pipe pipe-red" }) %>
+    <%- include("pipe", { d: 0.15, l: 7.9, color: "slate", x: 2.5, y: -0.45, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.12, l: 7.9, color: "white", x: 2.9, y: -0.44, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.05, l: 7.9, kind: "wire", color: "slate", x: 3.2, y: -0.43, z: -0.45 }) %>
+    <%- include("pipe", { d: 0.05, l: 7.9, kind: "wire", color: "red", x: 4.5, y: -0.45, z: -0.45 }) %>
 
     <%- include("wall", { side: "port" }) %>
     <%- include("wall", { side: "starboard" }) %>
