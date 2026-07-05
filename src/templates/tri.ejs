@@ -13,7 +13,7 @@
   <%- locals.mirror ? 'mirror' : '' %>
   <%- locals.hide ? 'hide="' + hide + '"' : '' %>
 >
-  <div class="face top"></div>
+  <div class="face top"><%- locals.topContent || "" %></div>
   <div class="face back"></div>
   <div class="face right"></div>
   <div class="face left"></div>
