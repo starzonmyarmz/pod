@@ -16,8 +16,8 @@
     </div>
   </div>
 
-  <%- include("box", { w: 3.4, l: 2.8, h: 1, x: 1.8, y: 0, z: 2.2, hide: locals.hide }) %>
-  <%- include("box", { w: 3.4, l: 2.2, h: 1, x: 1.8, y: 1, z: 2.8, hide: locals.hide }) %>
+  <%- include("box", { c: "metal panels", w: 3.4, l: 2.8, h: 1, x: 1.8, y: 0, z: 2.2, hide: locals.hide }) %>
+  <%- include("box", { c: "metal panels", w: 3.4, l: 2.2, h: 1, x: 1.8, y: 1, z: 2.8, hide: locals.hide }) %>
 
   <%- include("box", { c: "", w: 1.2, l: 0.5, h: 0.5, x: 0.6, y: 1.2, z: 3.6, hide: locals.hide }) %>
   <%- include("box", { c: "", w: 0.5, l: 0.5, h: 2, x: 0.6, y: -0.8, z: 3.6, hide: locals.hide }) %>
@@ -28,6 +28,45 @@
 
   <input type="checkbox" id="reactor-console-zoom" />
   <label for="reactor-console-zoom">
-    <%- include("tri", { id: "reactor-console", w: 3.4, l: 0.6, h: 1, x: 1.8, y: 1, z: 2.2, flipy: true, hide: locals.hide }) %>
+    <%- include("tri", { id: "reactor-console", metal: true, w: 3.4, l: 0.6, h: 1, x: 1.8, y: 1, z: 2.2, flipy: true, hide: locals.hide }) %>
   </label>
+
+  <input type="checkbox" id="reactor-panel-open" />
+  <label for="reactor-panel-open" class="reactor-panel-handle">
+    <%- include("box", { id: undefined, w: 0.15, l: 0.15, h: 0.3, x: 5.05, y: 1.3, z: 2.75, hide: locals.hide }) %>
+  </label>
+
+  <div class="reactor-panel" w="3.4" h="1" x="1.8" y="1" z="2.8">
+    <div class="reactor-switch">
+      <input type="checkbox" id="power-electric-basic" />
+      <label for="power-electric-basic">
+        <span class="switch-bezel"><span class="switch-lever"></span></span>
+        <span class="switch-label">Electric<br />basic</span>
+      </label>
+    </div>
+
+    <div class="reactor-switch">
+      <input type="checkbox" id="power-life-support" />
+      <label for="power-life-support">
+        <span class="switch-bezel"><span class="switch-lever"></span></span>
+        <span class="switch-label">Life<br />support</span>
+      </label>
+    </div>
+
+    <div class="reactor-switch">
+      <input type="checkbox" id="power-electric-advance" />
+      <label for="power-electric-advance">
+        <span class="switch-bezel"><span class="switch-lever"></span></span>
+        <span class="switch-label">Electric<br />advance</span>
+      </label>
+    </div>
+
+    <div class="reactor-gauge">
+      <div class="gauge-face">
+        <div class="gauge-scale"></div>
+        <div class="gauge-needle"></div>
+      </div>
+      <span class="gauge-label">Output</span>
+    </div>
+  </div>
 </div>

@@ -156,3 +156,235 @@
       rgba(150, 255, 80, calc(var(--power) * 0.2));
   }
 }
+
+/* Instrument panel — mounted flush on the console box's near face, the one
+   facing the room interior (this game's camera sits toward the bow looking
+   stern-ward, so a box's *back* face — not its front — is the visible side).
+   Same w/h/x/y/z as that box; houses the retro toggle switches + gauge. */
+.reactor-panel {
+  --w: calc(var(--ft) * attr(w type(<number>)));
+  --h: calc(var(--ft) * attr(h type(<number>)));
+  --x: calc(var(--ft) * attr(x type(<number>)));
+  --y: calc(var(--ft) * attr(y type(<number>)));
+  --z: calc(var(--ft) * attr(z type(<number>)));
+
+  align-items: center;
+  bottom: var(--y);
+  display: flex;
+  gap: calc(0.1 * var(--ft));
+  height: var(--h);
+  justify-content: space-between;
+  left: var(--x);
+  padding: calc(0.1 * var(--ft)) calc(0.15 * var(--ft));
+  position: absolute;
+  transform-origin: 0 50% 0;
+  transform-style: preserve-3d;
+  transition: rotate 0.6s;
+  translate: 0 0 calc(var(--z) - var(--room-l) / 2);
+  width: var(--w);
+}
+
+#reactor-panel-open {
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
+
+#reactor-panel-open:checked ~ .reactor-panel {
+  rotate: y 70deg;
+}
+
+.reactor-panel-handle {
+  pointer-events: auto;
+}
+
+.reactor-panel-handle > .face {
+  background: var(--machine-gray);
+}
+
+/* Retro bat-handle toggle switch: a recessed chrome bezel with a pivoting
+   lever, a backlit engraved label beneath it. */
+.reactor-switch {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.03 * var(--ft));
+
+  input {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.03 * var(--ft));
+    pointer-events: auto;
+  }
+}
+
+.switch-bezel {
+  align-items: flex-end;
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    var(--slate),
+    var(--corridor-shadow)
+  );
+  border-radius: calc(0.06 * var(--ft));
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.12);
+  display: flex;
+  height: calc(0.3 * var(--ft));
+  justify-content: center;
+  padding-bottom: calc(0.02 * var(--ft));
+  width: calc(0.2 * var(--ft));
+}
+
+.switch-lever {
+  background: linear-gradient(
+    to bottom,
+    var(--white),
+    var(--machine-gray) 45%,
+    var(--slate)
+  );
+  border-radius: calc(0.03 * var(--ft));
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+  height: calc(0.2 * var(--ft));
+  rotate: 20deg;
+  transform-origin: bottom center;
+  transition:
+    rotate 0.15s ease-out,
+    box-shadow 0.15s;
+  width: calc(0.06 * var(--ft));
+}
+
+.reactor-switch input:checked + label .switch-lever {
+  background: linear-gradient(
+    to bottom,
+    var(--neon-amber),
+    var(--white) 40%,
+    var(--machine-gray)
+  );
+  box-shadow: 0 0 4px 1px var(--neon-amber);
+  rotate: -20deg;
+}
+
+.switch-label {
+  color: var(--white);
+  font-family: "Orbitron", sans-serif;
+  font-size: calc(0.075 * var(--ft));
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  transition:
+    color 0.3s,
+    text-shadow 0.3s;
+}
+
+.reactor-switch:has(input:checked) .switch-label {
+  color: var(--neon-amber);
+  text-shadow: 0 0 calc(0.05 * var(--ft)) var(--neon-amber);
+}
+
+/* Analog output gauge — cream dial, engraved tick arc, red needle that
+   sweeps further and flutters once any reactor switch is live. */
+.reactor-gauge {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.03 * var(--ft));
+}
+
+.gauge-face {
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--white),
+    var(--quarters-gray) 75%,
+    var(--slate) 100%
+  );
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 calc(0.025 * var(--ft)) var(--corridor-shadow),
+    0 0 0 calc(0.045 * var(--ft)) var(--machine-gray),
+    inset 0 1px 2px rgba(0, 0, 0, 0.45);
+  height: calc(0.44 * var(--ft));
+  position: relative;
+  width: calc(0.44 * var(--ft));
+}
+
+.gauge-scale {
+  background-image: repeating-conic-gradient(
+    from 190deg,
+    var(--corridor-shadow) 0deg 1.5deg,
+    transparent 1.5deg 20deg
+  );
+  border-radius: 50%;
+  inset: calc(0.05 * var(--ft));
+  mask-image: conic-gradient(from 190deg, #000 0deg 160deg, transparent 160deg);
+  position: absolute;
+}
+
+.gauge-needle {
+  background: linear-gradient(var(--stencil-red), var(--term-red));
+  bottom: 18%;
+  box-shadow: 0 0 2px rgba(178, 58, 42, 0.8);
+  height: 38%;
+  left: 50%;
+  position: absolute;
+  rotate: -70deg;
+  transform-origin: bottom center;
+  transition: rotate 0.6s cubic-bezier(0.3, 1.6, 0.6, 1);
+  translate: -50%;
+  width: 1px;
+}
+
+.gauge-face::after {
+  background: var(--corridor-shadow);
+  border-radius: 50%;
+  bottom: calc(0.05 * var(--ft));
+  content: "";
+  height: calc(0.05 * var(--ft));
+  left: 50%;
+  position: absolute;
+  translate: -50% 50%;
+  width: calc(0.05 * var(--ft));
+}
+
+.reactor-panel:has(
+    #power-electric-basic:checked,
+    #power-life-support:checked,
+    #power-electric-advance:checked
+  )
+  .gauge-needle {
+  animation: gauge-flutter 2.3s ease-in-out infinite;
+  rotate: 25deg;
+}
+
+@keyframes gauge-flutter {
+  0%,
+  100% {
+    rotate: 20deg;
+  }
+  50% {
+    rotate: 30deg;
+  }
+}
+
+.gauge-label {
+  color: var(--white);
+  font-family: "Orbitron", sans-serif;
+  font-size: calc(0.06 * var(--ft));
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
