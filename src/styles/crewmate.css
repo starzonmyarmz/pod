@@ -1,0 +1,114 @@
+/*
+
+crewmate — blocky voxel figure slumped on the floor, back against a wall (see
+cuboid.css for geometry). Body parts are built facing the port wall (x
+origin), then the whole figure is yawed 45deg and tipped back at the hip so
+it reads as kitty-cornered into a room corner, leaning on both walls. The
+pivot is the figure's own placement point (its x/z attrs), read via attr()
+into this element's transform-origin so the yaw and lean rotate the whole
+assembly as one rigid body instead of spinning each box in place. Legs
+extend flat across the floor, and the head droops forward at the neck. No
+face is drawn on the head block; the suit is a single flat color with no bulk
+added.
+
+*/
+
+.crewmate {
+  /* Same --x/--y/--z convention as .box (see box.css), just consumed by
+     transform-origin instead of left/bottom/translate: this element has no
+     visible geometry of its own, only a pivot for the yaw + lean below. */
+  --x: calc(var(--ft) * attr(x type(<number>)));
+  --y: calc(var(--ft) * attr(y type(<number>)));
+  --z: calc(var(--ft) * attr(z type(<number>)));
+
+  /* Every child .box (head/torso/arms/legs) inherits these, so its own
+     x/y/z attrs are just a small constant local offset off the figure's
+     placement point — moving x/y/z here relocates the whole rigid body. */
+  --base-x: var(--x);
+  --base-y: var(--y);
+  --base-z: var(--z);
+
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  rotate: y 45deg;
+  transform: rotateX(-8deg);
+  transform-origin: var(--x) calc(-1 * var(--y))
+    calc(var(--z) - var(--room-l) / 2);
+  transform-style: preserve-3d;
+}
+
+.crewmate-head {
+  rotate: z 18deg;
+  transform-origin: 50% 100%;
+}
+
+.crewmate-head > .face,
+.crewmate-torso > .face,
+.crewmate-arm > .face,
+.crewmate-hand > .face,
+.crewmate-leg > .face,
+.crewmate-boot > .face {
+  --face-shade: 1;
+  filter: brightness(var(--face-shade));
+}
+
+.crewmate-head > .face,
+.crewmate-hand > .face {
+  background: var(--skin);
+}
+
+.crewmate-torso > .face,
+.crewmate-arm > .face,
+.crewmate-leg > .face {
+  background: var(--white);
+}
+
+.crewmate-boot > .face {
+  background: var(--slate);
+}
+
+.crewmate-head > .top,
+.crewmate-torso > .top,
+.crewmate-arm > .top,
+.crewmate-hand > .top,
+.crewmate-leg > .top,
+.crewmate-boot > .top {
+  --face-shade: 1.3;
+}
+
+.crewmate-head > .front,
+.crewmate-torso > .front,
+.crewmate-arm > .front,
+.crewmate-hand > .front,
+.crewmate-leg > .front,
+.crewmate-boot > .front {
+  --face-shade: 1.1;
+}
+
+.crewmate-head > .right,
+.crewmate-torso > .right,
+.crewmate-arm > .right,
+.crewmate-hand > .right,
+.crewmate-leg > .right,
+.crewmate-boot > .right {
+  --face-shade: 0.9;
+}
+
+.crewmate-head > .left,
+.crewmate-torso > .left,
+.crewmate-arm > .left,
+.crewmate-hand > .left,
+.crewmate-leg > .left,
+.crewmate-boot > .left {
+  --face-shade: 0.8;
+}
+
+.crewmate-head > .back,
+.crewmate-torso > .back,
+.crewmate-arm > .back,
+.crewmate-hand > .back,
+.crewmate-leg > .back,
+.crewmate-boot > .back {
+  --face-shade: 0.7;
+}

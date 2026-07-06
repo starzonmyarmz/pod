@@ -23,6 +23,7 @@
   --cockpit-gray: #80838a;
   --quarters-gray: #949293;
   --engineering-gray: #85807a;
+  --skin: #e8b993;
 }
 
 @supports (color: color(display-p3 0 0 0)) {
@@ -44,6 +45,7 @@
     --cockpit-gray: color(display-p3 0.5 0.51 0.53);
     --quarters-gray: color(display-p3 0.58 0.57 0.56);
     --engineering-gray: color(display-p3 0.52 0.5 0.47);
+    --skin: color(display-p3 0.8807 0.7326 0.5966);
   }
 }
 

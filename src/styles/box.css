@@ -11,10 +11,13 @@ box — a cuboid placed in the room by x/y/z (see cuboid.css for geometry)
 
   /* Position in feet from the room's port-bottom-bow corner to this box's
      left-bottom-back corner. x = across (port → starboard), y = up (floor → head),
-     z = depth (bow → stern). */
-  --x: calc(var(--ft) * attr(x type(<number>)));
-  --y: calc(var(--ft) * attr(y type(<number>)));
-  --z: calc(var(--ft) * attr(z type(<number>)));
+     z = depth (bow → stern). --base-x/y/z let a rigid-body parent (see
+     crewmate.css) shift every child box at once by inheriting an offset,
+     instead of each child baking the parent's coordinate into its own
+     x/y/z at render time. */
+  --x: calc(var(--ft) * attr(x type(<number>)) + var(--base-x, 0px));
+  --y: calc(var(--ft) * attr(y type(<number>)) + var(--base-y, 0px));
+  --z: calc(var(--ft) * attr(z type(<number>)) + var(--base-z, 0px));
 
   bottom: var(--y);
   left: var(--x);
