@@ -70,3 +70,11 @@ body {
   color: white;
   font-family: "Hind", sans-serif;
 }
+
+input[type="checkbox"],
+input[type="radio"]{
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
