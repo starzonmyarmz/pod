@@ -157,50 +157,16 @@
   }
 }
 
-/* Instrument panel — mounted flush on the console box's near face, the one
-   facing the room interior (this game's camera sits toward the bow looking
-   stern-ward, so a box's *back* face — not its front — is the visible side).
-   Same w/h/x/y/z as that box; houses the retro toggle switches + gauge. */
-.reactor-panel {
-  --w: calc(var(--ft) * attr(w type(<number>)));
-  --h: calc(var(--ft) * attr(h type(<number>)));
-  --x: calc(var(--ft) * attr(x type(<number>)));
-  --y: calc(var(--ft) * attr(y type(<number>)));
-  --z: calc(var(--ft) * attr(z type(<number>)));
-
+/* Instrument panel — houses the retro toggle switches + gauge, mounted flush
+   on the console's top face. */
+#reactor-console > .top > .reactor-panel {
   align-items: center;
-  bottom: var(--y);
   display: flex;
   gap: calc(0.1 * var(--ft));
-  height: var(--h);
+  inset: 0;
   justify-content: space-between;
-  left: var(--x);
   padding: calc(0.1 * var(--ft)) calc(0.15 * var(--ft));
   position: absolute;
-  transform-origin: 0 50% 0;
-  transform-style: preserve-3d;
-  transition: rotate 0.6s;
-  translate: 0 0 calc(var(--z) - var(--room-l) / 2);
-  width: var(--w);
-}
-
-#reactor-panel-open {
-  height: 0;
-  opacity: 0;
-  position: absolute;
-  width: 0;
-}
-
-#reactor-panel-open:checked ~ .reactor-panel {
-  rotate: y 70deg;
-}
-
-.reactor-panel-handle {
-  pointer-events: auto;
-}
-
-.reactor-panel-handle > .face {
-  background: var(--machine-gray);
 }
 
 /* Retro bat-handle toggle switch: a recessed chrome bezel with a pivoting

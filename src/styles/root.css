@@ -72,7 +72,7 @@ body {
 }
 
 input[type="checkbox"],
-input[type="radio"]{
+input[type="radio"] {
   height: 0;
   opacity: 0;
   position: absolute;
